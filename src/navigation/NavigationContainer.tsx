@@ -1,14 +1,23 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
-type Props = {};
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const NavigationContainer = (props: Props) => {
+import TempScreen from '_screens/TempScreen/TempScreen';
+
+import { navigationRef } from '_navigation/RootNavigation';
+
+const Stack = createNativeStackNavigator();
+
+function Navigation() {
   return (
-    <View>
-      <Text>NavigationContainer</Text>
-    </View>
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={TempScreen} />
+        <Stack.Screen name="Home2" component={TempScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-export default NavigationContainer;
+export default Navigation;
