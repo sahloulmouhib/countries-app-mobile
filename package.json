@@ -7,7 +7,12 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "iphone": "npx react-native run-ios --simulator=\"iPhone 11\"",
+    "ts": "tsc --noemit --skipLibCheck",
+    "pods": "cd ios && pod install && cd ..",
+    "gradle": "cd android &&./gradlew clean && cd ..",
+    "link-asset": "npx react-native-asset"
   },
   "dependencies": {
     "react": "18.2.0",
