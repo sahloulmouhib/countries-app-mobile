@@ -15,8 +15,10 @@
     "link-asset": "npx react-native-asset"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
+    "axios": "^1.2.4",
     "i18next": "^22.4.9",
     "react": "18.2.0",
     "react-i18next": "^12.1.4",

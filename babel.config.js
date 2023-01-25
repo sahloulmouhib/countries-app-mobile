@@ -20,6 +20,7 @@ module.exports = function (api) {
             _i18n: './src/locales/i18n',
             _validation: './src/validation',
             _config: './src/config',
+            _api: './src/api/',
           },
         },
       ],
