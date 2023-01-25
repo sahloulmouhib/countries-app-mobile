@@ -8,6 +8,8 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
 
+import { strings } from '_i18n';
+
 const Layout = () => {
   const [text, setText] = useState('');
   return (
@@ -22,7 +24,7 @@ const Layout = () => {
           console.log('pressed');
         }}
       />
-      <CustomText text={'sdsds'} />
+      <CustomText text={strings('global.title')} />
     </SafeAreaView>
   );
 };
