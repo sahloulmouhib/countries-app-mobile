@@ -9,6 +9,7 @@ export default StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   textInput: {
     borderColor: colors.GREY_MEDIUM,

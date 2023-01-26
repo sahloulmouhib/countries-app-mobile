@@ -90,7 +90,7 @@ export const handleError = (error: AxiosError | Error | unknown): string => {
     } else if (error.code === ERR_NETWORK) {
       return strings('errors.network');
     }
-    return strings('errors.unknown_error');
+    return strings('errors.unknown');
   }
-  return strings('errors.unknown_error');
+  return strings('errors.unknown');
 };

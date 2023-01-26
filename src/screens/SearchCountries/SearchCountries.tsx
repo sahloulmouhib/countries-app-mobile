@@ -7,7 +7,7 @@ import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
 import { endpoints } from '_api/endpoints';
-import useFetchPaginatedLocal from '_api/hooks/useFetchPaginatedLocal';
+import useFetchPaginatedCountry from '_api/hooks/useFetchPaginatedCountry';
 
 import useDebounceText from '_hooks/useDebounceText';
 
@@ -35,7 +35,7 @@ const SearchCountries = (props: Props) => {
     isRefreshing,
     hasLoadedAll,
     setData,
-  } = useFetchPaginatedLocal({
+  } = useFetchPaginatedCountry({
     url:
       searchText.length > 0
         ? endpoints.COUNTRIES_BY_NAME(searchText)

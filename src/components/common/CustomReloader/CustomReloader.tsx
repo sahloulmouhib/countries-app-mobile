@@ -25,7 +25,7 @@ const CustomReloader = ({
       }}>
       <Text style={styles.errorMessage}>{errorMessage}</Text>
       {onReload && (
-        <CustomButton title={strings('global.reload')} onPress={onReload} />
+        <CustomButton title={strings('errors.try_again')} onPress={onReload} />
       )}
     </View>
   );

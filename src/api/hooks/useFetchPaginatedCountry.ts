@@ -5,7 +5,9 @@ import { HttpMethod } from '_utils/types';
 import { handleError, sendAsyncRequest } from '../helpers';
 import { UseFetchPaginatedType } from '../types';
 
-const useFetchPaginatedLocal = <D = any, T = any>(
+import { NOT_FOUND } from './../constants';
+
+const useFetchPaginatedCountry = <D = any, T = any>(
   config: UseFetchPaginatedType<D, T>,
 ) => {
   const { decodeData, url, dataRequestParams, useToken = true } = config;
@@ -76,8 +78,11 @@ const useFetchPaginatedLocal = <D = any, T = any>(
       setData(allDataResult.slice(0, DEFAULT_ROWS_PER_PAGE));
       setResultsCount(allDataResult.length);
     } catch (err: any) {
-      console.log('err', err);
-      setFailedError(handleError(err));
+      if (err?.response?.data?.message === NOT_FOUND) {
+        setData([...allData.slice(0, DEFAULT_ROWS_PER_PAGE)]);
+      } else {
+        setFailedError(handleError(err));
+      }
     } finally {
       setIsLoading(false);
     }
@@ -90,8 +95,7 @@ const useFetchPaginatedLocal = <D = any, T = any>(
         setLoadingMoreError(undefined);
       }
       getMoreAbortControllerRef.current = new AbortController();
-      await sleep(3000);
-
+      await sleep(500);
       setData([
         ...data,
         ...allData.slice(
@@ -101,7 +105,11 @@ const useFetchPaginatedLocal = <D = any, T = any>(
       ]);
       setCurrentPage(currentPage + 1);
     } catch (err: any) {
-      setLoadingMoreError(handleError(err));
+      if (err?.response?.data?.message === NOT_FOUND) {
+        setData([...allData.slice(0, DEFAULT_ROWS_PER_PAGE)]);
+      } else {
+        setFailedError(handleError(err));
+      }
     } finally {
       setIsLoadingMore(false);
     }
@@ -124,7 +132,12 @@ const useFetchPaginatedLocal = <D = any, T = any>(
       setData(allDataResult.slice(0, DEFAULT_ROWS_PER_PAGE));
       setResultsCount(allDataResult.length);
     } catch (err: any) {
-      setRefreshError(handleError(err));
+      console.log(err.data.message);
+      if (err?.response?.data?.message === NOT_FOUND) {
+        setData([...allData.slice(0, DEFAULT_ROWS_PER_PAGE)]);
+      } else {
+        setFailedError(handleError(err));
+      }
     } finally {
       setIsRefreshing(false);
     }
@@ -157,4 +170,4 @@ const useFetchPaginatedLocal = <D = any, T = any>(
   };
 };
 
-export default useFetchPaginatedLocal;
+export default useFetchPaginatedCountry;
