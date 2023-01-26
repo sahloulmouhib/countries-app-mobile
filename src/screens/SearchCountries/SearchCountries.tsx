@@ -1,15 +1,23 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
+import CountryCard from '_components/Countries/CountryCard/CountryCard';
+import CustomDivider from '_components/common/CustomDivider/CustomDivider';
 import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
+import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
+import { endpoints } from '_api/endpoints';
 import useFetchPaginatedLocal from '_api/hooks/useFetchPaginatedLocal';
+
+import { decodeCountries, ICountry } from '_models/Country';
 
 import { colors } from '_utils/theme/colors';
 
 type Props = {};
 
 const SearchCountries = (props: Props) => {
+  const [searchText, setSearchText] = useState('');
+
   const {
     data,
     failedError,
@@ -19,26 +27,16 @@ const SearchCountries = (props: Props) => {
     getDataOnMount,
     getMoreData,
     getRefreshedData,
-    resultsCount,
     refreshError,
     isRefreshing,
     hasLoadedAll,
   } = useFetchPaginatedLocal({
-    url: 'https://restcountries.eu/rest/v2/all',
-    decodeData: (value: any) => value,
+    url: endpoints.COUNTRIES,
+    decodeData: decodeCountries,
   });
 
-  console.log('data length', data.length);
-  console.log('resultsCount', resultsCount);
-  console.log(data.length === resultsCount);
-
-  const renderItem = ({ item }: any) => {
-    return (
-      <View style={{ height: 200 }}>
-        <Text>{item.title}</Text>
-        <Text>{item.description}</Text>
-      </View>
-    );
+  const renderItem = ({ item }: { item: ICountry }) => {
+    return <CountryCard country={item} />;
   };
 
   useEffect(() => {
@@ -46,6 +44,8 @@ const SearchCountries = (props: Props) => {
   }, []);
   return (
     <View style={styles.container}>
+      <CustomSearchBar text={searchText} onChangeText={setSearchText} />
+      <CustomDivider height={20} />
       <CustomFlatlist
         data={data}
         isLoading={isLoading}
@@ -61,7 +61,7 @@ const SearchCountries = (props: Props) => {
         failedError={failedError}
         refreshError={refreshError}
         renderItem={renderItem}
-        keyExtractor={(item: any) => item.id.toString()}
+        keyExtractor={(item: ICountry) => item.image}
       />
     </View>
   );

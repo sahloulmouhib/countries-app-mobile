@@ -12,6 +12,8 @@ import CustomTitle, {
 
 import { useApi } from '_api/hooks/useApi';
 
+import { decodeCountries, ICountry, ICountryResponse } from '_models/Country';
+
 import { HttpMethod } from '_utils/types';
 
 import { strings } from '_i18n';
@@ -21,11 +23,13 @@ type Props = NativeStackScreenProps<any, any>;
 const TempScreen = ({ navigation }: Props) => {
   const [text, setText] = useState('');
 
-  const { data, failedError, apiCall } = useApi({
-    url: 'https://restcountries.com/v2/name/peru',
-    decodeData: value => value,
-    method: HttpMethod.Get,
-  });
+  const { data, failedError, apiCall } = useApi<ICountryResponse[], ICountry[]>(
+    {
+      url: 'https://restcountries.com/v3/all',
+      decodeData: decodeCountries,
+      method: HttpMethod.Get,
+    },
+  );
 
   console.log('data', data);
   console.log('failedError', failedError);

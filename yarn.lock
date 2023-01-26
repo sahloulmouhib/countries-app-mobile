@@ -5963,6 +5963,11 @@ react-native-codegen@^0.71.3:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
+react-native-fast-image2@^8.3.11:
+  version "8.3.11"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image2/-/react-native-fast-image2-8.3.11.tgz#c7baf6bf613e617b58f003b327466f357768e398"
+  integrity sha512-iVhp0JxGM2joMsDJ79+wOMqCt75R1L9bubpU/Ea+CDTQNBr0CGiQwcxFi0LMjmIvtx6WHiOgXOQeHu6treOxhw==
+
 react-native-gradle-plugin@^0.71.13:
   version "0.71.13"
   resolved "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.13.tgz"
