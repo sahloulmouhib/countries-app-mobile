@@ -6,12 +6,8 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   errorMessage: {
-    color: colors.PRIMARY,
-    textAlign: 'center',
-    fontSize: 20,
-    marginBottom: 25,
+    margin: 20,
   },
 });

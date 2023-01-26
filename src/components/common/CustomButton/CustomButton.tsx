@@ -9,9 +9,10 @@ type Props = {
   title: string;
   onPress: () => void;
   backgroundColor?: string;
+  fontSize?: number;
 };
 
-const CustomButton = ({ onPress, title, backgroundColor }: Props) => {
+const CustomButton = ({ onPress, title, backgroundColor, fontSize }: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -19,7 +20,15 @@ const CustomButton = ({ onPress, title, backgroundColor }: Props) => {
         styles.container,
         { backgroundColor: backgroundColor ?? colors.BLACK },
       ]}>
-      <Text style={styles.title}>{title}</Text>
+      <Text
+        style={[
+          styles.title,
+          {
+            fontSize: fontSize ?? 20,
+          },
+        ]}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };

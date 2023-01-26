@@ -10,7 +10,6 @@ export default StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    fontSize: 20,
     color: colors.WHITE,
     fontFamily: fonts.SEMI_BOLD,
   },
