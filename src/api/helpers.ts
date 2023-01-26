@@ -1,8 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosPromise,
+  AxiosRequestConfig,
+} from 'axios';
 
-import { BEARER_KEY, REQUEST_DURATION } from './constants';
+import { httpStatusCodes } from '_utils/httpRequestCodes';
+
+import { strings } from '_i18n';
+
+import { BEARER_KEY, ERR_NETWORK, REQUEST_DURATION } from './constants';
 import { AxiosConfig } from './types';
 
 const instanceAxios: AxiosInstance = axios.create();
@@ -67,4 +76,21 @@ export const sendAsyncRequest = async <T = any>(
 
 const getAccessToken = async () => {
   return await AsyncStorage.getItem('accessToken');
+};
+
+export const handleError = (error: AxiosError | Error | unknown): string => {
+  if (error instanceof AxiosError) {
+    if (error.response?.status) {
+      switch (error.response.status) {
+        case httpStatusCodes.UNAUTHORIZED:
+          return strings('session.description');
+        default:
+          return strings('errors.server');
+      }
+    } else if (error.code === ERR_NETWORK) {
+      return strings('errors.network');
+    }
+    return strings('errors.unknown_error');
+  }
+  return strings('errors.unknown_error');
 };

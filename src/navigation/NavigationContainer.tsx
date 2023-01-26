@@ -7,13 +7,18 @@ import TempScreen from '_screens/TempScreen/TempScreen';
 
 import { navigationRef } from '_navigation/RootNavigation';
 
+import CountriesStackNavigation from './ContriesStackNavigation';
+
 const Stack = createNativeStackNavigator();
 
 function Navigation() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={TempScreen} />
+        <Stack.Screen
+          name="SearchCountries"
+          component={CountriesStackNavigation}
+        />
         <Stack.Screen name="Home2" component={TempScreen} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -10,12 +10,29 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
 
+import { useApi } from '_api/hooks/useApi';
+
+import { HttpMethod } from '_utils/types';
+
 import { strings } from '_i18n';
 
 type Props = NativeStackScreenProps<any, any>;
 
 const TempScreen = ({ navigation }: Props) => {
   const [text, setText] = useState('');
+
+  const { data, failedError, apiCall } = useApi({
+    url: 'https://restcountries.com/v2/name/peru',
+    decodeData: value => value,
+    method: HttpMethod.Get,
+  });
+
+  console.log('data', data);
+  console.log('failedError', failedError);
+
+  useEffect(() => {
+    apiCall();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -26,7 +43,7 @@ const TempScreen = ({ navigation }: Props) => {
       <CustomButton
         title="Get Started"
         onPress={() => {
-          navigation.navigate('Home2');
+          apiCall();
         }}
       />
       <CustomText text={strings('global.title')} />

@@ -1,1 +1,3 @@
-export const httpStatusCodes = {};
+export const httpStatusCodes = {
+  UNAUTHORIZED: 401,
+};
