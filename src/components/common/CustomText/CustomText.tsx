@@ -5,10 +5,10 @@ import defaultStyles from './CustomText.styles';
 
 type Props = {
   text: string;
-  styles?: any;
+  style?: any;
 };
 
-const CustomText = ({ text, styles }: Props) => {
+const CustomText = ({ text, style: styles }: Props) => {
   return <Text style={[defaultStyles.text, styles]}>{text}</Text>;
 };
 

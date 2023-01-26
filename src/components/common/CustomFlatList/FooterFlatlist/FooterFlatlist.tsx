@@ -5,7 +5,7 @@ import CustomLoader from '_components/common/CustomLoader/CustomLoader';
 
 import CustomReloaderFlatlist from '../CustomReloaderFlatlist/CustomReloaderFlatlist';
 
-import styles from './styles';
+import styles from './FooterFlatlist.styles';
 
 type Props = {
   isLoadingMore?: boolean;

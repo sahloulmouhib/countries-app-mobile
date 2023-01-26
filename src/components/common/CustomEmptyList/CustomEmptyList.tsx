@@ -1,14 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
 
-import styles from './styles';
+import CustomText from '../CustomText/CustomText';
+
+import styles from './CustomEmptyList.styles';
 
 type Props = {
   message: string;
 };
 
 const CustomEmptyList = ({ message }: Props) => {
-  return <Text style={styles.text}>{message}</Text>;
+  return <CustomText style={styles.text} text={message} />;
 };
 
 export default CustomEmptyList;

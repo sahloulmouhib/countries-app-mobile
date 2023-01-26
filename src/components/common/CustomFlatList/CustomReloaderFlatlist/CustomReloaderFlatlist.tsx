@@ -5,7 +5,7 @@ import CustomButton from '_components/common/CustomButton/CustomButton';
 
 import { strings } from '_i18n';
 
-import styles from './styles';
+import styles from './CustomReloaderFlatlist.styles';
 
 type Props = {
   errorMessage: string;

@@ -17,9 +17,7 @@ import { colors } from '_utils/theme/colors';
 
 import { strings } from '_i18n';
 
-type Props = {};
-
-const SearchCountries = (props: Props) => {
+const SearchCountries = () => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, 1000);
   const {
