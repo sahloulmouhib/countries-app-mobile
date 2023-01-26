@@ -19,6 +19,7 @@ const useFetchPaginatedLocal = <D = any, T = any>(
     undefined,
   );
   const hasLoadedAll = data.length === resultsCount;
+  console.log('hasLoadedAll', hasLoadedAll);
   const [currentPage, setCurrentPage] = useState<number>(DEFAULT_PAGE_NUMBER);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -43,6 +44,9 @@ const useFetchPaginatedLocal = <D = any, T = any>(
     AbortController | undefined
   >(undefined);
 
+  console.log('allData', allData.length);
+  console.log('data', data.length);
+
   const fetchData = async (page: number, abortController: AbortController) => {
     const res = await sendAsyncRequest<D[]>({
       method: HttpMethod.Get,
@@ -66,10 +70,11 @@ const useFetchPaginatedLocal = <D = any, T = any>(
         DEFAULT_PAGE_NUMBER,
         getDataOnMountAbortControllerRef.current,
       );
-      setAllData(decodeData(res));
-      setData(allData.slice(0, DEFAULT_ROWS_PER_PAGE));
       setCurrentPage(DEFAULT_PAGE_NUMBER);
-      setResultsCount(allData.length);
+      const allDataResult = decodeData(res);
+      setAllData(allDataResult);
+      setData(allDataResult.slice(0, DEFAULT_ROWS_PER_PAGE));
+      setResultsCount(allDataResult.length);
     } catch (err: any) {
       console.log('err', err);
       setFailedError(handleError(err));
@@ -114,9 +119,10 @@ const useFetchPaginatedLocal = <D = any, T = any>(
         getRefreshedDataAbortControllerRef.current,
       );
       setCurrentPage(DEFAULT_PAGE_NUMBER);
-      setAllData(decodeData(res));
-      setData(allData.slice(0, DEFAULT_ROWS_PER_PAGE));
-      setResultsCount(allData.length);
+      const allDataResult = decodeData(res);
+      setAllData(allDataResult);
+      setData(allDataResult.slice(0, DEFAULT_ROWS_PER_PAGE));
+      setResultsCount(allDataResult.length);
     } catch (err: any) {
       setRefreshError(handleError(err));
     } finally {

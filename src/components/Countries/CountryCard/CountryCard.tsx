@@ -1,11 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, View } from 'react-native';
 
 import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
 
 import { ICountry } from '_models/Country';
+
+import styles from './CountryCard.styles';
 
 type Props = {
   country: ICountry;
@@ -25,21 +27,3 @@ const CountryCard = ({ country }: Props) => {
 };
 
 export default CountryCard;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginBottom: 32,
-  },
-  flagImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-  },
-  detailsContainer: {
-    marginLeft: 16,
-  },
-});

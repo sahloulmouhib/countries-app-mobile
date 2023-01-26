@@ -9,15 +9,19 @@ import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar'
 import { endpoints } from '_api/endpoints';
 import useFetchPaginatedLocal from '_api/hooks/useFetchPaginatedLocal';
 
+import useDebounceText from '_hooks/useDebounceText';
+
 import { decodeCountries, ICountry } from '_models/Country';
 
 import { colors } from '_utils/theme/colors';
+
+import { strings } from '_i18n';
 
 type Props = {};
 
 const SearchCountries = (props: Props) => {
   const [searchText, setSearchText] = useState('');
-
+  const debouncedSearchTerm = useDebounceText(searchText, 1000);
   const {
     data,
     failedError,
@@ -30,8 +34,12 @@ const SearchCountries = (props: Props) => {
     refreshError,
     isRefreshing,
     hasLoadedAll,
+    setData,
   } = useFetchPaginatedLocal({
-    url: endpoints.COUNTRIES,
+    url:
+      searchText.length > 0
+        ? endpoints.COUNTRIES_BY_NAME(searchText)
+        : endpoints.COUNTRIES,
     decodeData: decodeCountries,
   });
 
@@ -40,11 +48,16 @@ const SearchCountries = (props: Props) => {
   };
 
   useEffect(() => {
+    setData([]);
     getDataOnMount();
-  }, []);
+  }, [debouncedSearchTerm]);
   return (
     <View style={styles.container}>
-      <CustomSearchBar text={searchText} onChangeText={setSearchText} />
+      <CustomSearchBar
+        text={searchText}
+        onChangeText={setSearchText}
+        placeholder={strings('countries.search_countries.placeholder')}
+      />
       <CustomDivider height={20} />
       <CustomFlatlist
         data={data}
@@ -52,7 +65,6 @@ const SearchCountries = (props: Props) => {
         isRefreshing={isRefreshing}
         isLoadingMore={isLoadingMore}
         hasLoadedAll={hasLoadedAll}
-        backgroundColor={data.length === 0 ? colors.WHITE : colors.GREY_LIGHT}
         hasPadding={false}
         getDataOnMount={getDataOnMount}
         getMoreData={getMoreData}
@@ -73,5 +85,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     flex: 1,
+    backgroundColor: colors.WHITE,
   },
 });

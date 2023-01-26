@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { KeyboardTypeOptions, TextInput, View } from 'react-native';
+import React from 'react';
+import { TextInput, TouchableOpacity, View } from 'react-native';
+
+import {
+  faMagnifyingGlass,
+  faCircleXmark,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import { colors } from '_utils/theme/colors';
 
@@ -10,37 +16,42 @@ type Props = {
   onChangeText: (text: string) => void;
   placeholder?: string;
   defaultValue?: string;
-  keyboardType?: KeyboardTypeOptions;
 };
 
 const CustomSearchBar = ({
   defaultValue,
-  keyboardType,
   onChangeText,
   placeholder,
   text,
 }: Props) => {
-  const [focused, setFocused] = useState(false);
-  const toggleFocus = () => {
-    setFocused(!focused);
+  const clearText = () => {
+    onChangeText('');
   };
   return (
-    <View>
+    <View style={styles.container}>
+      <FontAwesomeIcon
+        secondaryColor={colors.BLACK}
+        size={20}
+        icon={faMagnifyingGlass}
+      />
       <TextInput
-        style={[
-          styles.textInput,
-          { borderColor: focused ? colors.BLACK : colors.GREY_MEDIUM },
-          { borderWidth: (focused && 2) || 1 },
-        ]}
+        style={styles.textInput}
         value={text}
         onChangeText={onChangeText}
-        keyboardType={keyboardType}
-        onFocus={toggleFocus}
-        onBlur={toggleFocus}
         placeholder={placeholder}
         defaultValue={defaultValue}
         cursorColor={colors.PRIMARY}
       />
+      {text.length > 0 && (
+        <TouchableOpacity onPress={clearText}>
+          <FontAwesomeIcon
+            color={colors.GREY_DARK}
+            secondaryColor={colors.BLACK}
+            size={20}
+            icon={faCircleXmark}
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
