@@ -3,21 +3,21 @@ import { ActivityIndicator, View } from 'react-native';
 
 import { colors } from '_utils/theme/colors';
 
-import styles from './styles';
+import styles from './CustomLoader.styles';
 
 type Props = {
   marginVertical?: number;
-  loaderBackGround?: boolean;
+  hasBackGround?: boolean;
 };
 
-const CustomLoader = ({ marginVertical, loaderBackGround = false }: Props) => {
+const CustomLoader = ({ marginVertical, hasBackGround = false }: Props) => {
   return (
     <View
       style={[
         styles.container,
         !!marginVertical && { marginVertical: marginVertical },
       ]}>
-      {loaderBackGround ? (
+      {hasBackGround ? (
         <View style={styles.whiteBackground}>
           <ActivityIndicator size={'large'} color={colors.PRIMARY} />
         </View>

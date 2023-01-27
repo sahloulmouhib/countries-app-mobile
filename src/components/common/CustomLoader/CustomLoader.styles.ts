@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { colors } from '_utils/theme/colors';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -8,7 +10,7 @@ export default StyleSheet.create({
   },
   whiteBackground: {
     padding: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: colors.WHITE,
     borderRadius: 15,
   },
 });

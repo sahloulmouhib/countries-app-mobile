@@ -1,15 +1,13 @@
 import React from 'react';
 
-import CustomText from '../CustomText/CustomText';
-
-import styles from './CustomEmptyList.styles';
+import CustomTitle, { CustomTitleType } from '../CustomTitle/CustomTitle';
 
 type Props = {
   message: string;
 };
 
 const CustomEmptyList = ({ message }: Props) => {
-  return <CustomText style={styles.text} text={message} />;
+  return <CustomTitle type={CustomTitleType.H4} title={message} />;
 };
 
 export default CustomEmptyList;
