@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginBottom: 32,
+    margin: 16,
   },
   flagImage: {
     width: 50,

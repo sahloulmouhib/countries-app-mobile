@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
 import CountryCard from '_components/Countries/CountryCard/CountryCard';
-import CustomDivider from '_components/common/CustomDivider/CustomDivider';
+import CountryCardSkeletons from '_components/Countries/CountryCardSkeletons/CountryCardSkeletons';
 import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
@@ -51,6 +51,7 @@ const SearchCountries = () => {
     setData([]);
     getDataOnMount();
   }, [debouncedSearchTerm]);
+
   return (
     <View style={styles.container}>
       <CustomSearchBar
@@ -58,7 +59,6 @@ const SearchCountries = () => {
         onChangeText={setSearchText}
         placeholder={strings('countries.search_countries.placeholder')}
       />
-      <CustomDivider height={20} />
       <CustomFlatlist
         data={data}
         isLoading={isLoading}
@@ -73,6 +73,7 @@ const SearchCountries = () => {
         failedError={failedError}
         refreshError={refreshError}
         renderItem={renderItem}
+        renderLoader={<CountryCardSkeletons numberOfCards={10} />}
         keyExtractor={(item: ICountry) => item.image}
       />
     </View>

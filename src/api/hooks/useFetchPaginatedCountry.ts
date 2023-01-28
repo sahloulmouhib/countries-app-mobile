@@ -20,7 +20,7 @@ const useFetchPaginatedCountry = <D = any, T = any>(
   const [resultsCount, setResultsCount] = useState<number | undefined>(
     undefined,
   );
-  const hasLoadedAll = data.length === resultsCount;
+  let hasLoadedAll = data.length === resultsCount;
   console.log('hasLoadedAll', hasLoadedAll);
   const [currentPage, setCurrentPage] = useState<number>(DEFAULT_PAGE_NUMBER);
 
@@ -79,7 +79,7 @@ const useFetchPaginatedCountry = <D = any, T = any>(
       setResultsCount(allDataResult.length);
     } catch (err: any) {
       if (err?.response?.data?.message === NOT_FOUND) {
-        setData([...allData.slice(0, DEFAULT_ROWS_PER_PAGE)]);
+        setData([]);
       } else {
         setFailedError(handleError(err));
       }
@@ -106,7 +106,7 @@ const useFetchPaginatedCountry = <D = any, T = any>(
       setCurrentPage(currentPage + 1);
     } catch (err: any) {
       if (err?.response?.data?.message === NOT_FOUND) {
-        setData([...allData.slice(0, DEFAULT_ROWS_PER_PAGE)]);
+        setData([]);
       } else {
         setFailedError(handleError(err));
       }
@@ -133,7 +133,7 @@ const useFetchPaginatedCountry = <D = any, T = any>(
       setResultsCount(allDataResult.length);
     } catch (err: any) {
       if (err?.response?.data?.message === NOT_FOUND) {
-        setData([...allData.slice(0, DEFAULT_ROWS_PER_PAGE)]);
+        setData([]);
       } else {
         setRefreshError(handleError(err));
       }

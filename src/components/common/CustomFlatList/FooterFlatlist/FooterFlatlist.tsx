@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import CustomLoader from '_components/common/CustomLoader/CustomLoader';
 
-import CustomReloaderFlatlist from '../CustomReloaderFlatlist/CustomReloaderFlatlist';
+import CustomReloaderFlatlist from '../ReloaderFlatlist/ReloaderFlatlist';
 
 import styles from './FooterFlatlist.styles';
 

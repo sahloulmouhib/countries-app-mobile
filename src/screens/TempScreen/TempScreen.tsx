@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+import CountryCardSkeleton from '_components/Countries/CountryCardSkeleton/CountryCardSkeleton';
 import CustomButton from '_components/common/CustomButton/CustomButton';
 import CustomInputText from '_components/common/CustomInputText/CustomInputText';
 import CustomText from '_components/common/CustomText/CustomText';
@@ -40,6 +41,7 @@ const TempScreen = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <CountryCardSkeleton />
       <CustomTitle title={'ScreenTitle'} type={CustomTitleType.H1} />
 
       <CustomInputText text={text} onChangeText={setText} />

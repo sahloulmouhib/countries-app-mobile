@@ -3,7 +3,6 @@ import {
   FlatList,
   FlatListProps,
   ListRenderItem,
-  View,
   KeyboardAvoidingView,
 } from 'react-native';
 import Toast from 'react-native-toast-message';
@@ -13,20 +12,20 @@ import { isIosDevice } from '_utils/helpers';
 import { colors } from '_utils/theme/colors';
 import { toastConfig, ToastType } from '_utils/toastConfig/toastConfig';
 
-import CustomLoader from '../CustomLoader/CustomLoader';
-import CustomReloader from '../CustomReloader/CustomReloader';
-
 import DefaultEmptyListFlatlist from './DefaultEmptyListFlatlist/DefaultEmptyListFlatlist';
 import FooterFlatlist from './FooterFlatlist/FooterFlatlist';
+import LoaderFlatlist from './LoaderFlatlist/LoaderFlatlist';
 import RefreshControlFlatlist from './RefreshControlFlatlist/RefreshControlFlatlist';
+import ReloaderFlatlist from './ReloaderFlatlist/ReloaderFlatlist';
 import styles from './styles';
 
 interface Props<T = any> extends FlatListProps<T> {
   data: T[];
+  hasLoadedAll?: boolean;
+
   isLoading: boolean;
   isRefreshing: boolean;
   isLoadingMore?: boolean;
-  hasLoadedAll?: boolean;
 
   getDataOnMount: () => void;
   getMoreData?: () => void;
@@ -40,6 +39,7 @@ interface Props<T = any> extends FlatListProps<T> {
     | React.ComponentType<any>
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   renderItem: ListRenderItem<any>;
+  renderLoader?: JSX.Element;
   onEndReachedThreshold?: number | null;
 
   backgroundColor?: string;
@@ -63,6 +63,7 @@ const CustomFlatlist = <T,>({
   hasPadding = true,
   backgroundColor = colors.WHITE,
   onEndReachedThreshold = 0.4,
+  renderLoader,
   ...otherProps
 }: Props<T>) => {
   const loadMore = () => {
@@ -72,6 +73,7 @@ const CustomFlatlist = <T,>({
       !hasLoadedAll &&
       !loadingMoreError &&
       data !== undefined &&
+      data.length > 0 &&
       getMoreData &&
       getMoreData();
   };
@@ -96,18 +98,14 @@ const CustomFlatlist = <T,>({
       ]}
       behavior={isIosDevice() ? 'padding' : 'height'}>
       {failedError && data.length === 0 ? (
-        <View style={styles.errorView}>
-          <CustomReloader
-            errorMessage={failedError}
-            onReload={getDataOnMount}
-          />
-        </View>
+        <ReloaderFlatlist
+          errorMessage={failedError}
+          onReload={getDataOnMount}
+        />
       ) : (
         <>
           {isLoading ? (
-            <View style={styles.centeredLoader}>
-              <CustomLoader />
-            </View>
+            <LoaderFlatlist renderCustomLoader={renderLoader} />
           ) : (
             <FlatList
               contentContainerStyle={data.length === 0 && styles.emptyList}
