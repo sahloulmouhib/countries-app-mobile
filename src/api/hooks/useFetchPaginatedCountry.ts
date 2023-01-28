@@ -132,11 +132,10 @@ const useFetchPaginatedCountry = <D = any, T = any>(
       setData(allDataResult.slice(0, DEFAULT_ROWS_PER_PAGE));
       setResultsCount(allDataResult.length);
     } catch (err: any) {
-      console.log(err.data.message);
       if (err?.response?.data?.message === NOT_FOUND) {
         setData([...allData.slice(0, DEFAULT_ROWS_PER_PAGE)]);
       } else {
-        setFailedError(handleError(err));
+        setRefreshError(handleError(err));
       }
     } finally {
       setIsRefreshing(false);

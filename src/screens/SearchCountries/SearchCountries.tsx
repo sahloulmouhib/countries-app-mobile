@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import CountryCard from '_components/Countries/CountryCard/CountryCard';
 import CustomDivider from '_components/common/CustomDivider/CustomDivider';
@@ -13,13 +13,15 @@ import useDebounceText from '_hooks/useDebounceText';
 
 import { decodeCountries, ICountry } from '_models/Country';
 
-import { colors } from '_utils/theme/colors';
+import { DEBOUNCE_TIME } from '_utils/constants';
 
 import { strings } from '_i18n';
 
+import styles from './SearchCountries.styles';
+
 const SearchCountries = () => {
   const [searchText, setSearchText] = useState('');
-  const debouncedSearchTerm = useDebounceText(searchText, 1000);
+  const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
   const {
     data,
     failedError,
@@ -78,11 +80,3 @@ const SearchCountries = () => {
 };
 
 export default SearchCountries;
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-    backgroundColor: colors.WHITE,
-  },
-});

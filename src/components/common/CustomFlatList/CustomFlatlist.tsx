@@ -6,9 +6,12 @@ import {
   View,
   KeyboardAvoidingView,
 } from 'react-native';
+import Toast from 'react-native-toast-message';
 
+import { TOAST_DURATION } from '_utils/constants';
 import { isIosDevice } from '_utils/helpers';
 import { colors } from '_utils/theme/colors';
+import { toastConfig, ToastType } from '_utils/toastConfig/toastConfig';
 
 import CustomLoader from '../CustomLoader/CustomLoader';
 import CustomReloader from '../CustomReloader/CustomReloader';
@@ -73,16 +76,16 @@ const CustomFlatlist = <T,>({
       getMoreData();
   };
 
-  // useEffect(() => {
-  //   if (refreshError) {
-  //     Toast.show({
-  //       type: 'error',
-  //       text1: refreshError,
-  //       autoHide: true,
-  //       visibilityTime: TOAST_TIMEOUT,
-  //     });
-  //   }
-  // }, [refreshError]);
+  useEffect(() => {
+    if (refreshError) {
+      Toast.show({
+        type: ToastType.Error,
+        text1: refreshError,
+        autoHide: true,
+        visibilityTime: TOAST_DURATION,
+      });
+    }
+  }, [refreshError]);
 
   return (
     <KeyboardAvoidingView
@@ -134,7 +137,7 @@ const CustomFlatlist = <T,>({
               {...otherProps}
             />
           )}
-          {/* {<Toast position="bottom" bottomOffset={0} config={toastConfig} />} */}
+          {<Toast position="bottom" bottomOffset={0} config={toastConfig} />}
         </>
       )}
     </KeyboardAvoidingView>

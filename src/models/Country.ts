@@ -96,5 +96,11 @@ export const decodeCountry = (data: ICountryResponse): ICountry => {
 };
 
 export const decodeCountries = (data: ICountryResponse[]): ICountry[] => {
-  return data.map(country => decodeCountry(country));
+  return sortCountriesAlphabetically(
+    data.map(country => decodeCountry(country)),
+  );
+};
+
+export const sortCountriesAlphabetically = (countries: ICountry[]) => {
+  return countries.sort((a, b) => a.name.localeCompare(b.name));
 };
