@@ -73,7 +73,7 @@ const SearchCountries = () => {
         failedError={failedError}
         refreshError={refreshError}
         renderItem={renderItem}
-        renderLoader={<CountryCardSkeletons numberOfCards={10} />}
+        renderLoader={<CountryCardSkeletons />}
         keyExtractor={(item: ICountry) => item.image}
       />
     </View>

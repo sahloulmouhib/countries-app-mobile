@@ -12,7 +12,7 @@ import { isIosDevice } from '_utils/helpers';
 import { colors } from '_utils/theme/colors';
 import { toastConfig, ToastType } from '_utils/toastConfig/toastConfig';
 
-import DefaultEmptyListFlatlist from './DefaultEmptyListFlatlist/DefaultEmptyListFlatlist';
+import DefaultEmptyListFlatlist from './EmptyListFlatlist/EmptyListFlatlist';
 import FooterFlatlist from './FooterFlatlist/FooterFlatlist';
 import LoaderFlatlist from './LoaderFlatlist/LoaderFlatlist';
 import RefreshControlFlatlist from './RefreshControlFlatlist/RefreshControlFlatlist';

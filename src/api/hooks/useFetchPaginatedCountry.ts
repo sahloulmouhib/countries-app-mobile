@@ -21,7 +21,6 @@ const useFetchPaginatedCountry = <D = any, T = any>(
     undefined,
   );
   let hasLoadedAll = data.length === resultsCount;
-  console.log('hasLoadedAll', hasLoadedAll);
   const [currentPage, setCurrentPage] = useState<number>(DEFAULT_PAGE_NUMBER);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -45,9 +44,6 @@ const useFetchPaginatedCountry = <D = any, T = any>(
   const getRefreshedDataAbortControllerRef = useRef<
     AbortController | undefined
   >(undefined);
-
-  console.log('allData', allData.length);
-  console.log('data', data.length);
 
   const fetchData = async (page: number, abortController: AbortController) => {
     const res = await sendAsyncRequest<D[]>({
