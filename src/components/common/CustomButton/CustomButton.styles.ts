@@ -5,14 +5,19 @@ import { fonts } from '_utils/theme/fonts';
 
 export default StyleSheet.create({
   container: {
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
   },
   title: {
     textAlign: 'center',
     color: colors.WHITE,
     fontFamily: fonts.SEMI_BOLD,
+  },
+  icon: {
+    marginRight: 8,
   },
 });

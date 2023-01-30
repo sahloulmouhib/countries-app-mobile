@@ -1,11 +1,18 @@
 import React from 'react';
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  Linking,
+  ScrollView,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import CountryDescription from '_components/Country/CountryDescription/CountryDescription';
+import CustomButton from '_components/common/CustomButton/CustomButton';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
@@ -33,6 +40,15 @@ const CountryDetails = ({ route, navigation }: Props) => {
       />
       <View style={styles.descriptionContainer}>
         <CountryDescription country={country} />
+      </View>
+      <View style={styles.button}>
+        <CustomButton
+          title="Map"
+          onPress={() =>
+            Linking.openURL('maps://app?saddr=100+101&daddr=100+102')
+          }
+          rightIcon={faMap}
+        />
       </View>
     </ScrollView>
   );

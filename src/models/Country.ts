@@ -64,8 +64,8 @@ export interface ICountryResponse {
   timezones: string[];
   continents: string[];
   flags: {
-    '0': string;
-    '1': string;
+    png: string;
+    svg: string;
   };
   coatOfArms: {
     png: string;
@@ -99,7 +99,7 @@ export const decodeCountry = (data: ICountryResponse): ICountry => {
     name: data.name.common,
     capital: data.capital?.length > 0 ? data.capital[0] : '-',
     //1 png, 0 svg
-    flag: data.flags['1'],
+    flag: data?.flags?.png,
     continents: data.continents.join(', '),
     area: data.area,
     population: data.population,

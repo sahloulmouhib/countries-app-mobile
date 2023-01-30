@@ -29,4 +29,5 @@ export default StyleSheet.create({
     width: SCREEN_WIDTH,
     aspectRatio: ASPECT_RATIO,
   },
+  button: { justifyContent: 'center', alignItems: 'center' },
 });

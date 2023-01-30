@@ -8,13 +8,14 @@ import CountryCardSkeletons from '_components/Country/CountryCardSkeletons/Count
 import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
-import useFetchPaginatedCountryLocal from '_api/hooks/useFetchPaginatedCountryLocal';
+import { endpoints } from '_api/endpoints';
+import useFetchPaginatedCountry from '_api/hooks/useFetchPaginatedCountry';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
 import useDebounceText from '_hooks/useDebounceText';
 
-import { decodeCountries, ICountry, ICountryResponse } from '_models/Country';
+import { decodeCountries, ICountry } from '_models/Country';
 
 import { DEBOUNCE_TIME } from '_utils/constants';
 import {
@@ -24,15 +25,13 @@ import {
 
 import { strings } from '_i18n';
 
-import countries from '../../db/countries.json';
-
 import styles from './SearchCountries.styles';
 
 type Props = NativeStackScreenProps<
   CountryStackParamList,
   typeof SEARCH_COUNTRIES_SCREEN
 >;
-const COUNTRIES = countries as unknown as ICountryResponse[];
+
 const SearchCountries = ({ navigation }: Props) => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
@@ -49,11 +48,12 @@ const SearchCountries = ({ navigation }: Props) => {
     isRefreshing,
     hasLoadedAll,
     setData,
-  } = useFetchPaginatedCountryLocal<ICountryResponse, ICountry>({
-    dataInput: COUNTRIES,
+  } = useFetchPaginatedCountry({
+    url:
+      searchText.length > 0
+        ? endpoints.COUNTRIES_BY_NAME(searchText)
+        : endpoints.COUNTRIES,
     decodeData: decodeCountries,
-    filter: searchText,
-    filterBy: 'name',
   });
 
   const renderItem = ({ item }: { item: ICountry }) => {
