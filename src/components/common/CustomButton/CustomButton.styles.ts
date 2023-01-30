@@ -7,6 +7,8 @@ export default StyleSheet.create({
   container: {
     padding: 16,
     borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     textAlign: 'center',
