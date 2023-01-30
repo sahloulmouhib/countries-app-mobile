@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import CountryCardSkeleton from '_components/Countries/CountryCardSkeleton/CountryCardSkeleton';
+import CountryCardSkeleton from '_components/Country/CountryCardSkeleton/CountryCardSkeleton';
 import CustomButton from '_components/common/CustomButton/CustomButton';
 import CustomInputText from '_components/common/CustomInputText/CustomInputText';
 import CustomText from '_components/common/CustomText/CustomText';

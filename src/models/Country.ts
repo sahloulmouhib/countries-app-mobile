@@ -82,25 +82,57 @@ export interface ICountryResponse {
 }
 
 export interface ICountry {
+  id: string;
   name: string;
   capital: string;
-  image: string;
+  flag: string;
+  continents: string;
+  area: number;
+  population: number;
+  languages: string;
+  currencies: string;
 }
 
 export const decodeCountry = (data: ICountryResponse): ICountry => {
   return {
+    id: data.cca3,
     name: data.name.common,
     capital: data.capital?.length > 0 ? data.capital[0] : '-',
-    image: data.flags['1'],
+    //1 png, 0 svg
+    flag: data.flags['1'],
+    continents: data.continents.join(', '),
+    area: data.area,
+    population: data.population,
+    languages: getLanguages(data.languages),
+    currencies: getCurrencies(data.currencies),
   };
 };
 
 export const decodeCountries = (data: ICountryResponse[]): ICountry[] => {
   return sortCountriesAlphabetically(
-    data.map(country => decodeCountry(country)),
+    data.map(country => {
+      console.log(decodeCountry(country));
+      return decodeCountry(country);
+    }),
   );
 };
 
 export const sortCountriesAlphabetically = (countries: ICountry[]) => {
   return countries.sort((a, b) => a.name.localeCompare(b.name));
+};
+
+export const getLanguages = (data: { [key: string]: string }) => {
+  let languages = [];
+  for (let key in data) {
+    languages.push(data[key] + ' ');
+  }
+  return languages.join(', ');
+};
+
+export const getCurrencies = (data: { [key: string]: any }) => {
+  let currencies = [];
+  for (let key in data) {
+    currencies.push(data[key].name + ' ');
+  }
+  return currencies.join(',');
 };

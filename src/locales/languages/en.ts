@@ -12,9 +12,20 @@ export default {
     server: 'Something went wrong, try again later',
     unknown: 'Unknown error',
   },
-  countries: {
+  country: {
     search_countries: {
       placeholder: 'Search country',
+    },
+    country_details: {
+      details: {
+        name: 'Full name',
+        capital: 'Capital',
+        area: 'Area',
+        population: 'Population',
+        language: 'Language(s)',
+        currency: 'Currency(ies)',
+        continent: 'Continent(s)',
+      },
     },
   },
 };

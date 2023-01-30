@@ -21,7 +21,7 @@ export default StyleSheet.create({
     fontFamily: fonts.REGULAR,
   },
   text: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: fonts.REGULAR,
     color: colors.GREY_MEDIUM,
   },

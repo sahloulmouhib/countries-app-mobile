@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 
 import CustomTitle, {
   CustomTitleType,
@@ -11,18 +11,19 @@ import styles from './CountryCard.styles';
 
 type Props = {
   country: ICountry;
+  onPress: () => void;
 };
 
-const CountryCard = ({ country }: Props) => {
-  const { name, capital, image } = country;
+const CountryCard = ({ country, onPress }: Props) => {
+  const { name, capital, flag } = country;
   return (
-    <View style={styles.container}>
-      <Image style={styles.flagImage} source={{ uri: image }} />
+    <TouchableOpacity onPress={onPress} style={styles.container}>
+      <Image style={styles.flagImage} source={{ uri: flag }} />
       <View style={styles.detailsContainer}>
         <CustomTitle title={name} type={CustomTitleType.H2} />
         <CustomTitle title={capital} type={CustomTitleType.H4} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

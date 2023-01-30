@@ -2,36 +2,39 @@ import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import CountryDetails from '_screens/CountryDetails/CountryDetails';
 import SearchCountries from '_screens/SearchCountries/SearchCountries';
+
+import { ICountry } from '_models/Country';
 
 import {
   SEARCH_COUNTRIES_SCREEN,
   COUNTRY_DETAILS_SCREEN,
 } from '_utils/screenNames';
 
-export type CountriesStackParamList = {
+export type CountryStackParamList = {
   [SEARCH_COUNTRIES_SCREEN]: undefined;
-  [COUNTRY_DETAILS_SCREEN]: undefined;
+  [COUNTRY_DETAILS_SCREEN]: { country: ICountry };
 };
 
-const CountriesStack = createNativeStackNavigator<CountriesStackParamList>();
+const CountryStack = createNativeStackNavigator<CountryStackParamList>();
 
-const CountriesStackNavigation = () => {
+const CountryStackNavigation = () => {
   return (
-    <CountriesStack.Navigator
+    <CountryStack.Navigator
       screenOptions={{
         headerShown: false,
       }}>
-      <CountriesStack.Screen
+      <CountryStack.Screen
         name={SEARCH_COUNTRIES_SCREEN}
         component={SearchCountries}
       />
-      <CountriesStack.Screen
+      <CountryStack.Screen
         name={COUNTRY_DETAILS_SCREEN}
-        component={SearchCountries}
+        component={CountryDetails}
       />
-    </CountriesStack.Navigator>
+    </CountryStack.Navigator>
   );
 };
 
-export default CountriesStackNavigation;
+export default CountryStackNavigation;

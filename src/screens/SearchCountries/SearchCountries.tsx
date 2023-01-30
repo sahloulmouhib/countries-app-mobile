@@ -1,25 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
-import CountryCard from '_components/Countries/CountryCard/CountryCard';
-import CountryCardSkeletons from '_components/Countries/CountryCardSkeletons/CountryCardSkeletons';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+import CountryCard from '_components/Country/CountryCard/CountryCard';
+import CountryCardSkeletons from '_components/Country/CountryCardSkeletons/CountryCardSkeletons';
 import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
 import { endpoints } from '_api/endpoints';
 import useFetchPaginatedCountry from '_api/hooks/useFetchPaginatedCountry';
 
+import { CountryStackParamList } from '_navigation/CountryStackNavigation';
+
 import useDebounceText from '_hooks/useDebounceText';
 
 import { decodeCountries, ICountry } from '_models/Country';
 
 import { DEBOUNCE_TIME } from '_utils/constants';
+import {
+  COUNTRY_DETAILS_SCREEN,
+  SEARCH_COUNTRIES_SCREEN,
+} from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
 import styles from './SearchCountries.styles';
 
-const SearchCountries = () => {
+type Props = NativeStackScreenProps<
+  CountryStackParamList,
+  typeof SEARCH_COUNTRIES_SCREEN
+>;
+
+const SearchCountries = ({ navigation }: Props) => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
   const {
@@ -44,7 +57,10 @@ const SearchCountries = () => {
   });
 
   const renderItem = ({ item }: { item: ICountry }) => {
-    return <CountryCard country={item} />;
+    const onPress = () => {
+      navigation.navigate(COUNTRY_DETAILS_SCREEN, { country: item });
+    };
+    return <CountryCard country={item} onPress={onPress} />;
   };
 
   useEffect(() => {
@@ -57,7 +73,7 @@ const SearchCountries = () => {
       <CustomSearchBar
         text={searchText}
         onChangeText={setSearchText}
-        placeholder={strings('countries.search_countries.placeholder')}
+        placeholder={strings('country.search_countries.placeholder')}
       />
       <CustomFlatlist
         data={data}
@@ -74,7 +90,7 @@ const SearchCountries = () => {
         refreshError={refreshError}
         renderItem={renderItem}
         renderLoader={<CountryCardSkeletons />}
-        keyExtractor={(item: ICountry) => item.image}
+        keyExtractor={(item: ICountry) => item.id}
       />
     </View>
   );
