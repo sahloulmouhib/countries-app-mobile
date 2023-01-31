@@ -91,6 +91,11 @@ export interface ICountry {
   population: number;
   languages: string;
   currencies: string;
+  flagSVG: string;
+  latlng: {
+    lat: number;
+    lng: number;
+  };
 }
 
 export const decodeCountry = (data: ICountryResponse): ICountry => {
@@ -98,20 +103,23 @@ export const decodeCountry = (data: ICountryResponse): ICountry => {
     id: data.cca3,
     name: data.name.common,
     capital: data.capital?.length > 0 ? data.capital[0] : '-',
-    //1 png, 0 svg
+    flagSVG: data?.flags?.svg,
     flag: data?.flags?.png,
     continents: data.continents.join(', '),
     area: data.area,
     population: data.population,
     languages: getLanguages(data.languages),
     currencies: getCurrencies(data.currencies),
+    latlng: {
+      lat: data.latlng[0],
+      lng: data.latlng[1],
+    },
   };
 };
 
 export const decodeCountries = (data: ICountryResponse[]): ICountry[] => {
   return sortCountriesAlphabetically(
     data.map(country => {
-      console.log(decodeCountry(country));
       return decodeCountry(country);
     }),
   );

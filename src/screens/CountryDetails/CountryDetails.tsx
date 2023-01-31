@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Image,
   Linking,
+  Platform,
   ScrollView,
   TouchableOpacity,
   View,
@@ -25,9 +26,26 @@ type Props = NativeStackScreenProps<
   typeof COUNTRY_DETAILS_SCREEN
 >;
 
+const openMap = (lat: number, lng: number, label: string) => {
+  console.log('lat', lat);
+  console.log('lng', lng);
+  const scheme = Platform.select({
+    ios: 'maps:0,0?q=',
+    android: 'geo:0,0?q=',
+  });
+  const latLng = `${lat},${lng}`;
+  const url = Platform.select({
+    ios: `${scheme}${label}@${latLng}`,
+    android: `${scheme}${latLng}(${label})`,
+  });
+  url && Linking.openURL(url);
+};
+
 const CountryDetails = ({ route, navigation }: Props) => {
   const { country } = route.params;
+  const { lat, lng } = country.latlng;
   const goBack = () => navigation.goBack();
+  const viewCountryInMap = () => openMap(lat, lng, country.name);
   return (
     <ScrollView style={styles.container}>
       <TouchableOpacity style={styles.goBackIcon} onPress={goBack}>
@@ -38,15 +56,22 @@ const CountryDetails = ({ route, navigation }: Props) => {
         resizeMode="cover"
         style={styles.flag}
       />
+      {/* <View style={styles.flag}>
+        <SvgUri
+          viewBox={`0 0 ${1920} ${1080}`}
+          width="100%"
+          height="100%"
+          uri={country.flagSVG}
+        />
+      </View> */}
+
       <View style={styles.descriptionContainer}>
         <CountryDescription country={country} />
       </View>
       <View style={styles.button}>
         <CustomButton
           title="Map"
-          onPress={() =>
-            Linking.openURL('maps://app?saddr=100+101&daddr=100+102')
-          }
+          onPress={viewCountryInMap}
           rightIcon={faMap}
         />
       </View>
