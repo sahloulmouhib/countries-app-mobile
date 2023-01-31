@@ -26,6 +26,17 @@ export default {
         currency: 'Currency(ies)',
         continent: 'Continent(s)',
       },
+      metrics: {
+        population: {
+          billion: 'B',
+          million: 'M',
+          thousand: 'K',
+        },
+        area: {
+          million_km: 'M km²',
+          km: 'km²',
+        },
+      },
     },
   },
 };

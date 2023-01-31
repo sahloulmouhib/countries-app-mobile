@@ -48,19 +48,22 @@ const openMap = async (lat: number, lng: number, label: string) => {
 const CountryDetails = ({ route, navigation }: Props) => {
   const { country } = route.params;
   const { lat, lng } = country.latlng;
+
   const goBack = () => navigation.goBack();
   const viewCountryInMap = () => openMap(lat, lng, country.name);
+
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <TouchableOpacity style={styles.goBackIcon} onPress={goBack}>
         <FontAwesomeIcon size={15} icon={faArrowLeft} />
       </TouchableOpacity>
-      <Image
-        source={{ uri: country.flag }}
-        resizeMode="cover"
-        style={styles.flag}
-      />
-      {/* <View style={styles.flag}>
+      <ScrollView contentContainerStyle={styles.innerContainer}>
+        <Image
+          source={{ uri: country.flag }}
+          resizeMode="cover"
+          style={styles.flag}
+        />
+        {/* <View style={styles.flag}>
         <SvgUri
           viewBox={`0 0 ${1920} ${1080}`}
           width="100%"
@@ -69,9 +72,10 @@ const CountryDetails = ({ route, navigation }: Props) => {
         />
       </View> */}
 
-      <View style={styles.descriptionContainer}>
-        <CountryDescription country={country} />
-      </View>
+        <View style={styles.descriptionContainer}>
+          <CountryDescription country={country} />
+        </View>
+      </ScrollView>
       <View style={styles.button}>
         <CustomButton
           title="Map"
@@ -79,7 +83,7 @@ const CountryDetails = ({ route, navigation }: Props) => {
           rightIcon={faMap}
         />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

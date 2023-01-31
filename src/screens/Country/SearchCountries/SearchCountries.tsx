@@ -24,7 +24,7 @@ import {
 
 import { strings } from '_i18n';
 
-import countries from '../../db/countries.json';
+import countries from '../../../db/countries.json';
 
 import styles from './SearchCountries.styles';
 

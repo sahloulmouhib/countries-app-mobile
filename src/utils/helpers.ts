@@ -28,7 +28,6 @@ export const filterData = <T = any>(
   filterBy: string,
 ) => {
   const filteredData = data.filter((item: any) => {
-    console.log('item', item);
     return item[filterBy].toLowerCase().includes(filter.toLowerCase());
   });
   return filteredData;

@@ -8,6 +8,9 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: colors.WHITE,
   },
+  innerContainer: {
+    paddingBottom: 16,
+  },
   descriptionContainer: {
     flex: 1,
     padding: 16,
@@ -30,5 +33,19 @@ export default StyleSheet.create({
     aspectRatio: ASPECT_RATIO,
     backgroundColor: 'red',
   },
-  button: { justifyContent: 'center', alignItems: 'center' },
+  button: {
+    position: 'absolute',
+    bottom: 32,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 2,
+    boxWithShadow: {
+      shadowColor: colors.BLACK,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius: 1,
+    },
+  },
 });
