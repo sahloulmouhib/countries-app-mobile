@@ -26,19 +26,23 @@ type Props = NativeStackScreenProps<
   typeof COUNTRY_DETAILS_SCREEN
 >;
 
-const openMap = (lat: number, lng: number, label: string) => {
-  console.log('lat', lat);
-  console.log('lng', lng);
-  const scheme = Platform.select({
-    ios: 'maps:0,0?q=',
-    android: 'geo:0,0?q=',
-  });
-  const latLng = `${lat},${lng}`;
-  const url = Platform.select({
-    ios: `${scheme}${label}@${latLng}`,
-    android: `${scheme}${latLng}(${label})`,
-  });
-  url && Linking.openURL(url);
+const openMap = async (lat: number, lng: number, label: string) => {
+  try {
+    const scheme = Platform.select({
+      ios: 'maps:0,0?q=',
+      android: 'geo:0,0?q=',
+    });
+    const latLng = `${lat},${lng}`;
+    const url = Platform.select({
+      ios: `${scheme}${label}@${latLng}`,
+      android: `${scheme}${latLng}(${label})`,
+    });
+    if (url) {
+      await Linking.openURL(url);
+    }
+  } catch (e) {
+    console.log('error', e);
+  }
 };
 
 const CountryDetails = ({ route, navigation }: Props) => {

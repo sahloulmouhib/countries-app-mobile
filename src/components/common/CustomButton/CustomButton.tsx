@@ -44,7 +44,7 @@ const CustomButton = ({
         style={[
           styles.title,
           {
-            fontSize: fontSize ?? 20,
+            fontSize: fontSize ?? 16,
           },
         ]}>
         {title}

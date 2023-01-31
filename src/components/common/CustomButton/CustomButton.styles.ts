@@ -5,8 +5,8 @@ import { fonts } from '_utils/theme/fonts';
 
 export default StyleSheet.create({
   container: {
-    paddingVertical: 16,
-    paddingHorizontal: 24,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
