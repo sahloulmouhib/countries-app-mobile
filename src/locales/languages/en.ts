@@ -38,5 +38,8 @@ export default {
         },
       },
     },
+    flag_quiz: {
+      next: 'Next',
+    },
   },
 };

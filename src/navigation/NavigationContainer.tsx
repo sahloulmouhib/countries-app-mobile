@@ -3,7 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import TempScreen from '_screens/TempScreen/TempScreen';
+import FlagQuiz from '_screens/Country/FlagQuiz/FlagQuiz';
 
 import { navigationRef } from '_navigation/RootNavigation';
 
@@ -18,7 +18,7 @@ function Navigation() {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Home2" component={TempScreen} />
+        <Stack.Screen name="Home2" component={FlagQuiz} />
         <Stack.Screen
           name="SearchCountries"
           component={CountryStackNavigation}

@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import { colors } from '_utils/theme/colors';
@@ -15,6 +14,7 @@ type Props = {
   backgroundColor?: string;
   fontSize?: number;
   rightIcon?: IconProp;
+  disabled?: boolean;
 };
 
 const CustomButton = ({
@@ -23,9 +23,11 @@ const CustomButton = ({
   backgroundColor,
   fontSize,
   rightIcon,
+  disabled,
 }: Props) => {
   return (
     <TouchableOpacity
+      disabled={disabled}
       onPress={onPress}
       style={[
         styles.container,

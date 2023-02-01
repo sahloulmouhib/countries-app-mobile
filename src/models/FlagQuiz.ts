@@ -11,6 +11,9 @@ export interface IAnswer {
   id: string;
   text: string;
 }
+export interface ILocalAnswer extends IAnswer {
+  type: AnswerType;
+}
 
 export interface IQuestion {
   id: string;
@@ -21,4 +24,10 @@ export interface IQuestion {
 
 export interface IFlagQuiz {
   questions: IQuestion[];
+}
+
+export enum AnswerType {
+  Correct = 'correct',
+  Incorrect = 'incorrect',
+  Default = 'default',
 }
