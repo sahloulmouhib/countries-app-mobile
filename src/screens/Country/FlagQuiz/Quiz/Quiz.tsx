@@ -13,7 +13,7 @@ import { strings } from '_i18n';
 
 import countriesWithFlags from '../../../../db/countries-with-flags.json';
 
-import { styles } from './styles';
+import { styles } from './Quiz.styles';
 
 const alertOnClose = (onPress: () => void) => {
   Alert.alert(

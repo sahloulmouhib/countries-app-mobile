@@ -8,7 +8,7 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
 
-import styles from './styles';
+import styles from './TopBar.styles';
 
 type Props = {
   questionIndex?: number;

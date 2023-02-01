@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import CustomTitle, {
   CustomTitleType,
@@ -9,7 +9,7 @@ import { AnswerType } from '_models/FlagQuiz';
 
 import { colors } from '_utils/theme/colors';
 
-import styles from './styles';
+import styles from './Answer.styles';
 
 type Props = {
   type: AnswerType;

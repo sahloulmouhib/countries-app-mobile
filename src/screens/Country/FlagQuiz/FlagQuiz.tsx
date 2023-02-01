@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { Button, View } from 'react-native';
 
 import Quiz from './Quiz/Quiz';
 
@@ -24,5 +24,3 @@ const FlagQuiz = (props: Props) => {
 };
 
 export default FlagQuiz;
-
-const styles = StyleSheet.create({});

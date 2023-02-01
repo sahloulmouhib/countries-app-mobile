@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import FastImage from 'react-native-fast-image2';
+
+import styles from './FlagImage.styles';
 
 type Props = {
   image: string;
@@ -20,10 +22,3 @@ const FlagImage = ({ image }: Props) => {
 };
 
 export default FlagImage;
-
-const styles = StyleSheet.create({
-  image: {
-    width: 200,
-    height: 200,
-  },
-});
