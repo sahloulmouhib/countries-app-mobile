@@ -18,11 +18,11 @@ function Navigation() {
         screenOptions={{
           headerShown: false,
         }}>
+        <Stack.Screen name="Home2" component={TempScreen} />
         <Stack.Screen
           name="SearchCountries"
           component={CountryStackNavigation}
         />
-        <Stack.Screen name="Home2" component={TempScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

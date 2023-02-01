@@ -8,10 +8,9 @@ import CountryCardSkeletons from '_components/Country/CountryCardSkeletons/Count
 import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
-import useFetchPaginatedCountryLocal from '_api/hooks/useFetchPaginatedCountryLocal';
-
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
+import useFetchPaginatedCountryLocal from '_hooks/country/useFetchPaginatedCountryLocal';
 import useDebounceText from '_hooks/useDebounceText';
 
 import { decodeCountries, ICountry, ICountryResponse } from '_models/Country';

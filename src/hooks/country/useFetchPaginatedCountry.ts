@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { NOT_FOUND } from '_api/constants';
+import { sendAsyncRequest, handleError } from '_api/helpers';
+import { UseFetchPaginatedType } from '_api/types';
+
 import { HttpMethod } from '_utils/types';
-
-import { handleError, sendAsyncRequest } from '../helpers';
-import { UseFetchPaginatedType } from '../types';
-
-import { NOT_FOUND } from './../constants';
 
 const useFetchPaginatedCountry = <D = any, T = any>(
   config: UseFetchPaginatedType<D, T>,

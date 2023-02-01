@@ -9,10 +9,10 @@ import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
 import { endpoints } from '_api/endpoints';
-import useFetchPaginatedCountry from '_api/hooks/useFetchPaginatedCountry';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
+import useFetchPaginatedCountry from '_hooks/country/useFetchPaginatedCountry';
 import useDebounceText from '_hooks/useDebounceText';
 
 import { decodeCountries, ICountry } from '_models/Country';
