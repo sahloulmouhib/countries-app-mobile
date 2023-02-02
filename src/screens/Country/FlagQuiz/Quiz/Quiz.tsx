@@ -1,17 +1,18 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Alert, Modal, ScrollView, View } from 'react-native';
 
 import Answers from '_components/Country/Quiz/Answers/Answers';
+import FinishedQuiz from '_components/Country/Quiz/FinishedQuiz/FinishedQuiz';
 import FlagImage from '_components/Country/Quiz/FlagImage/FlagImage';
 import Header from '_components/Country/Quiz/Header/Header';
 import TopBar from '_components/Country/Quiz/TopBar/TopBar';
 import CustomButton from '_components/common/CustomButton/CustomButton';
 
-import useFlagQuiz, { createRandomQuiz } from '_hooks/country/useFlagQuiz';
+import useFlagQuiz from '_hooks/country/useFlagQuiz';
+
+import { IFlagQuiz } from '_models/FlagQuiz';
 
 import { strings } from '_i18n';
-
-import countriesWithFlags from '../../../../db/countries-with-flags.json';
 
 import { styles } from './Quiz.styles';
 
@@ -36,10 +37,10 @@ const alertOnClose = (onPress: () => void) => {
 type Props = {
   isVisible: boolean;
   closeModal: () => void;
+  quiz: IFlagQuiz;
 };
 
-const Quiz = ({ isVisible, closeModal }: Props) => {
-  let quiz = useMemo(() => createRandomQuiz(countriesWithFlags), [isVisible]);
+const Quiz = ({ isVisible, closeModal, quiz }: Props) => {
   const {
     goToNextQuestionOrSubmitQuiz,
     initializeQuiz,
@@ -48,12 +49,12 @@ const Quiz = ({ isVisible, closeModal }: Props) => {
     questionAnswers,
     questionIndex,
     isQuizFinished,
+    score,
     numberOfQuestions,
     questionTitle,
     flagImage,
   } = useFlagQuiz(quiz);
 
-  console.log('isQuizFinished', isQuizFinished);
   const closeModalAndResetQuiz = () => {
     closeModal();
     initializeQuiz();
@@ -69,19 +70,24 @@ const Quiz = ({ isVisible, closeModal }: Props) => {
       visible={isVisible}
       presentationStyle="pageSheet">
       <>
-        {!isQuizFinished ? (
+        {false ? (
           <View style={styles.container}>
             <TopBar
               questionIndex={questionIndex}
               numberOfQuestions={numberOfQuestions}
               onQuizClose={onQuizClosePress}
             />
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+              contentContainerStyle={styles.scrollViewContainer}
+              showsVerticalScrollIndicator={false}>
               <Header
                 quizTitle={'quizTitle'}
                 questionTitle={`${questionTitle} ?`}
               />
-              <FlagImage image={flagImage} />
+              <View style={styles.flagImage}>
+                <FlagImage image={flagImage} />
+              </View>
+
               <Answers
                 isQuestionAnswered={isQuestionAnswered}
                 questionAnswers={questionAnswers}
@@ -95,7 +101,7 @@ const Quiz = ({ isVisible, closeModal }: Props) => {
             />
           </View>
         ) : (
-          <CustomButton title="finish" onPress={closeModalAndResetQuiz} />
+          <FinishedQuiz score={score} onButtonPress={closeModalAndResetQuiz} />
         )}
       </>
     </Modal>

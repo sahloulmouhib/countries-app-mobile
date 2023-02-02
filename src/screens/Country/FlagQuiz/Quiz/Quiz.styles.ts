@@ -11,4 +11,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.WHITE,
   },
+  scrollViewContainer: {
+    flex: 1,
+  },
+  flagImage: {
+    marginTop: 16,
+    flex: 1,
+  },
 });

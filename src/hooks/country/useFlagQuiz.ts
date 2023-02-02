@@ -53,6 +53,7 @@ export function createRandomQuiz(
 }
 
 const useFlagQuiz = (quiz: IFlagQuiz) => {
+  console.log('quiz', quiz);
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const questionTitle = 'question title';

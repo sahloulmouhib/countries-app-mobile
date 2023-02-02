@@ -33,6 +33,7 @@ const CustomButton = ({
         styles.container,
         { backgroundColor: backgroundColor ?? colors.BLACK },
         { borderRadius: (rightIcon && 40) || 10 },
+        { opacity: (disabled && 0.1) || 1 },
       ]}>
       {rightIcon && (
         <FontAwesomeIcon
