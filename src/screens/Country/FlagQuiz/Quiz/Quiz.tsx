@@ -19,7 +19,7 @@ import { styles } from './Quiz.styles';
 const alertOnClose = (onPress: () => void) => {
   Alert.alert(
     strings('alert.warning'),
-    strings('alert.discard_quiz'),
+    strings('alert.description'),
     [
       {
         text: strings('alert.cancel'),
@@ -51,7 +51,6 @@ const Quiz = ({ isVisible, closeModal, quiz }: Props) => {
     isQuizFinished,
     score,
     numberOfQuestions,
-    questionTitle,
     flagImage,
   } = useFlagQuiz(quiz);
 
@@ -70,7 +69,7 @@ const Quiz = ({ isVisible, closeModal, quiz }: Props) => {
       visible={isVisible}
       presentationStyle="pageSheet">
       <>
-        {false ? (
+        {!isQuizFinished ? (
           <View style={styles.container}>
             <TopBar
               questionIndex={questionIndex}
@@ -81,8 +80,8 @@ const Quiz = ({ isVisible, closeModal, quiz }: Props) => {
               contentContainerStyle={styles.scrollViewContainer}
               showsVerticalScrollIndicator={false}>
               <Header
-                quizTitle={'quizTitle'}
-                questionTitle={`${questionTitle} ?`}
+                quizTitle={strings('country.flag_quiz.quiz_game')}
+                questionTitle={strings('country.flag_quiz.guess_the_flag')}
               />
               <View style={styles.flagImage}>
                 <FlagImage image={flagImage} />
@@ -101,7 +100,11 @@ const Quiz = ({ isVisible, closeModal, quiz }: Props) => {
             />
           </View>
         ) : (
-          <FinishedQuiz score={score} onButtonPress={closeModalAndResetQuiz} />
+          <FinishedQuiz
+            totalQuestionsNumber={quiz.questions.length}
+            score={score}
+            onButtonPress={closeModalAndResetQuiz}
+          />
         )}
       </>
     </Modal>

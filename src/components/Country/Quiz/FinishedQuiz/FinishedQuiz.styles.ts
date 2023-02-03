@@ -16,7 +16,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
   },
 });

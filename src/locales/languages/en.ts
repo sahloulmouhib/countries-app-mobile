@@ -12,9 +12,19 @@ export default {
     server: 'Something went wrong, try again later',
     unknown: 'Unknown error',
   },
+  tab_bar: {
+    search: 'Search',
+    quiz: 'Quiz',
+  },
+  alert: {
+    discard: 'Discard',
+    cancel: 'Cancel',
+    warning: 'Quit',
+    description: 'Are you sure you want to quit, you will lose your progress.',
+  },
   country: {
     search_countries: {
-      placeholder: 'Search country',
+      placeholder: 'Search country...',
     },
     country_details: {
       details: {
@@ -40,6 +50,12 @@ export default {
     },
     flag_quiz: {
       next: 'Next',
+      finish: 'Finish',
+      quiz_completed: 'Quiz completed !',
+      score: 'Your score is',
+      total_questions: '/',
+      quiz_game: 'Quiz game',
+      guess_the_flag: 'Guess the flag!',
     },
   },
 };

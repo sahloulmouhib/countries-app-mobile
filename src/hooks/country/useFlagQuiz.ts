@@ -35,8 +35,10 @@ export function createRandomQuiz(
         }
       }
       usedIndices.add(randomIndex);
-      correctCountryIndex = randomIndex;
     }
+    //get randomly the correct answer
+    correctCountryIndex =
+      Array.from(usedIndices)[Math.floor(Math.random() * usedIndices.size)];
     const answers: IAnswer[] = [];
     usedIndices.forEach(index => {
       answers.push({ id: countries[index].id, text: countries[index].name });
@@ -56,7 +58,6 @@ const useFlagQuiz = (quiz: IFlagQuiz) => {
   console.log('quiz', quiz);
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
-  const questionTitle = 'question title';
 
   const flagImage = quiz.questions[questionIndex].flag;
   const createLocalQuizQuestionAnswers = (index: number) => {
@@ -145,7 +146,6 @@ const useFlagQuiz = (quiz: IFlagQuiz) => {
     score,
     isQuizFinished,
     numberOfQuestions,
-    questionTitle,
     rightAnswer,
     flagImage,
   };
