@@ -33,13 +33,14 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 type TabBarItemProps = {
   title: string;
   icon: IconProp;
-  focused?: boolean;
+  focused: boolean;
+  size: number;
 };
-const TabBarItem = ({ focused, title, icon }: TabBarItemProps) => {
+const TabBarItem = ({ focused, title, icon, size }: TabBarItemProps) => {
   return (
     <View style={styles.container}>
       <FontAwesomeIcon
-        size={25}
+        size={size}
         icon={icon}
         color={focused ? colors.PRIMARY : colors.GREY_MEDIUM}
       />
@@ -54,11 +55,16 @@ const TabBarItem = ({ focused, title, icon }: TabBarItemProps) => {
   );
 };
 const bottomTabOptions = (
-  params: TabBarItemProps,
+  params: Omit<TabBarItemProps, 'focused'>,
 ): BottomTabNavigationOptions => ({
   tabBarIcon: ({ focused }: { focused: boolean }) => {
     return (
-      <TabBarItem focused={focused} icon={params.icon} title={params.title} />
+      <TabBarItem
+        size={params.size}
+        focused={focused}
+        icon={params.icon}
+        title={params.title}
+      />
     );
   },
 });
@@ -76,6 +82,7 @@ const BottomTabNavigation = () => {
           bottomTabOptions({
             title: strings('tab_bar.search'),
             icon: faMagnifyingGlass,
+            size: 20,
           })
         }
         name={COUNTRY_TAB}
@@ -86,6 +93,7 @@ const BottomTabNavigation = () => {
           bottomTabOptions({
             title: strings('tab_bar.quiz'),
             icon: faGamepad,
+            size: 25,
           })
         }
         name={QUIZ_TAB}

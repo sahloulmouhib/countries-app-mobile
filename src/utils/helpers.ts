@@ -1,5 +1,7 @@
 import { Platform } from 'react-native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export const isIosDevice = () => {
   return Platform.OS === 'ios';
 };
@@ -55,4 +57,24 @@ export const searchAndPaginateData = <T = any>(
 //capitalize first letter
 export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+//get from async storage
+export const getFromAsyncStorage = async (key: string) => {
+  try {
+    const value = await AsyncStorage.getItem(key);
+    return value;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+//set to async storage with key and value
+export const setToAsyncStorage = async (key: string, value: string) => {
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (e) {
+    console.log(e);
+  }
 };

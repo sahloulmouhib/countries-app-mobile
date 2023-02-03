@@ -9,6 +9,8 @@ import {
   ILocalAnswer,
 } from '_models/FlagQuiz';
 
+import { setToAsyncStorage } from './../../utils/helpers';
+
 export interface IAnswerToQuestion {
   questionId: string;
   answerId: string;
@@ -122,6 +124,7 @@ const useFlagQuiz = (quiz: IFlagQuiz) => {
       }
     } else if (questionIndex === quiz.questions.length - 1) {
       if (isQuestionAnswered) {
+        await setToAsyncStorage('flagQuizScore', score.toString());
         setIsQuizFinished(true);
       }
     }

@@ -16,7 +16,7 @@ export enum CustomTitleType {
 }
 
 type Props = {
-  title: string;
+  title: string | number;
   type: CustomTitleType;
   color?: ColorValue;
   textAlign?: 'center' | 'left' | 'right';
