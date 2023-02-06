@@ -3,13 +3,13 @@ import { View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
 
+import { animations } from '_features/quiz/utils/animations';
+
 import CustomButton from '_components/common/CustomButton/CustomButton';
 import CustomDivider from '_components/common/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
-
-import { animations } from '_utils/animations';
 
 import { strings } from '_i18n';
 
@@ -31,20 +31,20 @@ const FinishedQuiz = ({
       <View style={styles.details}>
         <CustomTitle
           type={CustomTitleType.H1}
-          title={strings('country.flag_quiz.quiz_completed')}
+          title={strings('quiz.flag_quiz.quiz_completed')}
         />
         <Lottie source={animations.TROPHY} autoPlay style={styles.image} />
         <CustomDivider height={32} />
 
         <CustomTitle
           type={CustomTitleType.H3}
-          title={strings('country.flag_quiz.score')}
+          title={strings('quiz.flag_quiz.score')}
         />
         <CustomDivider height={8} />
         <CustomTitle
           type={CustomTitleType.H1}
           title={`${score} ${strings(
-            'country.flag_quiz.total_questions',
+            'quiz.flag_quiz.total_questions',
           )}${totalQuestionsNumber}`}
         />
       </View>

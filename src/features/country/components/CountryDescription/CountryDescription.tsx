@@ -11,7 +11,7 @@ import {
   faUpRightAndDownLeftFromCenter,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { ICountry } from '_models/Country';
+import { ICountry } from '_features/country/models/Country';
 
 import { strings } from '_i18n';
 

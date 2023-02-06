@@ -12,6 +12,7 @@ module.exports = function (api) {
             _models: './src/models/',
             _enums: './src/enums/',
             _screens: './src/screens/',
+            _features: './src/features/',
             _utils: './src/utils/',
             _store: './src/store/',
             _navigation: './src/navigation',

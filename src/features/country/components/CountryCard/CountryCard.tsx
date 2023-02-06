@@ -1,11 +1,11 @@
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 
+import { ICountry } from '_features/country/models/Country';
+
 import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
-
-import { ICountry } from '_models/Country';
 
 import styles from './CountryCard.styles';
 

@@ -14,6 +14,7 @@ module.exports = {
     '^@$',
     '^[a-zA-Z]',
     '^_screens/(.*)$',
+    '^_features/(.*)$',
     '^_components/(.*)$',
     '^_api/(.*)$',
     '^_store/(.*)$',

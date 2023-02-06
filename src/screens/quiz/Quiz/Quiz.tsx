@@ -1,16 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ImageSourcePropType, View } from 'react-native';
 
+import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
+import { createRandomQuiz } from '_features/quiz/utils/helpers';
+import { quizIcons } from '_features/quiz/utils/icons';
+
 import CustomDivider from '_components/common/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
-import QuizCard from '_components/quiz/QuizCard/QuizCard';
-
-import { createRandomQuiz } from '_hooks/quiz/useFlagQuiz';
 
 import { getFromAsyncStorage } from '_utils/helpers';
-import { icons } from '_utils/icons';
 
 import { strings } from '_i18n';
 
@@ -31,7 +31,7 @@ const quizzes_cards: Record<string, IQuizCard> = {
   FLAG: {
     title: strings('quiz.flag.title'),
     description: strings('quiz.flag.description'),
-    icon: icons.FLAG_QUIZ,
+    icon: quizIcons.FLAG_QUIZ,
     numberOfQuestions: 10,
   },
 };

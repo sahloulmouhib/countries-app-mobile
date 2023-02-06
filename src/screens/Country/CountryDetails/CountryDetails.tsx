@@ -12,8 +12,9 @@ import { faArrowLeft, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+import CountryDescription from '_features/country/components/CountryDescription/CountryDescription';
+
 import CustomButton from '_components/common/CustomButton/CustomButton';
-import CountryDescription from '_components/country/CountryDescription/CountryDescription';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
@@ -63,15 +64,6 @@ const CountryDetails = ({ route, navigation }: Props) => {
           resizeMode="cover"
           style={styles.flag}
         />
-        {/* <View style={styles.flag}>
-        <SvgUri
-          viewBox={`0 0 ${1920} ${1080}`}
-          width="100%"
-          height="100%"
-          uri={country.flagSVG}
-        />
-      </View> */}
-
         <View style={styles.descriptionContainer}>
           <CountryDescription country={country} />
         </View>

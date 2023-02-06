@@ -31,3 +31,8 @@ export enum AnswerType {
   Incorrect = 'incorrect',
   Default = 'default',
 }
+
+export interface IAnswerToQuestion {
+  questionId: string;
+  answerId: string;
+}

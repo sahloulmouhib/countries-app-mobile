@@ -3,17 +3,21 @@ import { View } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+import CountryCard from '_features/country/components/CountryCard/CountryCard';
+import CountryCardSkeletons from '_features/country/components/CountryCardSkeletons/CountryCardSkeletons';
+import useFetchPaginatedCountryLocal from '_features/country/hooks/useFetchPaginatedCountryLocal';
+import {
+  decodeCountries,
+  ICountry,
+  ICountryResponse,
+} from '_features/country/models/Country';
+
 import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
-import CountryCard from '_components/country/CountryCard/CountryCard';
-import CountryCardSkeletons from '_components/country/CountryCardSkeletons/CountryCardSkeletons';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
-import useFetchPaginatedCountryLocal from '_hooks/country/useFetchPaginatedCountryLocal';
 import useDebounceText from '_hooks/useDebounceText';
-
-import { decodeCountries, ICountry, ICountryResponse } from '_models/Country';
 
 import { DEBOUNCE_TIME } from '_utils/constants';
 import {

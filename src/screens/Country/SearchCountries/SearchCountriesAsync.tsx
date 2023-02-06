@@ -1,99 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+// import React, { useEffect, useState } from 'react';
+// import { View } from 'react-native';
 
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+// import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
-import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
-import CountryCard from '_components/country/CountryCard/CountryCard';
-import CountryCardSkeletons from '_components/country/CountryCardSkeletons/CountryCardSkeletons';
+// import { decodeCountries, ICountry } from '_features/country/models/Country';
 
-import { endpoints } from '_api/endpoints';
+// import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
 
-import { CountryStackParamList } from '_navigation/CountryStackNavigation';
+// import { endpoints } from '_api/endpoints';
 
-import useFetchPaginatedCountry from '_hooks/country/useFetchPaginatedCountry';
-import useDebounceText from '_hooks/useDebounceText';
+// import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
-import { decodeCountries, ICountry } from '_models/Country';
+// import useFetchPaginatedCountry from '_hooks/country/useFetchPaginatedCountry';
+// import useDebounceText from '_hooks/useDebounceText';
 
-import { DEBOUNCE_TIME } from '_utils/constants';
-import {
-  COUNTRY_DETAILS_SCREEN,
-  SEARCH_COUNTRIES_SCREEN,
-} from '_utils/screenNames';
+// import { DEBOUNCE_TIME } from '_utils/constants';
+// import {
+//   COUNTRY_DETAILS_SCREEN,
+//   SEARCH_COUNTRIES_SCREEN,
+// } from '_utils/screenNames';
 
-import { strings } from '_i18n';
+// import { strings } from '_i18n';
 
-import styles from './SearchCountries.styles';
+// import styles from './SearchCountries.styles';
 
-type Props = NativeStackScreenProps<
-  CountryStackParamList,
-  typeof SEARCH_COUNTRIES_SCREEN
->;
+// type Props = NativeStackScreenProps<
+//   CountryStackParamList,
+//   typeof SEARCH_COUNTRIES_SCREEN
+// >;
 
-const SearchCountries = ({ navigation }: Props) => {
-  const [searchText, setSearchText] = useState('');
-  const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
-  const {
-    data,
-    failedError,
-    isLoading,
-    isLoadingMore,
-    loadingMoreError,
-    getDataOnMount,
-    getMoreData,
-    getRefreshedData,
-    refreshError,
-    isRefreshing,
-    hasLoadedAll,
-    setData,
-  } = useFetchPaginatedCountry({
-    url:
-      searchText.length > 0
-        ? endpoints.COUNTRIES_BY_NAME(searchText)
-        : endpoints.COUNTRIES,
-    decodeData: decodeCountries,
-  });
+// const SearchCountries = ({ navigation }: Props) => {
+//   const [searchText, setSearchText] = useState('');
+//   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
+//   const {
+//     data,
+//     failedError,
+//     isLoading,
+//     isLoadingMore,
+//     loadingMoreError,
+//     getDataOnMount,
+//     getMoreData,
+//     getRefreshedData,
+//     refreshError,
+//     isRefreshing,
+//     hasLoadedAll,
+//     setData,
+//   } = useFetchPaginatedCountry({
+//     url:
+//       searchText.length > 0
+//         ? endpoints.COUNTRIES_BY_NAME(searchText)
+//         : endpoints.COUNTRIES,
+//     decodeData: decodeCountries,
+//   });
 
-  const renderItem = ({ item }: { item: ICountry }) => {
-    const onPress = () => {
-      navigation.navigate(COUNTRY_DETAILS_SCREEN, { country: item });
-    };
-    return <CountryCard country={item} onPress={onPress} />;
-  };
+//   const renderItem = ({ item }: { item: ICountry }) => {
+//     const onPress = () => {
+//       navigation.navigate(COUNTRY_DETAILS_SCREEN, { country: item });
+//     };
+//     return <CountryCard country={item} onPress={onPress} />;
+//   };
 
-  useEffect(() => {
-    setData([]);
-    getDataOnMount();
-  }, [debouncedSearchTerm]);
+//   useEffect(() => {
+//     setData([]);
+//     getDataOnMount();
+//   }, [debouncedSearchTerm]);
 
-  return (
-    <View style={styles.container}>
-      <CustomSearchBar
-        text={searchText}
-        onChangeText={setSearchText}
-        placeholder={strings('country.search_countries.placeholder')}
-      />
-      <CustomFlatlist
-        data={data}
-        isLoading={isLoading}
-        isRefreshing={isRefreshing}
-        isLoadingMore={isLoadingMore}
-        hasLoadedAll={hasLoadedAll}
-        hasPadding={false}
-        getDataOnMount={getDataOnMount}
-        getMoreData={getMoreData}
-        getRefreshedData={getRefreshedData}
-        loadingMoreError={loadingMoreError}
-        failedError={failedError}
-        refreshError={refreshError}
-        renderItem={renderItem}
-        renderLoader={<CountryCardSkeletons />}
-        keyExtractor={(item: ICountry) => item.id}
-      />
-    </View>
-  );
-};
+//   return (
+//     <View style={styles.container}>
+//       <CustomSearchBar
+//         text={searchText}
+//         onChangeText={setSearchText}
+//         placeholder={strings('country.search_countries.placeholder')}
+//       />
+//       <CustomFlatlist
+//         data={data}
+//         isLoading={isLoading}
+//         isRefreshing={isRefreshing}
+//         isLoadingMore={isLoadingMore}
+//         hasLoadedAll={hasLoadedAll}
+//         hasPadding={false}
+//         getDataOnMount={getDataOnMount}
+//         getMoreData={getMoreData}
+//         getRefreshedData={getRefreshedData}
+//         loadingMoreError={loadingMoreError}
+//         failedError={failedError}
+//         refreshError={refreshError}
+//         renderItem={renderItem}
+//         renderLoader={<CountryCardSkeletons />}
+//         keyExtractor={(item: ICountry) => item.id}
+//       />
+//     </View>
+//   );
+// };
 
-export default SearchCountries;
+// export default SearchCountries;

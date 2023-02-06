@@ -1,0 +1,2 @@
+export const DEFAULT_QUIZ_NB_QUESTIONS = 3;
+export const DEFAULT_QUIZ_NB_ANSWERS = 3;

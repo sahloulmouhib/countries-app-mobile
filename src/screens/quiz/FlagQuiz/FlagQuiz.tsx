@@ -1,16 +1,15 @@
 import React from 'react';
 import { Alert, Modal, ScrollView, View } from 'react-native';
 
+import Answers from '_features/quiz/components/Answers/Answers';
+import FinishedQuiz from '_features/quiz/components/FinishedQuiz/FinishedQuiz';
+import FlagImage from '_features/quiz/components/FlagImage/FlagImage';
+import Header from '_features/quiz/components/Header/Header';
+import TopBar from '_features/quiz/components/TopBar/TopBar';
+import useFlagQuiz from '_features/quiz/hooks/useFlagQuiz';
+import { IFlagQuiz } from '_features/quiz/models/FlagQuiz';
+
 import CustomButton from '_components/common/CustomButton/CustomButton';
-import Answers from '_components/quiz/Answers/Answers';
-import FinishedQuiz from '_components/quiz/FinishedQuiz/FinishedQuiz';
-import FlagImage from '_components/quiz/FlagImage/FlagImage';
-import Header from '_components/quiz/Header/Header';
-import TopBar from '_components/quiz/TopBar/TopBar';
-
-import useFlagQuiz from '_hooks/quiz/useFlagQuiz';
-
-import { IFlagQuiz } from '_models/FlagQuiz';
 
 import { strings } from '_i18n';
 
@@ -80,8 +79,8 @@ const FlagQuiz = ({ isVisible, closeModal, quiz }: Props) => {
               contentContainerStyle={styles.scrollViewContainer}
               showsVerticalScrollIndicator={false}>
               <Header
-                quizTitle={strings('country.flag_quiz.quiz_game')}
-                questionTitle={strings('country.flag_quiz.guess_the_flag')}
+                quizTitle={strings('quiz.flag_quiz.quiz_game')}
+                questionTitle={strings('quiz.flag_quiz.guess_the_flag')}
               />
               <View style={styles.flagImage}>
                 <FlagImage image={flagImage} />
@@ -95,7 +94,7 @@ const FlagQuiz = ({ isVisible, closeModal, quiz }: Props) => {
             </ScrollView>
             <CustomButton
               disabled={!isQuestionAnswered}
-              title={strings('country.flag_quiz.next')}
+              title={strings('quiz.flag_quiz.next')}
               onPress={goToNextQuestionOrSubmitQuiz}
             />
           </View>

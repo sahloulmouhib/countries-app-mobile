@@ -48,6 +48,14 @@ export default {
         },
       },
     },
+  },
+  quiz: {
+    title: 'Choose a quiz',
+    best_score: 'Best Score',
+    flag: {
+      title: 'Flag Quiz',
+      description: 'Guess the country from the flag',
+    },
     flag_quiz: {
       next: 'Next',
       finish: 'Finish',
@@ -56,14 +64,6 @@ export default {
       total_questions: '/',
       quiz_game: 'Quiz game',
       guess_the_flag: 'Guess the flag!',
-    },
-  },
-  quiz: {
-    title: 'Choose a quiz',
-    best_score: 'Best Score',
-    flag: {
-      title: 'Flag Quiz',
-      description: 'Guess the country from the flag',
     },
   },
 };

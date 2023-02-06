@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CountryDetails from '_screens/country/CountryDetails/CountryDetails';
 import SearchCountries from '_screens/country/SearchCountries/SearchCountries';
 
-import { ICountry } from '_models/Country';
+import { ICountry } from '_features/country/models/Country';
 
 import {
   SEARCH_COUNTRIES_SCREEN,
