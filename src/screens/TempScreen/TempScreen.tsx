@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import useFlagQuiz from '_hooks/country/useFlagQuiz';
+import useFlagQuiz from '_hooks/quiz/useFlagQuiz';
 
 type Props = NativeStackScreenProps<any, any>;
 

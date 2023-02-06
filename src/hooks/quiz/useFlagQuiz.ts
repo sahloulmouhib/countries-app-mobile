@@ -9,7 +9,7 @@ import {
   ILocalAnswer,
 } from '_models/FlagQuiz';
 
-import { setToAsyncStorage } from './../../utils/helpers';
+import { setToAsyncStorage } from '../../utils/helpers';
 
 export interface IAnswerToQuestion {
   questionId: string;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import FlagQuiz from '_screens/country/FlagQuiz/FlagQuiz';
+import FlagQuiz from '_screens/quiz/FlagQuiz/FlagQuiz';
 
 import { FLAG_QUIZ_SCREEN } from '_utils/screenNames';
 

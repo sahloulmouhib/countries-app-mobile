@@ -5,9 +5,9 @@ import CustomDivider from '_components/common/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
-import QuizCard from '_components/country/quiz/QuizCard/QuizCard';
+import QuizCard from '_components/quiz/QuizCard/QuizCard';
 
-import { createRandomQuiz } from '_hooks/country/useFlagQuiz';
+import { createRandomQuiz } from '_hooks/quiz/useFlagQuiz';
 
 import { getFromAsyncStorage } from '_utils/helpers';
 import { icons } from '_utils/icons';
