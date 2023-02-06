@@ -22,6 +22,7 @@ module.exports = {
     '^_validation/(.*)$',
     '^_hooks/(.*)$',
     '^_models',
+    '^_data/(.*)',
     '^_utils/(.*)$',
     '^_enums/(.*)$',
     '^_config/(.*)$',

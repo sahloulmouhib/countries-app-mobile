@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import CustomReloader from '_components/common/CustomReloader/CustomReloader';
+import CustomReloader from '_components/CustomReloader/CustomReloader';
 
 import styles from './ReloaderFlatlist.styles';
 

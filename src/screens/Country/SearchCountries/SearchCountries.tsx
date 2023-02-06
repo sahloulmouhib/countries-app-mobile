@@ -12,12 +12,14 @@ import {
   ICountryResponse,
 } from '_features/country/models/Country';
 
-import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
-import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
+import CustomFlatlist from '_components/CustomFlatList/CustomFlatlist';
+import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
 import useDebounceText from '_hooks/useDebounceText';
+
+import COUNTRIES_DATA from '_data/countries.json';
 
 import { DEBOUNCE_TIME } from '_utils/constants';
 import {
@@ -27,15 +29,13 @@ import {
 
 import { strings } from '_i18n';
 
-import countries from '../../../db/countries.json';
-
 import styles from './SearchCountries.styles';
 
 type Props = NativeStackScreenProps<
   CountryStackParamList,
   typeof SEARCH_COUNTRIES_SCREEN
 >;
-const COUNTRIES = countries as unknown as ICountryResponse[];
+const COUNTRIES = COUNTRIES_DATA as unknown as ICountryResponse[];
 const SearchCountries = ({ navigation }: Props) => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);

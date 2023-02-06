@@ -22,6 +22,7 @@ module.exports = function (api) {
             _validation: './src/validation',
             _config: './src/config',
             _api: './src/api/',
+            _data: './src/data/',
           },
         },
       ],

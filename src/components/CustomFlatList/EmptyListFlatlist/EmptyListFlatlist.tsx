@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import CustomEmptyList from '_components/common/CustomEmptyList/CustomEmptyList';
+import CustomEmptyList from '_components/CustomEmptyList/CustomEmptyList';
 
 import styles from './EmptyListFlatlist.styles';
 

@@ -12,7 +12,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import CustomText from '_components/common/CustomText/CustomText';
+import CustomText from '_components/CustomText/CustomText';
 
 import { COUNTRY_TAB, QUIZ_TAB } from '_utils/screenNames';
 import { colors } from '_utils/theme/colors';

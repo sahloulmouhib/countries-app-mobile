@@ -9,7 +9,7 @@ import TopBar from '_features/quiz/components/TopBar/TopBar';
 import useFlagQuiz from '_features/quiz/hooks/useFlagQuiz';
 import { IFlagQuiz } from '_features/quiz/models/FlagQuiz';
 
-import CustomButton from '_components/common/CustomButton/CustomButton';
+import CustomButton from '_components/CustomButton/CustomButton';
 
 import { strings } from '_i18n';
 

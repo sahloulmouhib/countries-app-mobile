@@ -14,7 +14,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import CountryDescription from '_features/country/components/CountryDescription/CountryDescription';
 
-import CustomButton from '_components/common/CustomButton/CustomButton';
+import CustomButton from '_components/CustomButton/CustomButton';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 

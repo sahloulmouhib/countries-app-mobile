@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import CustomTitle, {
   CustomTitleType,
-} from '_components/common/CustomTitle/CustomTitle';
+} from '_components/CustomTitle/CustomTitle';
 
 import { colors } from '_utils/theme/colors';
 

@@ -5,7 +5,7 @@ import { AnswerType } from '_features/quiz/models/FlagQuiz';
 
 import CustomTitle, {
   CustomTitleType,
-} from '_components/common/CustomTitle/CustomTitle';
+} from '_components/CustomTitle/CustomTitle';
 
 import { colors } from '_utils/theme/colors';
 

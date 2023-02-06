@@ -5,16 +5,17 @@ import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
 import { createRandomQuiz } from '_features/quiz/utils/helpers';
 import { quizIcons } from '_features/quiz/utils/icons';
 
-import CustomDivider from '_components/common/CustomDivider/CustomDivider';
+import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
-} from '_components/common/CustomTitle/CustomTitle';
+} from '_components/CustomTitle/CustomTitle';
+
+import COUNTRIES_WITH_FLAGS from '_data/countries-with-flags.json';
 
 import { getFromAsyncStorage } from '_utils/helpers';
 
 import { strings } from '_i18n';
 
-import countriesWithFlags from '../../../db/countries-with-flags.json';
 import FlagQuiz from '../FlagQuiz/FlagQuiz';
 
 import styles from './Quiz.styles';
@@ -45,7 +46,7 @@ const Quiz = () => {
     setIsQuizVisible(true);
   };
   let quiz = useMemo(
-    () => isQuizVisible && createRandomQuiz(countriesWithFlags),
+    () => isQuizVisible && createRandomQuiz(COUNTRIES_WITH_FLAGS),
     [isQuizVisible],
   );
   const [flagQuizScore, setFlagQuizScore] = useState<number | null>(null);

@@ -5,7 +5,7 @@
 
 // import { decodeCountries, ICountry } from '_features/country/models/Country';
 
-// import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
+// import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
 
 // import { endpoints } from '_api/endpoints';
 

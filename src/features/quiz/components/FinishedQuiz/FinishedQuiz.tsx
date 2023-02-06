@@ -5,11 +5,11 @@ import Lottie from 'lottie-react-native';
 
 import { animations } from '_features/quiz/utils/animations';
 
-import CustomButton from '_components/common/CustomButton/CustomButton';
-import CustomDivider from '_components/common/CustomDivider/CustomDivider';
+import CustomButton from '_components/CustomButton/CustomButton';
+import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
-} from '_components/common/CustomTitle/CustomTitle';
+} from '_components/CustomTitle/CustomTitle';
 
 import { strings } from '_i18n';
 

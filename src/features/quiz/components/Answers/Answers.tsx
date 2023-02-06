@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import { ILocalAnswer } from '_features/quiz/models/FlagQuiz';
 
-import CustomDivider from '_components/common/CustomDivider/CustomDivider';
+import CustomDivider from '_components/CustomDivider/CustomDivider';
 
 import Answer from '../Answer/Answer';
 

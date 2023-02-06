@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import CustomDivider from '_components/common/CustomDivider/CustomDivider';
+import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
-} from '_components/common/CustomTitle/CustomTitle';
+} from '_components/CustomTitle/CustomTitle';
 
 import { capitalizeFirstLetter } from '_utils/helpers';
 

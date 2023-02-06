@@ -5,7 +5,7 @@ import { ICountry } from '_features/country/models/Country';
 
 import CustomTitle, {
   CustomTitleType,
-} from '_components/common/CustomTitle/CustomTitle';
+} from '_components/CustomTitle/CustomTitle';
 
 import styles from './CountryCard.styles';
 
