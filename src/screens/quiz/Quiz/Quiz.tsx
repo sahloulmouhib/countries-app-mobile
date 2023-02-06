@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { ImageSourcePropType, View } from 'react-native';
 
 import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
+import useFlagQuizStore from '_features/quiz/store/flagQuizStore';
 import { createRandomQuiz } from '_features/quiz/utils/helpers';
 import { quizIcons } from '_features/quiz/utils/icons';
 
@@ -11,8 +12,6 @@ import CustomTitle, {
 } from '_components/CustomTitle/CustomTitle';
 
 import COUNTRIES_WITH_FLAGS from '_data/countries-with-flags.json';
-
-import { getFromAsyncStorage } from '_utils/helpers';
 
 import { strings } from '_i18n';
 
@@ -38,6 +37,7 @@ const quizzes_cards: Record<string, IQuizCard> = {
 };
 
 const Quiz = () => {
+  const flagQuizStore = useFlagQuizStore();
   const [isQuizVisible, setIsQuizVisible] = useState(false);
   const closeQuizModal = () => {
     setIsQuizVisible(false);
@@ -49,14 +49,6 @@ const Quiz = () => {
     () => isQuizVisible && createRandomQuiz(COUNTRIES_WITH_FLAGS),
     [isQuizVisible],
   );
-  const [flagQuizScore, setFlagQuizScore] = useState<number | null>(null);
-  const getFlagQuizScore = async () => {
-    const score = await getFromAsyncStorage('flagQuizScore');
-    setFlagQuizScore(Number(score));
-  };
-  useEffect(() => {
-    getFlagQuizScore();
-  }, [isQuizVisible]);
 
   return (
     <View style={styles.container}>
@@ -71,7 +63,7 @@ const Quiz = () => {
       )}
 
       <QuizCard
-        score={flagQuizScore}
+        score={flagQuizStore.score}
         onPress={openQuizModal}
         {...quizzes_cards.FLAG}
       />

@@ -7,9 +7,10 @@ import {
   IAnswerToQuestion,
 } from '_features/quiz/models/FlagQuiz';
 
-import { setToAsyncStorage } from '_utils/helpers';
+import useFlagQuizStore from '../store/flagQuizStore';
 
 const useFlagQuiz = (quiz: IFlagQuiz) => {
+  const flagQuizStore = useFlagQuizStore();
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
@@ -76,7 +77,7 @@ const useFlagQuiz = (quiz: IFlagQuiz) => {
       }
     } else if (questionIndex === quiz.questions.length - 1) {
       if (isQuestionAnswered) {
-        await setToAsyncStorage('flagQuizScore', score.toString());
+        flagQuizStore.setScore(score);
         setIsQuizFinished(true);
       }
     }
