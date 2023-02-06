@@ -1,12 +1,12 @@
 import React from 'react';
 import { Alert, Modal, ScrollView, View } from 'react-native';
 
-import Answers from '_components/Country/Quiz/Answers/Answers';
-import FinishedQuiz from '_components/Country/Quiz/FinishedQuiz/FinishedQuiz';
-import FlagImage from '_components/Country/Quiz/FlagImage/FlagImage';
-import Header from '_components/Country/Quiz/Header/Header';
-import TopBar from '_components/Country/Quiz/TopBar/TopBar';
 import CustomButton from '_components/common/CustomButton/CustomButton';
+import Answers from '_components/country/quiz/Answers/Answers';
+import FinishedQuiz from '_components/country/quiz/FinishedQuiz/FinishedQuiz';
+import FlagImage from '_components/country/quiz/FlagImage/FlagImage';
+import Header from '_components/country/quiz/Header/Header';
+import TopBar from '_components/country/quiz/TopBar/TopBar';
 
 import useFlagQuiz from '_hooks/country/useFlagQuiz';
 

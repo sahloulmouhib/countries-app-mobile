@@ -3,10 +3,10 @@ import { View } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import CountryCard from '_components/Country/CountryCard/CountryCard';
-import CountryCardSkeletons from '_components/Country/CountryCardSkeletons/CountryCardSkeletons';
 import CustomFlatlist from '_components/common/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/common/CustomSearchBar/CustomSearchBar';
+import CountryCard from '_components/country/CountryCard/CountryCard';
+import CountryCardSkeletons from '_components/country/CountryCardSkeletons/CountryCardSkeletons';
 
 import { endpoints } from '_api/endpoints';
 

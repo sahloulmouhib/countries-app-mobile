@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ImageSourcePropType, View } from 'react-native';
 
-import QuizCard from '_components/Country/Quiz/QuizCard/QuizCard';
 import CustomDivider from '_components/common/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/common/CustomTitle/CustomTitle';
+import QuizCard from '_components/country/quiz/QuizCard/QuizCard';
 
 import { createRandomQuiz } from '_hooks/country/useFlagQuiz';
 

@@ -12,8 +12,8 @@ import { faArrowLeft, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import CountryDescription from '_components/Country/CountryDescription/CountryDescription';
 import CustomButton from '_components/common/CustomButton/CustomButton';
+import CountryDescription from '_components/country/CountryDescription/CountryDescription';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
