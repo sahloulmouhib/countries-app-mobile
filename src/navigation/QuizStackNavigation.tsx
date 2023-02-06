@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import FlagQuiz from '_screens/quiz/FlagQuiz/FlagQuiz';
+import Quiz from '_screens/quiz/Quiz/Quiz';
 
 import { FLAG_QUIZ_SCREEN } from '_utils/screenNames';
 
@@ -18,7 +18,7 @@ const QuizTabNavigation = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <QuizStack.Screen name={FLAG_QUIZ_SCREEN} component={FlagQuiz} />
+      <QuizStack.Screen name={FLAG_QUIZ_SCREEN} component={Quiz} />
     </QuizStack.Navigator>
   );
 };
