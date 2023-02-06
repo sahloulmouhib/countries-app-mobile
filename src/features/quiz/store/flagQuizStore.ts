@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
+import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 
 interface IFlagQuizStore {
   score: number;
@@ -18,7 +18,7 @@ const useFlagQuizStore = create<IFlagQuizStore>()(
       }),
       {
         name: 'flag-quiz-score-storage',
-        getStorage: () => AsyncStorage,
+        storage: createJSONStorage(() => AsyncStorage),
       },
     ),
   ),
