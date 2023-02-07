@@ -40,7 +40,7 @@ export default StyleSheet.create({
     right: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 2,
+    elevation: 5,
     boxWithShadow: {
       shadowColor: colors.BLACK,
       shadowOffset: { width: 0, height: 1 },

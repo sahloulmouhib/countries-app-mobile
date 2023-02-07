@@ -20,9 +20,10 @@ type Props = {
   type: CustomTitleType;
   color?: ColorValue;
   textAlign?: 'center' | 'left' | 'right';
+  fontSize?: number;
 };
 
-const CustomTitle = ({ type, color, title, textAlign }: Props) => {
+const CustomTitle = ({ type, color, title, textAlign, fontSize }: Props) => {
   return (
     <View>
       <CustomText
@@ -30,7 +31,11 @@ const CustomTitle = ({ type, color, title, textAlign }: Props) => {
         style={[
           [
             styles[type],
-            { color: color ?? colors.BLACK, textAlign: textAlign ?? 'left' },
+            {
+              color: color ?? colors.BLACK,
+              textAlign: textAlign ?? 'left',
+              fontSize: fontSize ?? styles[type].fontSize,
+            },
           ],
         ]}
       />

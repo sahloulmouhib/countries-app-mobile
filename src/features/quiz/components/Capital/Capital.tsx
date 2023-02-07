@@ -13,15 +13,17 @@ type Props = {
 
 const Capital = ({ capital }: Props) => {
   return (
-    <ImageBackground
-      resizeMode="contain"
-      source={quizIcons.WORLD_MAP}
-      style={styles.container}>
-      <View style={styles.textContainer}>
+    <>
+      <ImageBackground
+        resizeMode="contain"
+        source={quizIcons.WORLD_MAP}
+        style={styles.image}
+      />
+      <View style={styles.capitalContainer}>
         <CustomText text={capital} style={styles.title} />
-        <CustomText text={' is the capital of ?'} style={styles.description} />
+        <CustomText text={' is the capital of ?'} style={styles.question} />
       </View>
-    </ImageBackground>
+    </>
   );
 };
 

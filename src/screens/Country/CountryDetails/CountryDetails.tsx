@@ -45,6 +45,7 @@ const CountryDetails = ({ route, navigation }: Props) => {
       </ScrollView>
       <View style={styles.button}>
         <CustomButton
+          fontSize={14}
           title="Map"
           onPress={viewCountryInMap}
           rightIcon={faMap}

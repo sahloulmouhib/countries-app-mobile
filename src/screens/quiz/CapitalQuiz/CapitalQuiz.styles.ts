@@ -12,10 +12,11 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
   },
   scrollViewContainer: {
-    flex: 1,
+    marginBottom: 32,
+    flexGrow: 1,
   },
   capital: {
     marginTop: 16,
-    flex: 1,
+    flexGrow: 1,
   },
 });

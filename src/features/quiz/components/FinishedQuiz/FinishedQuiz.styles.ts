@@ -19,4 +19,7 @@ export default StyleSheet.create({
     width: 250,
     height: 250,
   },
+  imageContainer: {
+    justifyContent: 'center',
+  },
 });

@@ -6,7 +6,7 @@ import { fonts } from '_utils/theme/fonts';
 export default StyleSheet.create({
   H1: {
     fontSize: 24,
-    fontFamily: fonts.SEMI_BOLD,
+    fontFamily: fonts.BOLD,
   },
   H2: {
     fontSize: 20,

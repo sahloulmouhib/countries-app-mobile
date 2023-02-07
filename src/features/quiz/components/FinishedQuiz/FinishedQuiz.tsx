@@ -31,25 +31,31 @@ const FinishedQuiz = ({
       <View style={styles.details}>
         <CustomTitle
           type={CustomTitleType.H1}
+          fontSize={24}
           title={strings('quiz.flag_quiz.quiz_completed')}
         />
-        <Lottie source={animations.TROPHY} autoPlay style={styles.image} />
-        <CustomDivider height={32} />
-
+        <View style={styles.imageContainer}>
+          <Lottie source={animations.TROPHY} autoPlay style={styles.image} />
+        </View>
+        <CustomDivider height={16} />
         <CustomTitle
+          fontSize={16}
           type={CustomTitleType.H3}
           title={strings('quiz.flag_quiz.score')}
         />
-        <CustomDivider height={8} />
         <CustomTitle
-          type={CustomTitleType.H1}
+          fontSize={50}
+          type={CustomTitleType.H2}
           title={`${score} ${strings(
             'quiz.flag_quiz.total_questions',
           )}${totalQuestionsNumber}`}
         />
       </View>
 
-      <CustomButton title="finish" onPress={onButtonPress} />
+      <CustomButton
+        title={strings('quiz.flag_quiz.finish')}
+        onPress={onButtonPress}
+      />
     </View>
   );
 };

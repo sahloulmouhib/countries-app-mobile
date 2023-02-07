@@ -32,7 +32,8 @@ const CustomButton = ({
       style={[
         styles.container,
         { backgroundColor: backgroundColor ?? colors.BLACK },
-        { borderRadius: (rightIcon && 40) || 10 },
+        { borderRadius: (rightIcon && 30) || 10 },
+        { paddingVertical: (rightIcon && 8) || 16 },
         { opacity: (disabled && 0.1) || 1 },
       ]}>
       {rightIcon && (

@@ -21,17 +21,14 @@ const ANSWER_STYLES = {
   [AnswerType.Correct]: {
     backgroundColor: colors.GREEN,
     textColor: colors.WHITE,
-    borderWidth: 0,
   },
   [AnswerType.Incorrect]: {
     backgroundColor: colors.RED,
     textColor: colors.WHITE,
-    borderWidth: 0,
   },
   [AnswerType.Default]: {
     backgroundColor: colors.WHITE,
     textColor: colors.GREY_MEDIUM,
-    borderWidth: 1,
   },
 };
 
@@ -41,7 +38,7 @@ const Answer = ({
   onPress,
   isDisabled,
 }: Props) => {
-  const { backgroundColor, textColor, borderWidth } = ANSWER_STYLES[type];
+  const { backgroundColor, textColor } = ANSWER_STYLES[type];
   return (
     <TouchableOpacity
       disabled={isDisabled}
@@ -49,7 +46,6 @@ const Answer = ({
       style={{
         ...styles.container,
         backgroundColor: backgroundColor,
-        borderWidth: borderWidth,
       }}>
       <CustomTitle
         title={label}

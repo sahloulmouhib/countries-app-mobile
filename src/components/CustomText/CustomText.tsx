@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 import defaultStyles from './CustomText.styles';
 
 type Props = {
-  text: string;
+  text: string | number;
   style?: any;
 };
 

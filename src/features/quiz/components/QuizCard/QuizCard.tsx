@@ -38,7 +38,7 @@ const QuizCard = ({
       <View style={styles.descriptionContainer}>
         <Image style={styles.flagImage} source={icon} />
         <View style={styles.titleContainer}>
-          <CustomTitle title={title} type={CustomTitleType.H2} />
+          <CustomTitle title={title} type={CustomTitleType.H2} fontSize={16} />
           <CustomTitle
             title={description}
             type={CustomTitleType.H4}
