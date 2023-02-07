@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   scrollViewContainer: {
     flex: 1,
   },
-  flagImage: {
+  capital: {
     marginTop: 16,
     flex: 1,
   },

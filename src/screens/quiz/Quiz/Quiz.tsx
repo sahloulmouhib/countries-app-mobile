@@ -27,14 +27,14 @@ interface IQuizCard {
 
 const quizzes_cards: Record<string, IQuizCard> = {
   FLAG: {
-    title: strings('quiz.flag.title'),
-    description: strings('quiz.flag.description'),
+    title: strings('quiz.flag_quiz.title'),
+    description: strings('quiz.flag_quiz.description'),
     icon: quizIcons.FLAG_QUIZ,
     numberOfQuestions: 3,
   },
   CAPITAL: {
-    title: strings('quiz.capital.title'),
-    description: strings('quiz.capital.description'),
+    title: strings('quiz.capital_quiz.title'),
+    description: strings('quiz.capital_quiz.description'),
     icon: quizIcons.CAPITAL_QUIZ,
     numberOfQuestions: 3,
   },
@@ -52,7 +52,7 @@ const Quiz = () => {
     setQuizType(quiz);
     setIsQuizVisible(true);
   };
-  let quiz = useMemo(() => createQuiz(quizType), [quizType]);
+  let quiz = useMemo(() => createQuiz(quizType), [quizType, isQuizVisible]);
 
   return (
     <View style={styles.container}>

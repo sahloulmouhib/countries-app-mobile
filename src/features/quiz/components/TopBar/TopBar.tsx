@@ -20,7 +20,7 @@ const TopBar = ({ onQuizClose, questionIndex, numberOfQuestions }: Props) => {
   return (
     <View style={styles.topBar}>
       <TouchableOpacity onPress={onQuizClose}>
-        <FontAwesomeIcon icon={faX} size={15} />
+        <FontAwesomeIcon icon={faX} size={18} />
       </TouchableOpacity>
       {questionIndex !== undefined && numberOfQuestions !== undefined && (
         <CustomTitle

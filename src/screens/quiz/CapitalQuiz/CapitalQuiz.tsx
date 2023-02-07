@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import Answers from '_features/quiz/components/Answers/Answers';
+import Capital from '_features/quiz/components/Capital/Capital';
 import FinishedQuiz from '_features/quiz/components/FinishedQuiz/FinishedQuiz';
 import Header from '_features/quiz/components/Header/Header';
 import TopBar from '_features/quiz/components/TopBar/TopBar';
@@ -54,11 +55,11 @@ const CapitalQuiz = ({ closeModal, quiz }: Props) => {
           contentContainerStyle={styles.scrollViewContainer}
           showsVerticalScrollIndicator={false}>
           <Header
-            quizTitle={strings('quiz.flag_quiz.quiz_game')}
-            questionTitle={strings('quiz.flag_quiz.guess_the_flag')}
+            quizTitle={strings('quiz.capital_quiz.quiz_game')}
+            questionTitle={strings('quiz.capital_quiz.guess_the_capital')}
           />
-          <View style={styles.flagImage}>
-            <Text>{capitalToGuess}</Text>
+          <View style={styles.capital}>
+            <Capital capital={capitalToGuess} />
           </View>
 
           <Answers

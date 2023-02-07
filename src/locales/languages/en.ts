@@ -52,11 +52,9 @@ export default {
   quiz: {
     title: 'Choose a quiz',
     best_score: 'Best Score',
-    flag: {
+    flag_quiz: {
       title: 'Flag Quiz',
       description: 'Guess the country from the flag',
-    },
-    flag_quiz: {
       next: 'Next',
       finish: 'Finish',
       quiz_completed: 'Quiz completed !',
@@ -65,9 +63,16 @@ export default {
       quiz_game: 'Quiz game',
       guess_the_flag: 'Guess the flag!',
     },
-    capital: {
+    capital_quiz: {
       title: 'Capital Quiz',
       description: 'Guess the country from the capital',
+      next: 'Next',
+      finish: 'Finish',
+      quiz_completed: 'Quiz completed !',
+      score: 'Your score is',
+      total_questions: '/',
+      quiz_game: 'Quiz game',
+      guess_the_capital: 'Guess the capital!',
     },
   },
 };
