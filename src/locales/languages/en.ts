@@ -65,5 +65,9 @@ export default {
       quiz_game: 'Quiz game',
       guess_the_flag: 'Guess the flag!',
     },
+    capital: {
+      title: 'Capital Quiz',
+      description: 'Guess the country from the capital',
+    },
   },
 };

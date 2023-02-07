@@ -99,7 +99,6 @@ export interface ICountry {
   population: string;
   languages: string;
   currencies: string;
-  flagSVG: string;
   latlng: {
     lat: number;
     lng: number;
@@ -111,7 +110,6 @@ export const decodeCountry = (data: ICountryResponse): ICountry => {
     id: data.cca3,
     name: data.name.common,
     capital: data.capital?.length > 0 ? data.capital[0] : '-',
-    flagSVG: data?.flags?.svg,
     flag: data?.flags?.png,
     continents: data.continents.join(', '),
     area: formatArea(data.area),

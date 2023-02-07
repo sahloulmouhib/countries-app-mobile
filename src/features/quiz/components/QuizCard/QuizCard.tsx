@@ -19,7 +19,7 @@ import styles from './QuizCard.styles';
 type Props = {
   title: string;
   description: string;
-  score: number | null;
+  score: number | undefined;
   icon: ImageSourcePropType;
   numberOfQuestions: number;
   onPress: () => void;

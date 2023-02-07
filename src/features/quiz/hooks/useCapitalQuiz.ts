@@ -1,20 +1,20 @@
 import { useRef, useState } from 'react';
 
 import {
-  IFlagQuiz,
+  ICapitalQuiz,
   AnswerType,
   ILocalAnswer,
   IAnswerToQuestion,
 } from '_features/quiz/models/Quiz';
 
-import useQuizStore from '../store/quizStore';
+import useFlagQuizStore from '../store/quizStore';
 
-const useFlagQuiz = (quiz: IFlagQuiz) => {
-  const { setFlagQuizScore } = useQuizStore();
+const useCapitalQuiz = (quiz: ICapitalQuiz) => {
+  const flagQuizStore = useFlagQuizStore();
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
-  const flagImage = quiz.questions[questionIndex].flag;
+  const capitalToGuess = quiz.questions[questionIndex].capital;
   const createLocalQuizQuestionAnswers = (index: number) => {
     return quiz.questions[index].answers.map(answer => ({
       ...answer,
@@ -77,7 +77,7 @@ const useFlagQuiz = (quiz: IFlagQuiz) => {
       }
     } else if (questionIndex === quiz.questions.length - 1) {
       if (isQuestionAnswered) {
-        setFlagQuizScore(score);
+        flagQuizStore.setScore(score);
         setIsQuizFinished(true);
       }
     }
@@ -103,8 +103,8 @@ const useFlagQuiz = (quiz: IFlagQuiz) => {
     isQuizFinished,
     numberOfQuestions,
     rightAnswer,
-    flagImage,
+    capitalToGuess,
   };
 };
 
-export default useFlagQuiz;
+export default useCapitalQuiz;

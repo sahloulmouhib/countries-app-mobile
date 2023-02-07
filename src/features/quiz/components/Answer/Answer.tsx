@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import { AnswerType } from '_features/quiz/models/FlagQuiz';
+import { AnswerType } from '_features/quiz/models/Quiz';
 
 import CustomTitle, {
   CustomTitleType,

@@ -1,6 +1,8 @@
-import { Platform } from 'react-native';
+import { Alert, Platform } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { strings } from '_i18n';
 
 export const isIosDevice = () => {
   return Platform.OS === 'ios';
@@ -77,4 +79,22 @@ export const setToAsyncStorage = async (key: string, value: string) => {
   } catch (e) {
     console.log(e);
   }
+};
+
+export const alertOnClose = (onPress: () => void) => {
+  Alert.alert(
+    strings('alert.warning'),
+    strings('alert.description'),
+    [
+      {
+        text: strings('alert.cancel'),
+        onPress: undefined,
+      },
+      {
+        text: strings('alert.discard'),
+        onPress: onPress,
+      },
+    ],
+    undefined,
+  );
 };

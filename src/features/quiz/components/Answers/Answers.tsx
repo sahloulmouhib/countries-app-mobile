@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { ILocalAnswer } from '_features/quiz/models/FlagQuiz';
+import { ILocalAnswer } from '_features/quiz/models/Quiz';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
 

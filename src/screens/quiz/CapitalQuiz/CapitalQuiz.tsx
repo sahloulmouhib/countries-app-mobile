@@ -1,13 +1,12 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 
 import Answers from '_features/quiz/components/Answers/Answers';
 import FinishedQuiz from '_features/quiz/components/FinishedQuiz/FinishedQuiz';
-import FlagImage from '_features/quiz/components/FlagImage/FlagImage';
 import Header from '_features/quiz/components/Header/Header';
 import TopBar from '_features/quiz/components/TopBar/TopBar';
-import useFlagQuiz from '_features/quiz/hooks/useFlagQuiz';
-import { IFlagQuiz } from '_features/quiz/models/Quiz';
+import useCapitalQuiz from '_features/quiz/hooks/useCapitalQuiz';
+import { ICapitalQuiz } from '_features/quiz/models/Quiz';
 
 import CustomButton from '_components/CustomButton/CustomButton';
 
@@ -15,14 +14,14 @@ import { alertOnClose } from '_utils/helpers';
 
 import { strings } from '_i18n';
 
-import { styles } from './FlagQuiz.styles';
+import { styles } from './CapitalQuiz.styles';
 
 type Props = {
   closeModal: () => void;
-  quiz: IFlagQuiz;
+  quiz: ICapitalQuiz;
 };
 
-const FlagQuiz = ({ closeModal, quiz }: Props) => {
+const CapitalQuiz = ({ closeModal, quiz }: Props) => {
   const {
     goToNextQuestionOrSubmitQuiz,
     initializeQuiz,
@@ -33,8 +32,8 @@ const FlagQuiz = ({ closeModal, quiz }: Props) => {
     isQuizFinished,
     score,
     numberOfQuestions,
-    flagImage,
-  } = useFlagQuiz(quiz);
+    capitalToGuess,
+  } = useCapitalQuiz(quiz);
 
   const closeModalAndResetQuiz = () => {
     closeModal();
@@ -43,7 +42,6 @@ const FlagQuiz = ({ closeModal, quiz }: Props) => {
   const onQuizClosePress = () => {
     alertOnClose(closeModalAndResetQuiz);
   };
-
   if (!isQuizFinished) {
     return (
       <View style={styles.container}>
@@ -60,7 +58,7 @@ const FlagQuiz = ({ closeModal, quiz }: Props) => {
             questionTitle={strings('quiz.flag_quiz.guess_the_flag')}
           />
           <View style={styles.flagImage}>
-            <FlagImage image={flagImage!} />
+            <Text>{capitalToGuess}</Text>
           </View>
 
           <Answers
@@ -76,15 +74,14 @@ const FlagQuiz = ({ closeModal, quiz }: Props) => {
         />
       </View>
     );
-  } else {
-    return (
-      <FinishedQuiz
-        totalQuestionsNumber={quiz.questions.length}
-        score={score}
-        onButtonPress={closeModalAndResetQuiz}
-      />
-    );
   }
+  return (
+    <FinishedQuiz
+      totalQuestionsNumber={quiz.questions.length}
+      score={score}
+      onButtonPress={closeModalAndResetQuiz}
+    />
+  );
 };
 
-export default FlagQuiz;
+export default CapitalQuiz;
