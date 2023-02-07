@@ -22,6 +22,6 @@ export default StyleSheet.create({
     height: 60,
   },
   titleContainer: {
-    marginLeft: 8,
+    marginLeft: 12,
   },
 });

@@ -7,10 +7,10 @@ import {
   IAnswerToQuestion,
 } from '_features/quiz/models/Quiz';
 
-import useFlagQuizStore from '../store/quizStore';
+import useQuizStore from '../store/quizStore';
 
 const useCapitalQuiz = (quiz: ICapitalQuiz) => {
-  const flagQuizStore = useFlagQuizStore();
+  const { setCapitalQuizScore } = useQuizStore();
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
@@ -77,7 +77,7 @@ const useCapitalQuiz = (quiz: ICapitalQuiz) => {
       }
     } else if (questionIndex === quiz.questions.length - 1) {
       if (isQuestionAnswered) {
-        flagQuizStore.setScore(score);
+        setCapitalQuizScore(score);
         setIsQuizFinished(true);
       }
     }

@@ -1,8 +1,9 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { ImageSourcePropType, View, Modal } from 'react-native';
 
 import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
-import { IFlagQuiz, QuizType, ICapitalQuiz } from '_features/quiz/models/Quiz';
+import RenderQuiz from '_features/quiz/components/RenderQuiz/RenderQuiz';
+import { QuizType } from '_features/quiz/models/Quiz';
 import useQuizStore from '_features/quiz/store/quizStore';
 import { createQuiz } from '_features/quiz/utils/helpers';
 import { quizIcons } from '_features/quiz/utils/icons';
@@ -13,9 +14,6 @@ import CustomTitle, {
 } from '_components/CustomTitle/CustomTitle';
 
 import { strings } from '_i18n';
-
-import CapitalQuiz from '../CapitalQuiz/CapitalQuiz';
-import FlagQuiz from '../FlagQuiz/FlagQuiz';
 
 import styles from './Quiz.styles';
 
@@ -32,13 +30,13 @@ const quizzes_cards: Record<string, IQuizCard> = {
     title: strings('quiz.flag.title'),
     description: strings('quiz.flag.description'),
     icon: quizIcons.FLAG_QUIZ,
-    numberOfQuestions: 10,
+    numberOfQuestions: 3,
   },
   CAPITAL: {
     title: strings('quiz.capital.title'),
     description: strings('quiz.capital.description'),
-    icon: quizIcons.FLAG_QUIZ,
-    numberOfQuestions: 10,
+    icon: quizIcons.CAPITAL_QUIZ,
+    numberOfQuestions: 3,
   },
 };
 
@@ -55,24 +53,6 @@ const Quiz = () => {
     setIsQuizVisible(true);
   };
   let quiz = useMemo(() => createQuiz(quizType), [quizType]);
-
-  const renderQuiz = useCallback(() => {
-    switch (quizType) {
-      case QuizType.Flag:
-        return (
-          <FlagQuiz closeModal={closeQuizModal} quiz={quiz as IFlagQuiz} />
-        );
-      case QuizType.Capital:
-        return (
-          <CapitalQuiz
-            closeModal={closeQuizModal}
-            quiz={quiz as ICapitalQuiz}
-          />
-        );
-      default:
-        return null;
-    }
-  }, [quizType]);
 
   return (
     <View style={styles.container}>
@@ -96,7 +76,13 @@ const Quiz = () => {
           transparent={false}
           visible={isQuizVisible}
           presentationStyle="pageSheet">
-          {renderQuiz()}
+          {
+            <RenderQuiz
+              closeQuizModal={closeQuizModal}
+              quiz={quiz}
+              quizType={quizType}
+            />
+          }
         </Modal>
       )}
     </View>
