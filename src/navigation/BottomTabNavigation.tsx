@@ -12,6 +12,8 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
+import TempScreen from '_screens/TempScreen/TempScreen';
+
 import CustomText from '_components/CustomText/CustomText';
 
 import { COUNTRY_TAB, QUIZ_TAB } from '_utils/screenNames';
@@ -86,7 +88,7 @@ const BottomTabNavigation = () => {
           })
         }
         name={COUNTRY_TAB}
-        component={CountryStackNavigation}
+        component={TempScreen}
       />
       <BottomTab.Screen
         options={() =>

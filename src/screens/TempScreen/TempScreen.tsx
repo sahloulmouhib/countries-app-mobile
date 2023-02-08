@@ -1,10 +1,40 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
+
+import useHigherOrLower from '_features/quiz/hooks/useHigherOrLower';
 
 const TempScreen = () => {
+  const {
+    firstCountry,
+    secondCountry,
+    isCorrect,
+    isGameOver,
+    onHigher,
+    onLower,
+    onRestart,
+  } = useHigherOrLower();
+  console.log('firstCountry', firstCountry);
+  console.log('secondCountry', secondCountry);
+  console.log('isCorrect', isCorrect);
+  console.log('isGameOver', isGameOver);
+
+  if (isGameOver) {
+    return (
+      <View>
+        <Text>Game Over</Text>
+
+        <Button title="Play Again" onPress={onRestart} />
+      </View>
+    );
+  }
   return (
     <View>
-      <Text>TempScreen</Text>
+      <Text>{firstCountry.name + '   ' + firstCountry.population}</Text>
+      <Text>{secondCountry.name + '   ' + secondCountry.population}</Text>
+
+      <Button title="higher" onPress={onHigher} />
+      <Button title="lower" onPress={onLower} />
+      <Text>{isCorrect ? 'correct' : 'incorrect'}</Text>
     </View>
   );
 };
