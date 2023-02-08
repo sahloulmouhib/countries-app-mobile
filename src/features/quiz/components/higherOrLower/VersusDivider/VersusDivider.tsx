@@ -31,8 +31,8 @@ const VERSUS_DIVIDER_STYLES = {
   },
   [VersusDividerType.Default]: {
     backgroundColor: colors.WHITE,
-    borderColor: colors.GREY_MEDIUM,
-    iconColor: colors.GREY_MEDIUM,
+    borderColor: colors.BLACK,
+    iconColor: colors.BLACK,
     icon: faBolt,
   },
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
 
 import FirstCountry from '_features/quiz/components/higherOrLower/FirstCountry/FirstCountry';
 import SecondCountry from '_features/quiz/components/higherOrLower/SecondCountry/SecondCountry';

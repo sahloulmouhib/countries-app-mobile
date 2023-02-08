@@ -4,7 +4,7 @@ import { ScrollView, View } from 'react-native';
 import Answers from '_features/quiz/components/Answers/Answers';
 import FinishedQuiz from '_features/quiz/components/FinishedQuiz/FinishedQuiz';
 import FlagImage from '_features/quiz/components/FlagImage/FlagImage';
-import Header from '_features/quiz/components/Header/Header';
+import QuizHeader from '_features/quiz/components/QuizHeader/QuizHeader';
 import TopBar from '_features/quiz/components/TopBar/TopBar';
 import useFlagQuiz from '_features/quiz/hooks/useFlagQuiz';
 import { IFlagQuiz } from '_features/quiz/models/Quiz';
@@ -55,12 +55,12 @@ const FlagQuiz = ({ closeModal, quiz }: Props) => {
         <ScrollView
           contentContainerStyle={styles.scrollViewContainer}
           showsVerticalScrollIndicator={false}>
-          <Header
+          <QuizHeader
             quizTitle={strings('quiz.flag_quiz.quiz_game')}
             questionTitle={strings('quiz.flag_quiz.guess_the_flag')}
           />
           <View style={styles.flagImage}>
-            <FlagImage image={flagImage!} />
+            <FlagImage image={flagImage} />
           </View>
 
           <Answers

@@ -8,14 +8,14 @@ import CustomTitle, {
 
 import { capitalizeFirstLetter } from '_utils/helpers';
 
-import { styles } from './Header.styles';
+import { styles } from './QuizHeader.styles';
 
 type Props = {
   quizTitle: string;
   questionTitle: string;
 };
 
-const Header = ({ questionTitle, quizTitle }: Props) => {
+const QuizHeader = ({ questionTitle, quizTitle }: Props) => {
   return (
     <View style={styles.container}>
       <CustomTitle
@@ -31,4 +31,4 @@ const Header = ({ questionTitle, quizTitle }: Props) => {
   );
 };
 
-export default Header;
+export default QuizHeader;

@@ -34,7 +34,8 @@ const SecondCountry = ({
       <CustomTitle
         type={CustomTitleType.H2}
         title={secondCountryName}
-        fontSize={30}
+        fontSize={25}
+        textAlign="center"
       />
       <CustomTitle type={CustomTitleType.H4} title={'has'} fontSize={18} />
       <CustomDivider height={8} />
