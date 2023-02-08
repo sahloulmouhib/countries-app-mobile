@@ -49,48 +49,56 @@ const useHigherOrLower = () => {
     COUNTRIES[secondRandomIndex],
   );
 
-  const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
+  const isQuestionAnswered = isCorrect !== undefined;
   const [score, setScore] = useState(0);
 
   const onHigher = () => {
     if (firstCountry.population < secondCountry.population) {
-      onNext();
+      onRightAnswer();
     } else {
-      onLost();
+      onWrongAnswer();
     }
   };
 
   const onLower = () => {
     if (firstCountry.population > secondCountry.population) {
-      onNext();
+      onRightAnswer();
     } else {
-      onLost();
+      onWrongAnswer();
     }
+  };
+
+  const onRightAnswer = () => {
+    setIsCorrect(true);
+    setScore(score + 1);
+    setTimeout(() => {
+      onNext();
+    }, 2000);
   };
 
   const onNext = () => {
     if (usedIndices.size === COUNTRIES.length - 1) {
       setIsGameOver(true);
     } else {
-      setIsCorrect(true);
-      setScore(score + 1);
-      setIsQuestionAnswered(true);
+      setIsCorrect(undefined);
       const newSecondCountryIndex = getAndAddRandomIndex(
         COUNTRIES.length,
         usedIndices,
       );
       const newSecondCountry = COUNTRIES[newSecondCountryIndex];
+
       setFirstCountry(secondCountry);
       setSecondCountry(newSecondCountry);
     }
   };
 
-  const onLost = () => {
+  const onWrongAnswer = () => {
     setIsCorrect(false);
-    setIsQuestionAnswered(true);
-    setIsGameOver(true);
+    setTimeout(() => {
+      setIsGameOver(true);
+    }, 1500);
   };
 
   const onRestart = () => {
@@ -99,9 +107,8 @@ const useHigherOrLower = () => {
     secondRandomIndex = getAndAddRandomIndex(COUNTRIES.length, usedIndices);
     setFirstCountry(COUNTRIES[firstRandomIndex]);
     setSecondCountry(COUNTRIES[secondRandomIndex]);
-    setIsQuestionAnswered(false);
     setIsGameOver(false);
-    setIsCorrect(false);
+    setIsCorrect(undefined);
     setScore(0);
   };
   return {
