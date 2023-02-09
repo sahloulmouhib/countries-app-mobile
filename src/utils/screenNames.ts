@@ -5,4 +5,4 @@ export const COUNTRY_DETAILS_SCREEN = 'countryDetails';
 
 //quiz tab
 export const QUIZ_TAB = 'quizTab';
-export const FLAG_QUIZ_SCREEN = 'flagQuiz';
+export const QUIZ_SCREEN = 'quiz';

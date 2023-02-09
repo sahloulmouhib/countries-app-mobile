@@ -23,5 +23,7 @@ export default StyleSheet.create({
   },
   titleContainer: {
     marginLeft: 12,
+    flexWrap: 'wrap',
+    flex: 1,
   },
 });

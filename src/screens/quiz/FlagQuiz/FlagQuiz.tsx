@@ -7,7 +7,6 @@ import FlagImage from '_features/quiz/components/FlagImage/FlagImage';
 import QuizHeader from '_features/quiz/components/QuizHeader/QuizHeader';
 import TopBar from '_features/quiz/components/TopBar/TopBar';
 import useFlagQuiz from '_features/quiz/hooks/useFlagQuiz';
-import { IFlagQuiz } from '_features/quiz/models/Quiz';
 
 import CustomButton from '_components/CustomButton/CustomButton';
 
@@ -19,10 +18,9 @@ import { styles } from './FlagQuiz.styles';
 
 type Props = {
   closeModal: () => void;
-  quiz: IFlagQuiz;
 };
 
-const FlagQuiz = ({ closeModal, quiz }: Props) => {
+const FlagQuiz = ({ closeModal }: Props) => {
   const {
     goToNextQuestionOrSubmitQuiz,
     initializeQuiz,
@@ -34,7 +32,7 @@ const FlagQuiz = ({ closeModal, quiz }: Props) => {
     score,
     numberOfQuestions,
     flagImage,
-  } = useFlagQuiz(quiz);
+  } = useFlagQuiz();
 
   const closeModalAndResetQuiz = () => {
     closeModal();
@@ -79,7 +77,7 @@ const FlagQuiz = ({ closeModal, quiz }: Props) => {
   } else {
     return (
       <FinishedQuiz
-        totalQuestionsNumber={quiz.questions.length}
+        totalQuestionsNumber={numberOfQuestions}
         score={score}
         onButtonPress={closeModalAndResetQuiz}
       />

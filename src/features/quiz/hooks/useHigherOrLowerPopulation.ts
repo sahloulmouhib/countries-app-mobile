@@ -38,7 +38,7 @@ const getAndAddRandomIndex = (max: number, usedIndices: Set<number>) => {
   return secondRandomIndex;
 };
 
-const useHigherOrLower = () => {
+const useHigherOrLowerPopulation = () => {
   const usedIndices = new Set<number>();
 
   let firstRandomIndex = getAndAddRandomIndex(COUNTRIES.length, usedIndices);
@@ -124,4 +124,4 @@ const useHigherOrLower = () => {
   };
 };
 
-export default useHigherOrLower;
+export default useHigherOrLowerPopulation;

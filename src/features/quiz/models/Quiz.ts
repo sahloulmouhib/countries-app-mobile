@@ -42,4 +42,5 @@ export interface ICapitalQuiz {
 export enum QuizType {
   Flag = 'flag',
   Capital = 'capital',
+  HigherOrLowerPopulation = 'higherOrLowerPopulation',
 }

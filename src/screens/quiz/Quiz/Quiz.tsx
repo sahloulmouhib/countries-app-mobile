@@ -1,11 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { ImageSourcePropType, View, Modal } from 'react-native';
 
 import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
 import RenderQuiz from '_features/quiz/components/RenderQuiz/RenderQuiz';
 import { QuizType } from '_features/quiz/models/Quiz';
 import useQuizStore from '_features/quiz/store/quizStore';
-import { createQuiz } from '_features/quiz/utils/helpers';
 import { quizIcons } from '_features/quiz/utils/icons';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
@@ -22,7 +21,7 @@ interface IQuizCard {
   description: string;
   icon: ImageSourcePropType;
   score?: number;
-  numberOfQuestions: number;
+  numberOfQuestions?: number;
 }
 
 const quizzes_cards: Record<string, IQuizCard> = {
@@ -38,6 +37,11 @@ const quizzes_cards: Record<string, IQuizCard> = {
     icon: quizIcons.CAPITAL_QUIZ,
     numberOfQuestions: 3,
   },
+  HIGHER_OR_LOWER_POPULATION: {
+    title: strings('quiz.higher_or_lower_population.title'),
+    description: strings('quiz.higher_or_lower_population.description'),
+    icon: quizIcons.CAPITAL_QUIZ,
+  },
 };
 
 const Quiz = () => {
@@ -52,7 +56,6 @@ const Quiz = () => {
     setQuizType(quiz);
     setIsQuizVisible(true);
   };
-  let quiz = useMemo(() => createQuiz(quizType), [quizType, isQuizVisible]);
 
   return (
     <View style={styles.container}>
@@ -70,21 +73,20 @@ const Quiz = () => {
         onPress={openQuizModal(QuizType.Capital)}
         {...quizzes_cards.CAPITAL}
       />
-      {quiz && (
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={isQuizVisible}
-          presentationStyle="pageSheet">
-          {
-            <RenderQuiz
-              closeQuizModal={closeQuizModal}
-              quiz={quiz}
-              quizType={quizType}
-            />
-          }
-        </Modal>
-      )}
+      <CustomDivider height={16} />
+      <QuizCard
+        score={0}
+        onPress={openQuizModal(QuizType.HigherOrLowerPopulation)}
+        {...quizzes_cards.HIGHER_OR_LOWER_POPULATION}
+      />
+
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={isQuizVisible}
+        presentationStyle="pageSheet">
+        {<RenderQuiz closeQuizModal={closeQuizModal} quizType={quizType} />}
+      </Modal>
     </View>
   );
 };

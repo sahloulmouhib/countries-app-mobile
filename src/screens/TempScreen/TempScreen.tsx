@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 
-import useHigherOrLower from '_features/quiz/hooks/useHigherOrLower';
+import useHigherOrLower from '_features/quiz/hooks/useHigherOrLowerPopulation';
 
 const TempScreen = () => {
   const {

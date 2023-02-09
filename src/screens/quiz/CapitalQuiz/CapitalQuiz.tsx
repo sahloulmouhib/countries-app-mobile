@@ -7,7 +7,6 @@ import FinishedQuiz from '_features/quiz/components/FinishedQuiz/FinishedQuiz';
 import QuizHeader from '_features/quiz/components/QuizHeader/QuizHeader';
 import TopBar from '_features/quiz/components/TopBar/TopBar';
 import useCapitalQuiz from '_features/quiz/hooks/useCapitalQuiz';
-import { ICapitalQuiz } from '_features/quiz/models/Quiz';
 
 import CustomButton from '_components/CustomButton/CustomButton';
 
@@ -19,10 +18,9 @@ import { styles } from './CapitalQuiz.styles';
 
 type Props = {
   closeModal: () => void;
-  quiz: ICapitalQuiz;
 };
 
-const CapitalQuiz = ({ closeModal, quiz }: Props) => {
+const CapitalQuiz = ({ closeModal }: Props) => {
   const {
     goToNextQuestionOrSubmitQuiz,
     initializeQuiz,
@@ -34,7 +32,7 @@ const CapitalQuiz = ({ closeModal, quiz }: Props) => {
     score,
     numberOfQuestions,
     capitalToGuess,
-  } = useCapitalQuiz(quiz);
+  } = useCapitalQuiz();
 
   const closeModalAndResetQuiz = () => {
     closeModal();
@@ -77,7 +75,7 @@ const CapitalQuiz = ({ closeModal, quiz }: Props) => {
   }
   return (
     <FinishedQuiz
-      totalQuestionsNumber={quiz.questions.length}
+      totalQuestionsNumber={numberOfQuestions}
       score={score}
       onButtonPress={closeModalAndResetQuiz}
     />

@@ -1,15 +1,17 @@
 import { useRef, useState } from 'react';
 
 import {
-  IFlagQuiz,
   AnswerType,
   ILocalAnswer,
   IAnswerToQuestion,
 } from '_features/quiz/models/Quiz';
 
 import useQuizStore from '../store/quizStore';
+import { DECODED_COUNTRIES, createRandomFlagQuiz } from '../utils/helpers';
 
-const useFlagQuiz = (quiz: IFlagQuiz) => {
+const useFlagQuiz = () => {
+  const [quiz, setQuiz] = useState(createRandomFlagQuiz(DECODED_COUNTRIES));
+
   const { setFlagQuizScore } = useQuizStore();
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
@@ -85,6 +87,7 @@ const useFlagQuiz = (quiz: IFlagQuiz) => {
 
   const initializeQuiz = () => {
     setQuestionIndex(0);
+    setQuiz(createRandomFlagQuiz(DECODED_COUNTRIES));
     setQuestionAnswers(localQuizQuestionAnswersInitialValues);
     setIsQuestionAnswered(false);
     userAnswers.current = [];

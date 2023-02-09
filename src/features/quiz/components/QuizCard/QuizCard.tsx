@@ -21,7 +21,7 @@ type Props = {
   description: string;
   score: number | undefined;
   icon: ImageSourcePropType;
-  numberOfQuestions: number;
+  numberOfQuestions?: number;
   onPress: () => void;
 };
 
@@ -49,7 +49,11 @@ const QuizCard = ({
       {score != null && (
         <View style={styles.scoreContainer}>
           <CustomTitle
-            title={`${score}/${numberOfQuestions}`}
+            title={
+              numberOfQuestions !== undefined
+                ? `${score}/${numberOfQuestions}`
+                : `${score}`
+            }
             type={CustomTitleType.H3}
           />
           <CustomTitle

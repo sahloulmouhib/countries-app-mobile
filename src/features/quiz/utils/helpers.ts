@@ -14,7 +14,7 @@ import {
   DEFAULT_QUIZ_NB_ANSWERS,
 } from './constants';
 
-const DECODED_COUNTRIES = decodeCountries(
+export const DECODED_COUNTRIES = decodeCountries(
   COUNTRIES as unknown as ICountryResponse[],
 );
 

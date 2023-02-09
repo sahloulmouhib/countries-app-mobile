@@ -1,15 +1,17 @@
 import { useRef, useState } from 'react';
 
 import {
-  ICapitalQuiz,
   AnswerType,
   ILocalAnswer,
   IAnswerToQuestion,
 } from '_features/quiz/models/Quiz';
 
 import useQuizStore from '../store/quizStore';
+import { createRandomCapitalQuiz, DECODED_COUNTRIES } from '../utils/helpers';
 
-const useCapitalQuiz = (quiz: ICapitalQuiz) => {
+const useCapitalQuiz = () => {
+  const [quiz, setQuiz] = useState(createRandomCapitalQuiz(DECODED_COUNTRIES));
+
   const { setCapitalQuizScore } = useQuizStore();
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
@@ -87,6 +89,7 @@ const useCapitalQuiz = (quiz: ICapitalQuiz) => {
     setQuestionIndex(0);
     setQuestionAnswers(localQuizQuestionAnswersInitialValues);
     setIsQuestionAnswered(false);
+    setQuiz(createRandomCapitalQuiz(DECODED_COUNTRIES));
     userAnswers.current = [];
     setScore(0);
     setIsQuizFinished(false);

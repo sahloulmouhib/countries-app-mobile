@@ -8,7 +8,7 @@ import CustomTitle, {
 
 import { capitalizeFirstLetter } from '_utils/helpers';
 
-import { styles } from './QuizHeader.styles';
+import styles from './QuizHeader.styles';
 
 type Props = {
   quizTitle: string;
