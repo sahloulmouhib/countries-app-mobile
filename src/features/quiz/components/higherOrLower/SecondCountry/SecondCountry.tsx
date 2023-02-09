@@ -8,6 +8,8 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
+import { strings } from '_i18n';
+
 import HigherOrLowerButton from '../HigherOrLowerButton/HigherOrLowerButton';
 
 import styles from './SecondCountry.styles';
@@ -18,6 +20,7 @@ type Props = {
   onLowerPress: () => void;
   secondCountryName: string;
   secondCountryPopulation: number;
+  secondCountryFlagEmoji: string;
   isQuestionAnswered: boolean;
 };
 
@@ -28,36 +31,44 @@ const SecondCountry = ({
   secondCountryName,
   isQuestionAnswered,
   secondCountryPopulation,
+  secondCountryFlagEmoji,
 }: Props) => {
   return (
     <View style={styles.container}>
       <CustomTitle
         type={CustomTitleType.H2}
-        title={secondCountryName}
+        title={`${secondCountryFlagEmoji} ${secondCountryName}`}
         fontSize={25}
         textAlign="center"
       />
-      <CustomTitle type={CustomTitleType.H4} title={'has'} fontSize={18} />
+      <CustomTitle
+        type={CustomTitleType.H4}
+        title={strings('quiz.population_quiz.has')}
+        fontSize={18}
+      />
       <CustomDivider height={8} />
       {!isQuestionAnswered ? (
         <>
-          <HigherOrLowerButton
-            title="Higher"
-            onPress={onHigherPress}
-            icon={faCaretUp}
-          />
-          <CustomDivider height={16} />
-          <HigherOrLowerButton
-            title="Lower"
-            onPress={onLowerPress}
-            icon={faCaretDown}
-          />
+          <View style={styles.buttonsContainer}>
+            <HigherOrLowerButton
+              title={strings('quiz.population_quiz.higher_button')}
+              onPress={onHigherPress}
+              icon={faCaretUp}
+            />
+            <CustomDivider width={8} />
+            <HigherOrLowerButton
+              title={strings('quiz.population_quiz.lower_button')}
+              onPress={onLowerPress}
+              icon={faCaretDown}
+            />
+          </View>
           <CustomDivider height={8} />
-
           <CustomTitle
             type={CustomTitleType.H4}
             fontSize={18}
-            title={'weird people than ' + firstCountryName}
+            title={`${strings(
+              'quiz.population_quiz.people_than',
+            )} ${firstCountryName}`}
           />
         </>
       ) : (
@@ -70,7 +81,7 @@ const SecondCountry = ({
           <CustomTitle
             type={CustomTitleType.H4}
             fontSize={18}
-            title={'weird people'}
+            title={strings('quiz.population_quiz.people')}
           />
         </>
       )}

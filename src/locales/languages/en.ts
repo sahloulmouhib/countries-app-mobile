@@ -74,5 +74,15 @@ export default {
       quiz_game: 'Quiz game',
       guess_the_capital: 'Guess the capital!',
     },
+    population_quiz: {
+      title: 'Population Quiz',
+      description: 'Guess which country has the higher or lower population',
+      people: 'people',
+      people_than: 'people than',
+      has: 'has',
+      higher_button: 'Higher',
+      lower_button: 'Lower',
+      score: 'Score :',
+    },
   },
 };

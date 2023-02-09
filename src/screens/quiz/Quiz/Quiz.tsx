@@ -37,15 +37,16 @@ const quizzes_cards: Record<string, IQuizCard> = {
     icon: quizIcons.CAPITAL_QUIZ,
     numberOfQuestions: 3,
   },
-  HIGHER_OR_LOWER_POPULATION: {
-    title: strings('quiz.higher_or_lower_population.title'),
-    description: strings('quiz.higher_or_lower_population.description'),
-    icon: quizIcons.CAPITAL_QUIZ,
+  POPULATION: {
+    title: strings('quiz.population_quiz.title'),
+    description: strings('quiz.population_quiz.description'),
+    icon: quizIcons.POPULATION_QUIZ,
   },
 };
 
 const Quiz = () => {
-  const { flagQuizScore, capitalQuizScore } = useQuizStore();
+  const { flagQuizScore, capitalQuizScore, populationQuizScore } =
+    useQuizStore();
 
   const [quizType, setQuizType] = useState<QuizType>(QuizType.Flag);
   const [isQuizVisible, setIsQuizVisible] = useState(false);
@@ -68,18 +69,18 @@ const Quiz = () => {
         {...quizzes_cards.FLAG}
       />
       <CustomDivider height={16} />
+
+      <QuizCard
+        score={populationQuizScore}
+        onPress={openQuizModal(QuizType.HigherOrLowerPopulation)}
+        {...quizzes_cards.POPULATION}
+      />
+      <CustomDivider height={16} />
       <QuizCard
         score={capitalQuizScore}
         onPress={openQuizModal(QuizType.Capital)}
         {...quizzes_cards.CAPITAL}
       />
-      <CustomDivider height={16} />
-      <QuizCard
-        score={0}
-        onPress={openQuizModal(QuizType.HigherOrLowerPopulation)}
-        {...quizzes_cards.HIGHER_OR_LOWER_POPULATION}
-      />
-
       <Modal
         animationType="slide"
         transparent={false}

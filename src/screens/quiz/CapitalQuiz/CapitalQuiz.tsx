@@ -1,11 +1,11 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 
-import Answers from '_features/quiz/components/Answers/Answers';
-import Capital from '_features/quiz/components/Capital/Capital';
-import FinishedQuiz from '_features/quiz/components/FinishedQuiz/FinishedQuiz';
-import QuizHeader from '_features/quiz/components/QuizHeader/QuizHeader';
-import TopBar from '_features/quiz/components/TopBar/TopBar';
+import Answers from '_features/quiz/components/quiz/Answers/Answers';
+import Capital from '_features/quiz/components/quiz/Capital/Capital';
+import FinishedQuiz from '_features/quiz/components/quiz/FinishedQuiz/FinishedQuiz';
+import QuizHeader from '_features/quiz/components/quiz/QuizHeader/QuizHeader';
+import TopBar from '_features/quiz/components/quiz/TopBar/TopBar';
 import useCapitalQuiz from '_features/quiz/hooks/useCapitalQuiz';
 
 import CustomButton from '_components/CustomButton/CustomButton';
@@ -23,7 +23,6 @@ type Props = {
 const CapitalQuiz = ({ closeModal }: Props) => {
   const {
     goToNextQuestionOrSubmitQuiz,
-    initializeQuiz,
     isQuestionAnswered,
     onQuestionAnswered,
     questionAnswers,
@@ -34,12 +33,8 @@ const CapitalQuiz = ({ closeModal }: Props) => {
     capitalToGuess,
   } = useCapitalQuiz();
 
-  const closeModalAndResetQuiz = () => {
-    closeModal();
-    initializeQuiz();
-  };
   const onQuizClosePress = () => {
-    alertOnClose(closeModalAndResetQuiz);
+    alertOnClose(closeModal);
   };
   if (!isQuizFinished) {
     return (
@@ -77,7 +72,7 @@ const CapitalQuiz = ({ closeModal }: Props) => {
     <FinishedQuiz
       totalQuestionsNumber={numberOfQuestions}
       score={score}
-      onButtonPress={closeModalAndResetQuiz}
+      onButtonPress={closeModal}
     />
   );
 };

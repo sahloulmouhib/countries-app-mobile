@@ -2,7 +2,7 @@ import React from 'react';
 
 import CapitalQuiz from '_screens/quiz/CapitalQuiz/CapitalQuiz';
 import FlagQuiz from '_screens/quiz/FlagQuiz/FlagQuiz';
-import HigherOrLowerPopulation from '_screens/quiz/HigherOrLowerPopulation/HigherOrLowerPopulation';
+import HigherOrLowerPopulation from '_screens/quiz/PopulationQuiz/PopulationQuiz';
 
 import { QuizType } from '_features/quiz/models/Quiz';
 

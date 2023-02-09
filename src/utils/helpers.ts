@@ -67,7 +67,7 @@ export const getFromAsyncStorage = async (key: string) => {
     const value = await AsyncStorage.getItem(key);
     return value;
   } catch (e) {
-    console.log(e);
+    __DEV__ && console.log(e);
     return null;
   }
 };
@@ -77,7 +77,7 @@ export const setToAsyncStorage = async (key: string, value: string) => {
   try {
     await AsyncStorage.setItem(key, value);
   } catch (e) {
-    console.log(e);
+    __DEV__ && console.log(e);
   }
 };
 

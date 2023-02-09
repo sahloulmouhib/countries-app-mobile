@@ -7,24 +7,30 @@ import CustomTitle, {
 
 import { colors } from '_utils/theme/colors';
 
+import { strings } from '_i18n';
+
 import styles from './FirstCounter.styles';
 
 type Props = {
   name: string;
   population: number;
-  flag: string;
+  flagEmoji: string;
 };
 
-const FirstCountry = ({ name, population }: Props) => {
+const FirstCountry = ({ name, population, flagEmoji }: Props) => {
   return (
     <View style={styles.container}>
       <CustomTitle
         type={CustomTitleType.H2}
-        title={name}
+        title={`${flagEmoji} ${name}`}
         fontSize={25}
         textAlign="center"
       />
-      <CustomTitle type={CustomTitleType.H4} title={'has'} fontSize={18} />
+      <CustomTitle
+        type={CustomTitleType.H4}
+        title={strings('quiz.population_quiz.has')}
+        fontSize={18}
+      />
       <CustomTitle
         type={CustomTitleType.H2}
         title={population}
@@ -33,7 +39,7 @@ const FirstCountry = ({ name, population }: Props) => {
       />
       <CustomTitle
         type={CustomTitleType.H4}
-        title={'weird people'}
+        title={strings('quiz.population_quiz.people')}
         fontSize={18}
       />
     </View>

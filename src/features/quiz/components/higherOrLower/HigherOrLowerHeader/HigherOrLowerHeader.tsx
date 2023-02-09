@@ -8,6 +8,8 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
+import { strings } from '_i18n';
+
 import styles from './HigherOrLowerHeader.styles';
 
 type Props = {
@@ -21,7 +23,10 @@ const HigherOrLowerHeader = ({ onClose, score }: Props) => {
       <TouchableOpacity onPress={onClose}>
         <FontAwesomeIcon icon={faX} size={18} />
       </TouchableOpacity>
-      <CustomTitle type={CustomTitleType.H3} title={`Score: ${score}`} />
+      <CustomTitle
+        type={CustomTitleType.H3}
+        title={`${strings('quiz.population_quiz.score')} ${score}`}
+      />
     </View>
   );
 };

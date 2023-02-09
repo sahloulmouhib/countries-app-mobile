@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import IMPORTED_COUNTRIES from '_data/countriesV2.json';
 
+import useQuizStore from '../store/quizStore';
+
 interface ICountry {
   id: string;
   name: string;
@@ -38,7 +40,11 @@ const getAndAddRandomIndex = (max: number, usedIndices: Set<number>) => {
   return secondRandomIndex;
 };
 
+const NEXT_TIMEOUT = 2000;
+const LOST_TIMEOUT = 1500;
+
 const useHigherOrLowerPopulation = () => {
+  const { setPopulationQuizScore } = useQuizStore();
   const usedIndices = new Set<number>();
 
   let firstRandomIndex = getAndAddRandomIndex(COUNTRIES.length, usedIndices);
@@ -73,9 +79,10 @@ const useHigherOrLowerPopulation = () => {
   const onRightAnswer = () => {
     setIsCorrect(true);
     setScore(score + 1);
+    setPopulationQuizScore(score + 1);
     setTimeout(() => {
       onNext();
-    }, 2000);
+    }, NEXT_TIMEOUT);
   };
 
   const onNext = () => {
@@ -98,7 +105,7 @@ const useHigherOrLowerPopulation = () => {
     setIsCorrect(false);
     setTimeout(() => {
       setIsGameOver(true);
-    }, 1500);
+    }, LOST_TIMEOUT);
   };
 
   const onRestart = () => {

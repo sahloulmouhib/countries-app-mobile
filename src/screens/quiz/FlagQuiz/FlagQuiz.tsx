@@ -1,11 +1,11 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 
-import Answers from '_features/quiz/components/Answers/Answers';
-import FinishedQuiz from '_features/quiz/components/FinishedQuiz/FinishedQuiz';
-import FlagImage from '_features/quiz/components/FlagImage/FlagImage';
-import QuizHeader from '_features/quiz/components/QuizHeader/QuizHeader';
-import TopBar from '_features/quiz/components/TopBar/TopBar';
+import Answers from '_features/quiz/components/quiz/Answers/Answers';
+import FinishedQuiz from '_features/quiz/components/quiz/FinishedQuiz/FinishedQuiz';
+import FlagImage from '_features/quiz/components/quiz/FlagImage/FlagImage';
+import QuizHeader from '_features/quiz/components/quiz/QuizHeader/QuizHeader';
+import TopBar from '_features/quiz/components/quiz/TopBar/TopBar';
 import useFlagQuiz from '_features/quiz/hooks/useFlagQuiz';
 
 import CustomButton from '_components/CustomButton/CustomButton';
@@ -23,7 +23,6 @@ type Props = {
 const FlagQuiz = ({ closeModal }: Props) => {
   const {
     goToNextQuestionOrSubmitQuiz,
-    initializeQuiz,
     isQuestionAnswered,
     onQuestionAnswered,
     questionAnswers,
@@ -34,12 +33,8 @@ const FlagQuiz = ({ closeModal }: Props) => {
     flagImage,
   } = useFlagQuiz();
 
-  const closeModalAndResetQuiz = () => {
-    closeModal();
-    initializeQuiz();
-  };
   const onQuizClosePress = () => {
-    alertOnClose(closeModalAndResetQuiz);
+    alertOnClose(closeModal);
   };
 
   if (!isQuizFinished) {
@@ -79,7 +74,7 @@ const FlagQuiz = ({ closeModal }: Props) => {
       <FinishedQuiz
         totalQuestionsNumber={numberOfQuestions}
         score={score}
-        onButtonPress={closeModalAndResetQuiz}
+        onButtonPress={closeModal}
       />
     );
   }

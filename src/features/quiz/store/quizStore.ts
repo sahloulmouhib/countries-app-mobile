@@ -6,8 +6,12 @@ import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 interface QuizStore {
   flagQuizScore: number | undefined;
   setFlagQuizScore: (score: number) => void;
+
   capitalQuizScore: number | undefined;
   setCapitalQuizScore: (score: number) => void;
+
+  populationQuizScore: number | undefined;
+  setPopulationQuizScore: (score: number) => void;
 }
 
 const useQuizStore = create<QuizStore>()(
@@ -20,6 +24,9 @@ const useQuizStore = create<QuizStore>()(
         capitalQuizScore: undefined,
         setCapitalQuizScore: (newScore: number) =>
           set(state => ({ ...state, capitalQuizScore: newScore })),
+        populationQuizScore: undefined,
+        setPopulationQuizScore: (newScore: number) =>
+          set(state => ({ ...state, populationQuizScore: newScore })),
       }),
       {
         name: 'quiz-storage',

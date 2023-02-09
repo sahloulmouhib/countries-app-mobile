@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ColorValue } from 'react-native';
+import { ColorValue } from 'react-native';
 
 import { colors } from '_utils/theme/colors';
 
@@ -25,21 +25,19 @@ type Props = {
 
 const CustomTitle = ({ type, color, title, textAlign, fontSize }: Props) => {
   return (
-    <View>
-      <CustomText
-        text={title}
-        style={[
-          [
-            styles[type],
-            {
-              color: color ?? colors.BLACK,
-              textAlign: textAlign ?? 'left',
-              fontSize: fontSize ?? styles[type].fontSize,
-            },
-          ],
-        ]}
-      />
-    </View>
+    <CustomText
+      text={title}
+      style={[
+        [
+          styles[type],
+          {
+            color: color ?? colors.BLACK,
+            textAlign: textAlign ?? 'left',
+            fontSize: fontSize ?? styles[type].fontSize,
+          },
+        ],
+      ]}
+    />
   );
 };
 

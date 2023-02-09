@@ -71,6 +71,6 @@ export const openMap = async (lat: number, lng: number, label: string) => {
       await Linking.openURL(url);
     }
   } catch (e) {
-    console.log('error', e);
+    __DEV__ && console.log('error', e);
   }
 };
