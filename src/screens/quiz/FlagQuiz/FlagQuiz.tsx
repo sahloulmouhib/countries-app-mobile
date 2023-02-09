@@ -2,8 +2,8 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import Answers from '_features/quiz/components/quiz/Answers/Answers';
-import FinishedQuiz from '_features/quiz/components/quiz/FinishedQuiz/FinishedQuiz';
 import FlagImage from '_features/quiz/components/quiz/FlagImage/FlagImage';
+import FinishedQuiz from '_features/quiz/components/quiz/QuizFinished/QuizFinished';
 import QuizHeader from '_features/quiz/components/quiz/QuizHeader/QuizHeader';
 import TopBar from '_features/quiz/components/quiz/TopBar/TopBar';
 import useFlagQuiz from '_features/quiz/hooks/useFlagQuiz';

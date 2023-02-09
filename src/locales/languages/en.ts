@@ -83,6 +83,10 @@ export default {
       higher_button: 'Higher',
       lower_button: 'Lower',
       score: 'Score :',
+      your_score: 'Your score is',
+      finish: 'Finish',
+      play_again: 'Play again',
+      quiz_completed: 'Game Over! try again',
     },
   },
 };

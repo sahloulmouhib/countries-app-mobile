@@ -13,7 +13,7 @@ import CustomTitle, {
 
 import { strings } from '_i18n';
 
-import styles from './FinishedQuiz.styles';
+import styles from './QuizFinished.styles';
 
 type Props = {
   score: number;
@@ -21,7 +21,7 @@ type Props = {
   totalQuestionsNumber: number;
 };
 
-const FinishedQuiz = ({
+const QuizFinished = ({
   onButtonPress,
   score,
   totalQuestionsNumber,
@@ -60,4 +60,4 @@ const FinishedQuiz = ({
   );
 };
 
-export default FinishedQuiz;
+export default QuizFinished;

@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 
 import Answers from '_features/quiz/components/quiz/Answers/Answers';
 import Capital from '_features/quiz/components/quiz/Capital/Capital';
-import FinishedQuiz from '_features/quiz/components/quiz/FinishedQuiz/FinishedQuiz';
+import FinishedQuiz from '_features/quiz/components/quiz/QuizFinished/QuizFinished';
 import QuizHeader from '_features/quiz/components/quiz/QuizHeader/QuizHeader';
 import TopBar from '_features/quiz/components/quiz/TopBar/TopBar';
 import useCapitalQuiz from '_features/quiz/hooks/useCapitalQuiz';

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 
 import FirstCountry from '_features/quiz/components/higherOrLower/FirstCountry/FirstCountry';
+import HigherOrLowerFinished from '_features/quiz/components/higherOrLower/HigherOrLowerFinished/HigherOrLowerFinished';
 import HigherOrLowerHeader from '_features/quiz/components/higherOrLower/HigherOrLowerHeader/HigherOrLowerHeader';
 import SecondCountry from '_features/quiz/components/higherOrLower/SecondCountry/SecondCountry';
 import VersusDivider from '_features/quiz/components/higherOrLower/VersusDivider/VersusDivider';
@@ -33,10 +34,11 @@ const PopulationQuiz = ({ closeModal }: Props) => {
 
   if (isGameOver) {
     return (
-      <View>
-        <Text>Game Over</Text>
-        <Button title="Play Again" onPress={onRestart} />
-      </View>
+      <HigherOrLowerFinished
+        onClose={closeModal}
+        score={score}
+        onRestart={onRestart}
+      />
     );
   }
   return (
