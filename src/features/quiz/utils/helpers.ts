@@ -6,7 +6,7 @@ import {
 
 import COUNTRIES from '_data/countries.json';
 
-import { IFlagQuiz, IAnswer, IFlagQuestion, QuizType } from '../models/Quiz';
+import { IFlagQuiz, IAnswer, IFlagQuestion } from '../models/Quiz';
 import { ICapitalQuestion, ICapitalQuiz } from '../models/Quiz';
 
 import {
@@ -92,11 +92,19 @@ export function createRandomCapitalQuiz(
   return quiz;
 }
 
-export const createQuiz = (quizType: QuizType) => {
-  switch (quizType) {
-    case QuizType.Flag:
-      return createRandomFlagQuiz(DECODED_COUNTRIES);
-    case QuizType.Capital:
-      return createRandomCapitalQuiz(DECODED_COUNTRIES);
+export const getRandomIndex = (max: number): number => {
+  let randomIndex = Math.floor(Math.random() * max);
+  return randomIndex;
+};
+
+export const getAndAddRandomIndexToSet = (
+  max: number,
+  usedIndices: Set<number>,
+) => {
+  let secondRandomIndex = getRandomIndex(max);
+  while (usedIndices.has(secondRandomIndex)) {
+    secondRandomIndex = getRandomIndex(max);
   }
+  usedIndices.add(secondRandomIndex);
+  return secondRandomIndex;
 };

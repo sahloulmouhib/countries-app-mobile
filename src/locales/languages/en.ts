@@ -53,7 +53,7 @@ export default {
     title: 'Choose a quiz',
     best_score: 'Best Score',
     flag_quiz: {
-      title: 'Flag Quiz',
+      title: 'Flag quiz',
       description: 'Guess the country from the flag',
       next: 'Next',
       finish: 'Finish',
@@ -64,7 +64,7 @@ export default {
       guess_the_flag: 'Guess the flag!',
     },
     capital_quiz: {
-      title: 'Capital Quiz',
+      title: 'Capital quiz',
       description: 'Guess the country from the capital',
       next: 'Next',
       finish: 'Finish',
@@ -75,7 +75,7 @@ export default {
       guess_the_capital: 'Guess the capital!',
     },
     population_quiz: {
-      title: 'Population Quiz',
+      title: 'Population quiz',
       description: 'Guess which country has the higher or lower population',
       people: 'people',
       people_than: 'people than',

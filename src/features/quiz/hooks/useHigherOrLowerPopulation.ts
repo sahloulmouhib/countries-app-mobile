@@ -3,6 +3,7 @@ import { useState } from 'react';
 import IMPORTED_COUNTRIES from '_data/countriesV2.json';
 
 import useQuizStore from '../store/quizStore';
+import { getAndAddRandomIndexToSet } from '../utils/helpers';
 
 interface ICountry {
   id: string;
@@ -26,20 +27,6 @@ interface ICountry {
 
 const COUNTRIES = IMPORTED_COUNTRIES as unknown as ICountry[];
 
-const getRandomIndex = (max: number): number => {
-  let randomIndex = Math.floor(Math.random() * max);
-  return randomIndex;
-};
-
-const getAndAddRandomIndex = (max: number, usedIndices: Set<number>) => {
-  let secondRandomIndex = getRandomIndex(max);
-  while (usedIndices.has(secondRandomIndex)) {
-    secondRandomIndex = getRandomIndex(max);
-  }
-  usedIndices.add(secondRandomIndex);
-  return secondRandomIndex;
-};
-
 const NEXT_TIMEOUT = 2000;
 const LOST_TIMEOUT = 1500;
 
@@ -47,8 +34,14 @@ const useHigherOrLowerPopulation = () => {
   const { setPopulationQuizScore } = useQuizStore();
   const usedIndices = new Set<number>();
 
-  let firstRandomIndex = getAndAddRandomIndex(COUNTRIES.length, usedIndices);
-  let secondRandomIndex = getAndAddRandomIndex(COUNTRIES.length, usedIndices);
+  let firstRandomIndex = getAndAddRandomIndexToSet(
+    COUNTRIES.length,
+    usedIndices,
+  );
+  let secondRandomIndex = getAndAddRandomIndexToSet(
+    COUNTRIES.length,
+    usedIndices,
+  );
 
   const [firstCountry, setFirstCountry] = useState(COUNTRIES[firstRandomIndex]);
   const [secondCountry, setSecondCountry] = useState(
@@ -90,7 +83,7 @@ const useHigherOrLowerPopulation = () => {
       setIsGameOver(true);
     } else {
       setIsCorrect(undefined);
-      const newSecondCountryIndex = getAndAddRandomIndex(
+      const newSecondCountryIndex = getAndAddRandomIndexToSet(
         COUNTRIES.length,
         usedIndices,
       );
@@ -110,8 +103,11 @@ const useHigherOrLowerPopulation = () => {
 
   const onRestart = () => {
     usedIndices.clear();
-    firstRandomIndex = getAndAddRandomIndex(COUNTRIES.length, usedIndices);
-    secondRandomIndex = getAndAddRandomIndex(COUNTRIES.length, usedIndices);
+    firstRandomIndex = getAndAddRandomIndexToSet(COUNTRIES.length, usedIndices);
+    secondRandomIndex = getAndAddRandomIndexToSet(
+      COUNTRIES.length,
+      usedIndices,
+    );
     setFirstCountry(COUNTRIES[firstRandomIndex]);
     setSecondCountry(COUNTRIES[secondRandomIndex]);
     setIsGameOver(false);
