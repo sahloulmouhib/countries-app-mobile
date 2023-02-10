@@ -53,11 +53,11 @@ const VersusDivider = (props: Props) => {
     VERSUS_DIVIDER_STYLES[versusDividerType];
   return (
     <View style={styles.container}>
-      <CustomDivider height={1} color={borderColor} width={'50%'} />
+      <CustomDivider height={2} color={borderColor} width={'50%'} />
       <View style={{ ...styles.icon, borderColor, backgroundColor }}>
         <FontAwesomeIcon icon={icon} size={25} color={iconColor} />
       </View>
-      <CustomDivider height={1} color={borderColor} width={'50%'} />
+      <CustomDivider height={2} color={borderColor} width={'50%'} />
     </View>
   );
 };

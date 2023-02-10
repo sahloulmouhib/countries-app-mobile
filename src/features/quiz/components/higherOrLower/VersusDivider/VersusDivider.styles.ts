@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   icon: {
     borderRadius: 50,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: colors.GREY_MEDIUM,
     padding: 16,
   },

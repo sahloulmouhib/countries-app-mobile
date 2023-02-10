@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
+import FastImage from 'react-native-fast-image2';
 
 import { faArrowLeft, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -12,6 +13,7 @@ import CustomButton from '_components/CustomButton/CustomButton';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
+import { icons } from '_utils/icons';
 import { COUNTRY_DETAILS_SCREEN } from '_utils/screenNames';
 
 import styles from './CountryDetails.styles';
@@ -34,7 +36,8 @@ const CountryDetails = ({ route, navigation }: Props) => {
         <FontAwesomeIcon size={15} icon={faArrowLeft} />
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.innerContainer}>
-        <Image
+        <FastImage
+          defaultSource={icons.PLACEHOLDER_IMAGE}
           source={{ uri: country.flag }}
           resizeMode="cover"
           style={styles.flag}

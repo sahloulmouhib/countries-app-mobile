@@ -31,7 +31,6 @@ export default StyleSheet.create({
   flag: {
     width: SCREEN_WIDTH,
     aspectRatio: ASPECT_RATIO,
-    backgroundColor: 'red',
   },
   button: {
     position: 'absolute',
