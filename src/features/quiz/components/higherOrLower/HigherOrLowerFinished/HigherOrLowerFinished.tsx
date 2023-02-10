@@ -5,14 +5,14 @@ import Lottie from 'lottie-react-native';
 
 import { animations } from '_features/quiz/utils/animations';
 
-import CustomButton from '_components/CustomButton/CustomButton';
-import CustomButtonOutline from '_components/CustomButtonOutline/CustomButtonOutline';
 import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
 import { strings } from '_i18n';
+
+import FinishOrRestartButtons from '../../FinishOrRestartButtons/FinishOrRestartButtons';
 
 import styles from './HigherOrLowerFinished.styles';
 
@@ -46,21 +46,7 @@ const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
         />
         <CustomTitle fontSize={50} type={CustomTitleType.H2} title={score} />
       </View>
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <CustomButtonOutline
-            title={strings('quiz.population_quiz.finish')}
-            onPress={onClose}
-          />
-        </View>
-        <CustomDivider width={16} />
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            title={strings('quiz.population_quiz.play_again')}
-            onPress={onRestart}
-          />
-        </View>
-      </View>
+      <FinishOrRestartButtons onRestart={onRestart} onClose={onClose} />
     </View>
   );
 };

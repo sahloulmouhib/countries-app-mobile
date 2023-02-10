@@ -7,7 +7,7 @@ import {
 import COUNTRIES from '_data/countries.json';
 
 import { IFlagQuiz, IAnswer, IFlagQuestion } from '../models/Quiz';
-import { ICapitalQuestion, ICapitalQuiz } from '../models/Quiz';
+import { ICapitalQuestion, ICapitalQuiz, AnswerType } from '../models/Quiz';
 
 import {
   DEFAULT_QUIZ_NB_QUESTIONS,
@@ -17,6 +17,16 @@ import {
 export const DECODED_COUNTRIES = decodeCountries(
   COUNTRIES as unknown as ICountryResponse[],
 );
+
+export const createLocalQuizQuestionAnswers = (
+  index: number,
+  quiz: ICapitalQuiz | IFlagQuiz,
+) => {
+  return quiz.questions[index].answers.map(answer => ({
+    ...answer,
+    type: AnswerType.Default,
+  }));
+};
 
 export function createRandomFlagQuiz(
   countries: ICountry[],

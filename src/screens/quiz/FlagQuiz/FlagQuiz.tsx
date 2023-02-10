@@ -31,6 +31,7 @@ const FlagQuiz = ({ closeModal }: Props) => {
     score,
     numberOfQuestions,
     flagImage,
+    initializeQuiz,
   } = useFlagQuiz();
 
   const onQuizClosePress = () => {
@@ -74,7 +75,8 @@ const FlagQuiz = ({ closeModal }: Props) => {
       <FinishedQuiz
         totalQuestionsNumber={numberOfQuestions}
         score={score}
-        onButtonPress={closeModal}
+        onClose={closeModal}
+        onRestart={initializeQuiz}
       />
     );
   }

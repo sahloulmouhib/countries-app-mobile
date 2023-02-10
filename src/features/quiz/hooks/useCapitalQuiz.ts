@@ -7,24 +7,24 @@ import {
 } from '_features/quiz/models/Quiz';
 
 import useQuizStore from '../store/quizStore';
-import { createRandomCapitalQuiz, DECODED_COUNTRIES } from '../utils/helpers';
+import {
+  createLocalQuizQuestionAnswers,
+  createRandomCapitalQuiz,
+  DECODED_COUNTRIES,
+} from '../utils/helpers';
 
 const useCapitalQuiz = () => {
   const [quiz, setQuiz] = useState(createRandomCapitalQuiz(DECODED_COUNTRIES));
-
   const { setCapitalQuizScore } = useQuizStore();
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
   const capitalToGuess = quiz.questions[questionIndex].capital;
-  const createLocalQuizQuestionAnswers = (index: number) => {
-    return quiz.questions[index].answers.map(answer => ({
-      ...answer,
-      type: AnswerType.Default,
-    }));
-  };
-  const localQuizQuestionAnswersInitialValues =
-    createLocalQuizQuestionAnswers(0);
+
+  const localQuizQuestionAnswersInitialValues = createLocalQuizQuestionAnswers(
+    questionIndex,
+    quiz,
+  );
 
   const [questionAnswers, setQuestionAnswers] = useState<ILocalAnswer[]>(
     localQuizQuestionAnswersInitialValues,
@@ -73,7 +73,7 @@ const useCapitalQuiz = () => {
           return prevState + 1;
         });
         setQuestionAnswers(
-          createLocalQuizQuestionAnswers(prevQuestionIndex + 1),
+          createLocalQuizQuestionAnswers(prevQuestionIndex + 1, quiz),
         );
         setIsQuestionAnswered(false);
       }
@@ -86,10 +86,11 @@ const useCapitalQuiz = () => {
   };
 
   const initializeQuiz = () => {
+    const newQuiz = createRandomCapitalQuiz(DECODED_COUNTRIES);
+    setQuiz(newQuiz);
     setQuestionIndex(0);
-    setQuestionAnswers(localQuizQuestionAnswersInitialValues);
+    setQuestionAnswers(createLocalQuizQuestionAnswers(0, newQuiz));
     setIsQuestionAnswered(false);
-    setQuiz(createRandomCapitalQuiz(DECODED_COUNTRIES));
     userAnswers.current = [];
     setScore(0);
     setIsQuizFinished(false);

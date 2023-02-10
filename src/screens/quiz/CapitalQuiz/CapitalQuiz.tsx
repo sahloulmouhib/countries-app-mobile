@@ -31,6 +31,7 @@ const CapitalQuiz = ({ closeModal }: Props) => {
     score,
     numberOfQuestions,
     capitalToGuess,
+    initializeQuiz,
   } = useCapitalQuiz();
 
   const onQuizClosePress = () => {
@@ -72,7 +73,8 @@ const CapitalQuiz = ({ closeModal }: Props) => {
     <FinishedQuiz
       totalQuestionsNumber={numberOfQuestions}
       score={score}
-      onButtonPress={closeModal}
+      onClose={closeModal}
+      onRestart={initializeQuiz}
     />
   );
 };

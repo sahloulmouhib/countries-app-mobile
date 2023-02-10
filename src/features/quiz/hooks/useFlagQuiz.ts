@@ -7,7 +7,11 @@ import {
 } from '_features/quiz/models/Quiz';
 
 import useQuizStore from '../store/quizStore';
-import { DECODED_COUNTRIES, createRandomFlagQuiz } from '../utils/helpers';
+import {
+  DECODED_COUNTRIES,
+  createRandomFlagQuiz,
+  createLocalQuizQuestionAnswers,
+} from '../utils/helpers';
 
 const useFlagQuiz = () => {
   const [quiz, setQuiz] = useState(createRandomFlagQuiz(DECODED_COUNTRIES));
@@ -17,14 +21,11 @@ const useFlagQuiz = () => {
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
   const flagImage = quiz.questions[questionIndex].flag;
-  const createLocalQuizQuestionAnswers = (index: number) => {
-    return quiz.questions[index].answers.map(answer => ({
-      ...answer,
-      type: AnswerType.Default,
-    }));
-  };
-  const localQuizQuestionAnswersInitialValues =
-    createLocalQuizQuestionAnswers(0);
+
+  const localQuizQuestionAnswersInitialValues = createLocalQuizQuestionAnswers(
+    0,
+    quiz,
+  );
 
   const [questionAnswers, setQuestionAnswers] = useState<ILocalAnswer[]>(
     localQuizQuestionAnswersInitialValues,
@@ -73,7 +74,7 @@ const useFlagQuiz = () => {
           return prevState + 1;
         });
         setQuestionAnswers(
-          createLocalQuizQuestionAnswers(prevQuestionIndex + 1),
+          createLocalQuizQuestionAnswers(prevQuestionIndex + 1, quiz),
         );
         setIsQuestionAnswered(false);
       }
@@ -86,9 +87,10 @@ const useFlagQuiz = () => {
   };
 
   const initializeQuiz = () => {
+    const newQuiz = createRandomFlagQuiz(DECODED_COUNTRIES);
+    setQuiz(newQuiz);
+    setQuestionAnswers(createLocalQuizQuestionAnswers(0, newQuiz));
     setQuestionIndex(0);
-    setQuiz(createRandomFlagQuiz(DECODED_COUNTRIES));
-    setQuestionAnswers(localQuizQuestionAnswersInitialValues);
     setIsQuestionAnswered(false);
     userAnswers.current = [];
     setScore(0);

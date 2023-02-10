@@ -5,7 +5,6 @@ import Lottie from 'lottie-react-native';
 
 import { animations } from '_features/quiz/utils/animations';
 
-import CustomButton from '_components/CustomButton/CustomButton';
 import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
@@ -13,16 +12,20 @@ import CustomTitle, {
 
 import { strings } from '_i18n';
 
+import FinishOrRestartButtons from '../../FinishOrRestartButtons/FinishOrRestartButtons';
+
 import styles from './QuizFinished.styles';
 
 type Props = {
   score: number;
-  onButtonPress: () => void;
+  onClose: () => void;
+  onRestart: () => void;
   totalQuestionsNumber: number;
 };
 
 const QuizFinished = ({
-  onButtonPress,
+  onClose,
+  onRestart,
   score,
   totalQuestionsNumber,
 }: Props) => {
@@ -52,10 +55,7 @@ const QuizFinished = ({
         />
       </View>
 
-      <CustomButton
-        title={strings('quiz.flag_quiz.finish')}
-        onPress={onButtonPress}
-      />
+      <FinishOrRestartButtons onRestart={onRestart} onClose={onClose} />
     </View>
   );
 };
