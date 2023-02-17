@@ -1,16 +1,19 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import NavigationContainer from '_navigation/NavigationContainer';
 
 const Layout = () => {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container} edges={['top']}>
-        <NavigationContainer />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={styles.container}>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container} edges={['top']}>
+          <NavigationContainer />
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 };
 

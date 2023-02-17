@@ -33,8 +33,11 @@
     "react": "18.2.0",
     "react-i18next": "^12.1.4",
     "react-native": "0.71.1",
+    "react-native-animated-numbers": "^0.4.1",
     "react-native-fast-image2": "^8.3.11",
+    "react-native-gesture-handler": "^2.9.0",
     "react-native-linear-gradient": "^2.6.2",
+    "react-native-reanimated": "^2.14.4",
     "react-native-safe-area-context": "^4.5.0",
     "react-native-screens": "^3.19.0",
     "react-native-skeleton-placeholder": "^5.2.4",
@@ -64,5 +67,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "resolutions": {
+    "react-native-gesture-handler": "^2.9.0"
   }
 }

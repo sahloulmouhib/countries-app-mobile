@@ -1,42 +1,24 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { SafeAreaView, Button } from 'react-native';
+import AnimatedNumbers from 'react-native-animated-numbers';
 
-import useHigherOrLower from '_features/quiz/hooks/useHigherOrLowerPopulation';
+const App = () => {
+  const [animateToNumber, setAnimateToNumber] = React.useState(1);
 
-const TempScreen = () => {
-  const {
-    firstCountry,
-    secondCountry,
-    isCorrect,
-    isGameOver,
-    onHigher,
-    onLower,
-    onRestart,
-  } = useHigherOrLower();
-  console.log('firstCountry', firstCountry);
-  console.log('secondCountry', secondCountry);
-  console.log('isCorrect', isCorrect);
-  console.log('isGameOver', isGameOver);
+  const increase = () => {
+    setAnimateToNumber(593232);
+  };
 
-  if (isGameOver) {
-    return (
-      <View>
-        <Text>Game Over</Text>
-
-        <Button title="Play Again" onPress={onRestart} />
-      </View>
-    );
-  }
   return (
-    <View>
-      <Text>{firstCountry.name + '   ' + firstCountry.population}</Text>
-      <Text>{secondCountry.name + '   ' + secondCountry.population}</Text>
-
-      <Button title="higher" onPress={onHigher} />
-      <Button title="lower" onPress={onLower} />
-      <Text>{isCorrect ? 'correct' : 'incorrect'}</Text>
-    </View>
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <AnimatedNumbers
+        includeComma
+        animateToNumber={animateToNumber}
+        fontStyle={{ fontSize: 50, fontWeight: 'bold' }}
+      />
+      <Button title="increase" onPress={increase} />
+    </SafeAreaView>
   );
 };
-
-export default TempScreen;
+export default App;
