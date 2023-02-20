@@ -6,11 +6,12 @@ import {
   IAnswerToQuestion,
 } from '_features/quiz/models/Quiz';
 
+import { DECODED_COUNTRIES } from '_data/countries-data';
+
 import useQuizStore from '../store/quizStore';
 import {
   createLocalQuizQuestionAnswers,
   createRandomCapitalQuiz,
-  DECODED_COUNTRIES,
 } from '../utils/helpers';
 
 const useCapitalQuiz = () => {

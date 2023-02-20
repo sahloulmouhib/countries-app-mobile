@@ -18,12 +18,12 @@ type Props = {
 };
 
 const CountryCard = ({ country, onPress }: Props) => {
-  const { name, capital, flag } = country;
+  const { name, capital, flagImage } = country;
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <FastImage
         style={styles.flagImage}
-        source={{ uri: flag }}
+        source={{ uri: flagImage }}
         resizeMode="cover"
         defaultSource={icons.PLACEHOLDER_IMAGE}
       />

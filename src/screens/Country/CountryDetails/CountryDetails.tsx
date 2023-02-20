@@ -38,7 +38,7 @@ const CountryDetails = ({ route, navigation }: Props) => {
       <ScrollView contentContainerStyle={styles.innerContainer}>
         <FastImage
           defaultSource={icons.PLACEHOLDER_IMAGE}
-          source={{ uri: country.flag }}
+          source={{ uri: country.flagImage }}
           resizeMode="cover"
           style={styles.flag}
         />

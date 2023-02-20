@@ -1,31 +1,26 @@
 import { useState } from 'react';
 
+import { DECODED_COUNTRIES } from '_data/countries-data';
+
 import { searchAndPaginateData } from '_utils/helpers';
 
-interface UseFetchPaginatedLocalType<D = any, T = any> {
-  dataInput: D[];
-  decodeData: (value: D[]) => T[];
+import { ICountry } from '../models/Country';
+
+interface UseFetchPaginatedCountryLocalType {
   filter?: string;
   filterBy?: string;
   rowsPerPage?: number;
 }
 
-const useFetchPaginatedCountryLocal = <D = any, T = any>(
-  config: UseFetchPaginatedLocalType<D, T>,
+const useFetchPaginatedCountryLocal = (
+  config: UseFetchPaginatedCountryLocalType,
 ) => {
   const DEFAULT_PAGE_NUMBER = 1;
   const DEFAULT_ROWS_PER_PAGE = 10;
   const SLEEP_TIME = 100;
-  const {
-    dataInput,
-    decodeData,
-    filter,
-    filterBy,
-    rowsPerPage = DEFAULT_ROWS_PER_PAGE,
-  } = config;
+  const { filter, filterBy, rowsPerPage = DEFAULT_ROWS_PER_PAGE } = config;
 
-  const DECODED_DATA = decodeData(dataInput);
-  const [data, setData] = useState<T[]>([]);
+  const [data, setData] = useState<ICountry[]>([]);
   const [resultsCount, setResultsCount] = useState<number | undefined>(
     undefined,
   );
@@ -40,7 +35,7 @@ const useFetchPaginatedCountryLocal = <D = any, T = any>(
 
   const fetchData = (page: number) => {
     const res = searchAndPaginateData(
-      DECODED_DATA,
+      DECODED_COUNTRIES,
       page,
       filter,
       filterBy,

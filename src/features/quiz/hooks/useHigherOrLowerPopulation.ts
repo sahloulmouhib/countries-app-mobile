@@ -1,31 +1,9 @@
 import { useState } from 'react';
 
-import IMPORTED_COUNTRIES from '_data/countriesV2.json';
+import { COUNTRIES } from '_data/countries-data';
 
 import useQuizStore from '../store/quizStore';
 import { getAndAddRandomIndexToSet } from '../utils/helpers';
-
-interface ICountry {
-  id: string;
-  name: string;
-  capital: string;
-  region: string;
-  subregion: string;
-  flagImage: string;
-  flagEmoji: string;
-  continents: string[];
-  area: number;
-  population: number;
-  languages: string[];
-  currencies: string[];
-  timezones: string[];
-  latlng: {
-    lat: number;
-    lng: number;
-  };
-}
-
-const COUNTRIES = IMPORTED_COUNTRIES as unknown as ICountry[];
 
 const NEXT_TIMEOUT = 2000;
 const LOST_TIMEOUT = 1500;

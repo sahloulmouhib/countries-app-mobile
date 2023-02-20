@@ -8,20 +8,16 @@ export const sortCountriesAlphabetically = (countries: ICountry[]) => {
   return countries.sort((a, b) => a.name.localeCompare(b.name));
 };
 
-export const getLanguages = (data: { [key: string]: string }) => {
-  let languages = [];
-  for (let key in data) {
-    languages.push(data[key] + ' ');
-  }
-  return languages.join(', ');
+export const getLanguages = (data: string[]) => {
+  return data.join(', ');
 };
 
-export const getCurrencies = (data: { [key: string]: any }) => {
-  let currencies = [];
-  for (let key in data) {
-    currencies.push(data[key].name + ' ');
-  }
-  return currencies.join(',');
+export const getCurrencies = (data: string[]) => {
+  return data.join(',');
+};
+
+export const getContinents = (data: string[]) => {
+  return data.join(',');
 };
 
 export const formatPopulation = (population: number): string => {

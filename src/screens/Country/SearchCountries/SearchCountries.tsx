@@ -6,11 +6,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import CountryCard from '_features/country/components/CountryCard/CountryCard';
 import CountryCardSkeletons from '_features/country/components/CountryCardSkeletons/CountryCardSkeletons';
 import useFetchPaginatedCountryLocal from '_features/country/hooks/useFetchPaginatedCountryLocal';
-import {
-  decodeCountries,
-  ICountry,
-  ICountryResponse,
-} from '_features/country/models/Country';
+import { ICountry } from '_features/country/models/Country';
 
 import CustomFlatlist from '_components/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
@@ -18,8 +14,6 @@ import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
 import useDebounceText from '_hooks/useDebounceText';
-
-import COUNTRIES_DATA from '_data/countries.json';
 
 import { DEBOUNCE_TIME } from '_utils/constants';
 import {
@@ -35,7 +29,7 @@ type Props = NativeStackScreenProps<
   CountryStackParamList,
   typeof SEARCH_COUNTRIES_SCREEN
 >;
-const COUNTRIES = COUNTRIES_DATA as unknown as ICountryResponse[];
+
 const SearchCountries = ({ navigation }: Props) => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
@@ -52,9 +46,7 @@ const SearchCountries = ({ navigation }: Props) => {
     isRefreshing,
     hasLoadedAll,
     setData,
-  } = useFetchPaginatedCountryLocal<ICountryResponse, ICountry>({
-    dataInput: COUNTRIES,
-    decodeData: decodeCountries,
+  } = useFetchPaginatedCountryLocal({
     filter: searchText,
     filterBy: 'name',
   });

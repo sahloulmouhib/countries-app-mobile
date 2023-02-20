@@ -24,7 +24,7 @@ type Props = {
   secondCountryPopulation: number;
   secondCountryFlagEmoji: string;
   isQuestionAnswered: boolean;
-  isCorrect: boolean;
+  isCorrect: boolean | undefined;
 };
 
 const SecondCountry = ({
@@ -78,7 +78,13 @@ const SecondCountry = ({
       ) : (
         <>
           <CustomTitle
-            color={isCorrect ? colors.GREEN : colors.RED}
+            color={
+              isCorrect === undefined
+                ? colors.BLACK
+                : isCorrect
+                ? colors.GREEN
+                : colors.RED
+            }
             type={CustomTitleType.H2}
             title={secondCountryPopulation.toLocaleString()}
             fontSize={40}

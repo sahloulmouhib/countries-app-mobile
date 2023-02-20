@@ -6,9 +6,10 @@ import {
   IAnswerToQuestion,
 } from '_features/quiz/models/Quiz';
 
+import { DECODED_COUNTRIES } from '_data/countries-data';
+
 import useQuizStore from '../store/quizStore';
 import {
-  DECODED_COUNTRIES,
   createRandomFlagQuiz,
   createLocalQuizQuestionAnswers,
 } from '../utils/helpers';

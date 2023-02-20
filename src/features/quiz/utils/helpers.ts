@@ -1,10 +1,4 @@
-import {
-  decodeCountries,
-  ICountry,
-  ICountryResponse,
-} from '_features/country/models/Country';
-
-import COUNTRIES from '_data/countries.json';
+import { ICountry } from '_features/country/models/Country';
 
 import { IFlagQuiz, IAnswer, IFlagQuestion } from '../models/Quiz';
 import { ICapitalQuestion, ICapitalQuiz, AnswerType } from '../models/Quiz';
@@ -13,10 +7,6 @@ import {
   DEFAULT_QUIZ_NB_QUESTIONS,
   DEFAULT_QUIZ_NB_ANSWERS,
 } from './constants';
-
-export const DECODED_COUNTRIES = decodeCountries(
-  COUNTRIES as unknown as ICountryResponse[],
-);
 
 export const createLocalQuizQuestionAnswers = (
   index: number,
@@ -57,7 +47,7 @@ export function createRandomFlagQuiz(
     const question: IFlagQuestion = {
       id: i.toString(),
       correctAnswerId: countries[correctCountryIndex!].id,
-      flag: countries[correctCountryIndex!].flag,
+      flag: countries[correctCountryIndex!].flagImage,
       answers: answers,
     };
     quiz.questions.push(question);
