@@ -6169,14 +6169,6 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-animated-numbers@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-animated-numbers/-/react-native-animated-numbers-0.4.1.tgz#c8e4188326bf2adcf04a37d95db714939ba71031"
-  integrity sha512-3ZnJ5XBipdPeET4vWh8X4YinGaspb28Lp9Aw/n39r57+8ApWp+0pRFeNobG4FBo6UzBjRmMydD7q+fAC+5LZsA==
-  dependencies:
-    react-native-gesture-handler "^1.10.3"
-    react-native-reanimated "^2.2.4"
-
 react-native-codegen@^0.71.3:
   version "0.71.3"
   resolved "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.71.3.tgz"
@@ -6192,7 +6184,7 @@ react-native-fast-image2@^8.3.11:
   resolved "https://registry.yarnpkg.com/react-native-fast-image2/-/react-native-fast-image2-8.3.11.tgz#c7baf6bf613e617b58f003b327466f357768e398"
   integrity sha512-iVhp0JxGM2joMsDJ79+wOMqCt75R1L9bubpU/Ea+CDTQNBr0CGiQwcxFi0LMjmIvtx6WHiOgXOQeHu6treOxhw==
 
-react-native-gesture-handler@^1.10.3, react-native-gesture-handler@^2.9.0:
+react-native-gesture-handler@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.9.0.tgz#2f63812e523c646f25b9ad660fc6f75948e51241"
   integrity sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg==
@@ -6213,7 +6205,7 @@ react-native-linear-gradient@^2.6.2:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.6.2.tgz#56598a76832724b2afa7889747635b5c80948f38"
   integrity sha512-Z8Xxvupsex+9BBFoSYS87bilNPWcRfRsGC0cpJk72Nxb5p2nEkGSBv73xZbEHnW2mUFvP+huYxrVvjZkr/gRjQ==
 
-react-native-reanimated@^2.14.4, react-native-reanimated@^2.2.4:
+react-native-reanimated@^2.14.4:
   version "2.14.4"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.14.4.tgz#3fa3da4e7b99f5dfb28f86bcf24d9d1024d38836"
   integrity sha512-DquSbl7P8j4SAmc+kRdd75Ianm8G+IYQ9T4AQ6lrpLVeDkhZmjWI0wkutKWnp6L7c5XNVUrFDUf69dwETLCItQ==
