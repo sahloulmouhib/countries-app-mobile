@@ -33,9 +33,9 @@ const FirstCountry = ({ name, population, flagEmoji }: Props) => {
       />
       <CustomTitle
         type={CustomTitleType.H2}
-        title={population}
+        title={population.toLocaleString()}
         fontSize={40}
-        color={colors.GREEN}
+        color={colors.BLACK}
       />
       <CustomTitle
         type={CustomTitleType.H4}

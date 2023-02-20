@@ -8,6 +8,8 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
+import { colors } from '_utils/theme/colors';
+
 import { strings } from '_i18n';
 
 import HigherOrLowerButton from '../HigherOrLowerButton/HigherOrLowerButton';
@@ -22,6 +24,7 @@ type Props = {
   secondCountryPopulation: number;
   secondCountryFlagEmoji: string;
   isQuestionAnswered: boolean;
+  isCorrect: boolean;
 };
 
 const SecondCountry = ({
@@ -32,6 +35,7 @@ const SecondCountry = ({
   isQuestionAnswered,
   secondCountryPopulation,
   secondCountryFlagEmoji,
+  isCorrect,
 }: Props) => {
   return (
     <View style={styles.container}>
@@ -74,8 +78,9 @@ const SecondCountry = ({
       ) : (
         <>
           <CustomTitle
+            color={isCorrect ? colors.GREEN : colors.RED}
             type={CustomTitleType.H2}
-            title={secondCountryPopulation}
+            title={secondCountryPopulation.toLocaleString()}
             fontSize={40}
           />
           <CustomTitle

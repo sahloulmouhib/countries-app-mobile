@@ -55,6 +55,7 @@ const PopulationQuiz = ({ closeModal }: Props) => {
         <Text>{'pop' + secondCountry.population}</Text>
         <VersusDivider isCorrect={isCorrect} />
         <SecondCountry
+          isCorrect={isCorrect}
           secondCountryFlagEmoji={secondCountry.flagEmoji}
           firstCountryName={firstCountry.name}
           secondCountryName={secondCountry.name}

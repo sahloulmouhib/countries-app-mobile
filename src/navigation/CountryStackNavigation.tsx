@@ -2,7 +2,6 @@ import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import TempScreen from '_screens/TempScreen/TempScreen';
 import CountryDetails from '_screens/country/CountryDetails/CountryDetails';
 import SearchCountries from '_screens/country/SearchCountries/SearchCountries';
 
@@ -28,7 +27,7 @@ const CountryStackNavigation = () => {
       }}>
       <CountryStack.Screen
         name={SEARCH_COUNTRIES_SCREEN}
-        component={TempScreen}
+        component={SearchCountries}
       />
       <CountryStack.Screen
         name={COUNTRY_DETAILS_SCREEN}
