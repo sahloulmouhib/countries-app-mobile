@@ -28,7 +28,7 @@ export default {
     },
     country_details: {
       map: 'Map',
-      learn_more: 'Learn more',
+      learn_more: 'Learn more ...',
       details: {
         name: 'Full name',
         capital: 'Capital',
