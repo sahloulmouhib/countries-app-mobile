@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { View } from 'react-native';
 import WebView from 'react-native-webview';
 
@@ -17,21 +17,23 @@ type Props = {
   uri: string;
 };
 
+const renderLoader = () => {
+  return (
+    <View style={styles.activityIndicator}>
+      <CustomLoader />
+    </View>
+  );
+};
 const CustomWebView = ({ uri }: Props) => {
   const isValidUrl = isValidHttpUrl(uri);
   const webviewUri = isValidUrl ? uri : EMPTY_URL + uri;
   const webViewRef = useRef<WebView>(null);
+
   const reloadPage = () => {
     webViewRef?.current?.reload();
   };
-  const renderLoader = () => {
-    return (
-      <View style={styles.activityIndicator}>
-        <CustomLoader />
-      </View>
-    );
-  };
-  const renderError = () => {
+
+  const renderError = useCallback(() => {
     return (
       <View style={styles.errorContainer}>
         <CustomReloader
@@ -40,7 +42,7 @@ const CustomWebView = ({ uri }: Props) => {
         />
       </View>
     );
-  };
+  }, []);
 
   return (
     <WebView
