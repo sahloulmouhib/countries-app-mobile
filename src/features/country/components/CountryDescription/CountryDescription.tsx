@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import { faFlag } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -12,6 +12,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { ICountry } from '_features/country/models/Country';
+
+import CustomText from '_components/CustomText/CustomText';
+import CustomTitle from '_components/CustomTitle/CustomTitle';
 
 import { strings } from '_i18n';
 

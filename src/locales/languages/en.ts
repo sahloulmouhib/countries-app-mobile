@@ -27,6 +27,8 @@ export default {
       placeholder: 'Search country...',
     },
     country_details: {
+      map: 'Map',
+      learn_more: 'Learn more',
       details: {
         name: 'Full name',
         capital: 'Capital',
@@ -53,7 +55,7 @@ export default {
     title: 'Choose a quiz',
     best_score: 'Best Score',
     flag_quiz: {
-      title: 'Flag quiz',
+      title: 'Guess the flag',
       description: 'Guess the country from the flag',
       next: 'Next',
       finish: 'Finish',
@@ -64,7 +66,7 @@ export default {
       guess_the_flag: 'Guess the flag!',
     },
     capital_quiz: {
-      title: 'Capital quiz',
+      title: 'Choose the capital',
       description: 'Guess the country from the capital',
       next: 'Next',
       finish: 'Finish',
@@ -75,7 +77,7 @@ export default {
       guess_the_capital: 'Guess the capital!',
     },
     population_quiz: {
-      title: 'Population quiz',
+      title: 'Higher or lower',
       description: 'Guess which country has the higher or lower population',
       people: 'people',
       people_than: 'people than',

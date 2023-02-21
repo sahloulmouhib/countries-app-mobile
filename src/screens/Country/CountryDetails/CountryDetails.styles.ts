@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native';
 import { SCREEN_WIDTH, ASPECT_RATIO } from '_utils/constants';
 import { colors } from '_utils/theme/colors';
 
+import { fonts } from './../../../utils/theme/fonts';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -46,5 +48,11 @@ export default StyleSheet.create({
       shadowOpacity: 0.8,
       shadowRadius: 1,
     },
+  },
+  learnMore: {
+    color: colors.BLUE,
+    fontSize: 18,
+    textDecorationLine: 'underline',
+    fontFamily: fonts.MEDIUM,
   },
 });
