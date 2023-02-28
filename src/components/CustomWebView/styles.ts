@@ -26,6 +26,17 @@ export default StyleSheet.create({
     zIndex: 999,
     elevation: 3,
   },
+  customLoader: {
+    padding: 16,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 999,
+    elevation: 3,
+  },
+
   errorContainer: {
     position: 'absolute',
     top: 0,
@@ -36,7 +47,7 @@ export default StyleSheet.create({
     padding: '10%',
   },
   errorText: {
-    fontFamily: fonts.SEMIBOLD,
+    fontFamily: fonts.SEMI_BOLD,
     color: colors.PRIMARY,
     textAlign: 'center',
     fontSize: 20,

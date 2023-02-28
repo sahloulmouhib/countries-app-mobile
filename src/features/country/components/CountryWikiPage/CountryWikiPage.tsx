@@ -11,6 +11,8 @@ import CustomTitle, {
 } from '_components/CustomTitle/CustomTitle';
 import CustomWebView from '_components/CustomWebView/CustomWebView';
 
+import WikiPageSkeleton from '../WikiPageSkeleton/WikiPageSkeleton';
+
 import styles from './CountryWikiPage.styles';
 
 type Props = {
@@ -41,7 +43,10 @@ const CountryWikiPage = ({
           />
           <FontAwesomeIcon icon={faX} size={18} />
         </TouchableOpacity>
-        <CustomWebView uri={`${WIKI_BASE_URL}${countryName}`} />
+        <CustomWebView
+          uri={`${WIKI_BASE_URL}${countryName}`}
+          WebviewCustomLoader={WikiPageSkeleton}
+        />
       </View>
     </Modal>
   );

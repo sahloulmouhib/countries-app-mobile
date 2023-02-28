@@ -15,16 +15,10 @@ import styles from './styles';
 
 type Props = {
   uri: string;
+  WebviewCustomLoader?: React.ComponentType<any>;
 };
 
-const renderLoader = () => {
-  return (
-    <View style={styles.activityIndicator}>
-      <CustomLoader />
-    </View>
-  );
-};
-const CustomWebView = ({ uri }: Props) => {
+const CustomWebView = ({ uri, WebviewCustomLoader }: Props) => {
   const isValidUrl = isValidHttpUrl(uri);
   const webviewUri = isValidUrl ? uri : EMPTY_URL + uri;
   const webViewRef = useRef<WebView>(null);
@@ -32,6 +26,21 @@ const CustomWebView = ({ uri }: Props) => {
   const reloadPage = () => {
     webViewRef?.current?.reload();
   };
+
+  const renderLoader = useCallback(() => {
+    if (WebviewCustomLoader) {
+      return (
+        <View style={styles.customLoader}>
+          <WebviewCustomLoader />
+        </View>
+      );
+    }
+    return (
+      <View style={styles.activityIndicator}>
+        <CustomLoader />
+      </View>
+    );
+  }, []);
 
   const renderError = useCallback(() => {
     return (
