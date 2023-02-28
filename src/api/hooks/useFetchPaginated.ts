@@ -23,22 +23,32 @@ const useFetchPaginated = <D = any, T = any>(
   const DEFAULT_PAGE_NUMBER = 1;
 
   const [data, setData] = useState<T[]>([]);
-  const [resultsCount, setResultsCount] = useState<number | null>(null);
+  const [resultsCount, setResultsCount] = useState<number | undefined>(
+    undefined,
+  );
   const [currentPage, setCurrentPage] = useState<number>(DEFAULT_PAGE_NUMBER);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
 
-  const [failedError, setFailedError] = useState<string | null>(null);
-  const [loadingMoreError, setLoadingMoreError] = useState<string | null>(null);
-  const [refreshError, setRefreshError] = useState<string | null>(null);
-
-  const getDataOnMountAbortControllerRef = useRef<AbortController | null>(null);
-  const getMoreAbortControllerRef = useRef<AbortController | null>(null);
-  const getRefreshedDataAbortControllerRef = useRef<AbortController | null>(
-    null,
+  const [failedError, setFailedError] = useState<string | undefined>(undefined);
+  const [loadingMoreError, setLoadingMoreError] = useState<string | undefined>(
+    undefined,
   );
+  const [refreshError, setRefreshError] = useState<string | undefined>(
+    undefined,
+  );
+
+  const getDataOnMountAbortControllerRef = useRef<AbortController | undefined>(
+    undefined,
+  );
+  const getMoreAbortControllerRef = useRef<AbortController | undefined>(
+    undefined,
+  );
+  const getRefreshedDataAbortControllerRef = useRef<
+    AbortController | undefined
+  >(undefined);
 
   const fetchData = async (page: number, abortController: AbortController) => {
     if (!useDataWrapper) {
@@ -65,8 +75,8 @@ const useFetchPaginated = <D = any, T = any>(
   const getDataOnMount = async () => {
     try {
       setIsLoading(true);
-      if (failedError !== null) {
-        setFailedError(null);
+      if (failedError !== undefined) {
+        setFailedError(undefined);
       }
       getDataOnMountAbortControllerRef.current = new AbortController();
       const res = await fetchData(
@@ -86,8 +96,8 @@ const useFetchPaginated = <D = any, T = any>(
   const getMoreData = async () => {
     try {
       setIsLoadingMore(true);
-      if (loadingMoreError !== null) {
-        setLoadingMoreError(null);
+      if (loadingMoreError !== undefined) {
+        setLoadingMoreError(undefined);
       }
       getMoreAbortControllerRef.current = new AbortController();
       const res = await fetchData(
@@ -107,8 +117,8 @@ const useFetchPaginated = <D = any, T = any>(
   const getRefreshedData = async () => {
     try {
       setIsRefreshing(true);
-      if (refreshError !== null) {
-        setRefreshError(null);
+      if (refreshError !== undefined) {
+        setRefreshError(undefined);
       }
       getRefreshedDataAbortControllerRef.current = new AbortController();
       const res = await fetchData(

@@ -7,3 +7,4 @@ export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 export const ASPECT_RATIO = 16 / 9;
+export const EMPTY_URL = 'https://';

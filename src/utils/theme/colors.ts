@@ -7,4 +7,5 @@ export const colors = {
   GREY_MEDIUM: '#7D7B7B',
   GREEN: '#32C062',
   RED: '#FF0000',
+  BLUE: '#0000FF',
 };

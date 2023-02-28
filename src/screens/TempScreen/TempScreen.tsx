@@ -1,24 +1,15 @@
 import React from 'react';
-import { SafeAreaView, Button } from 'react-native';
-import AnimatedNumbers from 'react-native-animated-numbers';
+import { StyleSheet } from 'react-native';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
-const App = () => {
-  const [animateToNumber, setAnimateToNumber] = React.useState(1);
+import WikiPageSkeleton from '_features/country/components/WikiPageSkeleton/WikiPageSkeleton';
 
-  const increase = () => {
-    setAnimateToNumber(593232);
-  };
+type Props = {};
 
-  return (
-    <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <AnimatedNumbers
-        includeComma
-        animateToNumber={animateToNumber}
-        fontStyle={{ fontSize: 50, fontWeight: 'bold' }}
-      />
-      <Button title="increase" onPress={increase} />
-    </SafeAreaView>
-  );
+const TempScreen = (props: Props) => {
+  return <WikiPageSkeleton />;
 };
-export default App;
+
+export default TempScreen;
+
+const styles = StyleSheet.create({});

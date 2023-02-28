@@ -28,7 +28,6 @@ const CountryDetail = ({ title, icon, value }: Props) => {
           type={CustomTitleType.H4}
           color={colors.GREY_MEDIUM}
         />
-
         <CustomTitle title={value.toString()} type={CustomTitleType.H3} />
       </View>
     </View>
