@@ -21,7 +21,8 @@ const useFlagQuiz = () => {
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
-  const flagImage = quiz.questions[questionIndex].flag;
+  const countryFlagToGuess = quiz.questions[questionIndex].flag;
+  const answerIdToGuess = quiz.questions[questionIndex].correctAnswerId;
 
   const localQuizQuestionAnswersInitialValues = createLocalQuizQuestionAnswers(
     0,
@@ -109,7 +110,8 @@ const useFlagQuiz = () => {
     isQuizFinished,
     numberOfQuestions,
     rightAnswer,
-    flagImage,
+    countryFlagToGuess,
+    answerIdToGuess,
   };
 };
 

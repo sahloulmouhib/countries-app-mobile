@@ -30,7 +30,8 @@ const FlagQuiz = ({ closeModal }: Props) => {
     isQuizFinished,
     score,
     numberOfQuestions,
-    flagImage,
+    answerIdToGuess,
+    countryFlagToGuess,
     initializeQuiz,
   } = useFlagQuiz();
 
@@ -54,7 +55,10 @@ const FlagQuiz = ({ closeModal }: Props) => {
             questionTitle={strings('quiz.flag_quiz.guess_the_flag')}
           />
           <View style={styles.flagImage}>
-            <FlagImage image={flagImage} />
+            <FlagImage
+              image={countryFlagToGuess}
+              answerIdToGuess={answerIdToGuess}
+            />
           </View>
 
           <Answers

@@ -67,6 +67,7 @@ const CountryDetails = ({ route, navigation }: Props) => {
           rightIcon={faMap}
         />
       </View>
+
       <CountryWikiPage
         flagEmoji={country.flagEmoji}
         countryName={country.name}

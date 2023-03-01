@@ -23,6 +23,7 @@ const Answers = ({
       <View key={answer.id}>
         {index === 0 && <CustomDivider height={16} />}
         <Answer
+          index={index}
           isDisabled={isQuestionAnswered}
           onPress={() => {
             onQuestionAnswered(answer.id);

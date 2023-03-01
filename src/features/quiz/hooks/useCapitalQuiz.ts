@@ -20,7 +20,8 @@ const useCapitalQuiz = () => {
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
-  const capitalToGuess = quiz.questions[questionIndex].capital;
+  const countryCapitalToGuess = quiz.questions[questionIndex].capital;
+  const answerIdToGuess = quiz.questions[questionIndex].correctAnswerId;
 
   const localQuizQuestionAnswersInitialValues = createLocalQuizQuestionAnswers(
     questionIndex,
@@ -108,7 +109,8 @@ const useCapitalQuiz = () => {
     isQuizFinished,
     numberOfQuestions,
     rightAnswer,
-    capitalToGuess,
+    countryCapitalToGuess,
+    answerIdToGuess,
   };
 };
 

@@ -1,5 +1,9 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import Animated, {
+  LightSpeedInLeft,
+  LightSpeedInRight,
+} from 'react-native-reanimated';
 
 import { AnswerType } from '_features/quiz/models/Quiz';
 
@@ -16,6 +20,7 @@ type Props = {
   label: string;
   onPress: () => void;
   isDisabled?: boolean;
+  index: number;
 };
 const ANSWER_STYLES = {
   [AnswerType.Correct]: {
@@ -37,23 +42,31 @@ const Answer = ({
   label,
   onPress,
   isDisabled,
+  index,
 }: Props) => {
   const { backgroundColor, textColor } = ANSWER_STYLES[type];
   return (
-    <TouchableOpacity
-      disabled={isDisabled}
-      onPress={onPress}
-      style={{
-        ...styles.container,
-        backgroundColor: backgroundColor,
-      }}>
-      <CustomTitle
-        title={label}
-        color={textColor}
-        type={CustomTitleType.H3}
-        textAlign="center"
-      />
-    </TouchableOpacity>
+    <Animated.View
+      entering={
+        index % 2 === 0
+          ? LightSpeedInRight.duration(800)
+          : LightSpeedInLeft.duration(800)
+      }>
+      <TouchableOpacity
+        disabled={isDisabled}
+        onPress={onPress}
+        style={{
+          ...styles.container,
+          backgroundColor: backgroundColor,
+        }}>
+        <CustomTitle
+          title={label}
+          color={textColor}
+          type={CustomTitleType.H3}
+          textAlign="center"
+        />
+      </TouchableOpacity>
+    </Animated.View>
   );
 };
 

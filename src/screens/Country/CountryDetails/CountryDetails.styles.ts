@@ -36,10 +36,8 @@ export default StyleSheet.create({
   button: {
     position: 'absolute',
     bottom: 32,
-    left: 0,
-    right: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
+    right: 32,
+    alignItems: 'flex-start',
     elevation: 5,
     boxWithShadow: {
       shadowColor: colors.BLACK,

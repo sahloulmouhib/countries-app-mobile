@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
 import FastImage from 'react-native-fast-image2';
+import Animated, { FlipInEasyX } from 'react-native-reanimated';
 
 import { icons } from '_utils/icons';
 
@@ -8,11 +8,15 @@ import styles from './FlagImage.styles';
 
 type Props = {
   image: string;
+  answerIdToGuess: string;
 };
 
-const FlagImage = ({ image }: Props) => {
+const FlagImage = ({ image, answerIdToGuess }: Props) => {
+  console.log('flag');
   return (
-    <View>
+    <Animated.View
+      entering={FlipInEasyX.delay(100).duration(400)}
+      key={answerIdToGuess}>
       <FastImage
         source={{
           uri: image,
@@ -21,7 +25,7 @@ const FlagImage = ({ image }: Props) => {
         defaultSource={icons.PLACEHOLDER_IMAGE}
         style={styles.image}
       />
-    </View>
+    </Animated.View>
   );
 };
 

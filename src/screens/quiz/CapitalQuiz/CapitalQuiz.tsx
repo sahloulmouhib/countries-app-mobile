@@ -30,7 +30,9 @@ const CapitalQuiz = ({ closeModal }: Props) => {
     isQuizFinished,
     score,
     numberOfQuestions,
-    capitalToGuess,
+    answerIdToGuess,
+    countryCapitalToGuess,
+
     initializeQuiz,
   } = useCapitalQuiz();
 
@@ -53,7 +55,10 @@ const CapitalQuiz = ({ closeModal }: Props) => {
             questionTitle={strings('quiz.capital_quiz.guess_the_capital')}
           />
           <View style={styles.capital}>
-            <Capital capital={capitalToGuess} />
+            <Capital
+              capital={countryCapitalToGuess}
+              answerIdToGuess={answerIdToGuess}
+            />
           </View>
           <Answers
             isQuestionAnswered={isQuestionAnswered}

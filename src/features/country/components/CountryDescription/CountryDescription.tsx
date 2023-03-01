@@ -30,38 +30,45 @@ const CountryDescription = ({ country }: Props) => {
   return (
     <View>
       <CountryDetail
+        index={0}
         title={strings('country.country_details.details.name')}
         value={name}
         icon={faFlag}
       />
       <CountryDetail
+        index={1}
         title={strings('country.country_details.details.capital')}
         value={capital}
         icon={faLandmarkFlag}
       />
       <CountryDetail
+        index={2}
         title={strings('country.country_details.details.continent')}
         value={continents}
         icon={faEarthAmericas}
       />
       <View style={styles.twoDetailsContainer}>
         <CountryDetail
+          index={3}
           title={strings('country.country_details.details.population')}
           value={population}
           icon={faPeopleGroup}
         />
         <CountryDetail
+          index={3}
           title={strings('country.country_details.details.area')}
           value={area}
           icon={faUpRightAndDownLeftFromCenter}
         />
       </View>
       <CountryDetail
+        index={4}
         title={strings('country.country_details.details.currency')}
         value={currencies}
         icon={faDollarSign}
       />
       <CountryDetail
+        index={5}
         title={strings('country.country_details.details.language')}
         value={languages}
         icon={faLanguage}

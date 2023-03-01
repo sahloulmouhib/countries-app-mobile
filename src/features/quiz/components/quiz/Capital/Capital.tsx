@@ -1,5 +1,6 @@
 import React from 'react';
-import { ImageBackground, View } from 'react-native';
+import { ImageBackground } from 'react-native';
+import Animated, { StretchInY } from 'react-native-reanimated';
 
 import { quizIcons } from '_features/quiz/utils/icons';
 
@@ -9,9 +10,10 @@ import styles from './Capital.styles';
 
 type Props = {
   capital: string;
+  answerIdToGuess: string;
 };
 
-const Capital = ({ capital }: Props) => {
+const Capital = ({ capital, answerIdToGuess }: Props) => {
   return (
     <>
       <ImageBackground
@@ -19,10 +21,13 @@ const Capital = ({ capital }: Props) => {
         source={quizIcons.WORLD_MAP}
         style={styles.image}
       />
-      <View style={styles.capitalContainer}>
+      <Animated.View
+        key={answerIdToGuess}
+        entering={StretchInY.duration(500).delay(100)}
+        style={styles.capitalContainer}>
         <CustomText text={capital} style={styles.title} />
         <CustomText text={' is the capital of ?'} style={styles.question} />
-      </View>
+      </Animated.View>
     </>
   );
 };
