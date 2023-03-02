@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
+  faChartPie,
   faGamepad,
   faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +15,7 @@ import {
 
 import CustomText from '_components/CustomText/CustomText';
 
-import { COUNTRY_TAB, QUIZ_TAB } from '_utils/screenNames';
+import { COUNTRY_TAB, QUIZ_TAB, STATS_TAB } from '_utils/screenNames';
 import { colors } from '_utils/theme/colors';
 
 import { strings } from '_i18n';
@@ -23,10 +24,12 @@ import CountryStackNavigation, {
   CountryStackParamList,
 } from './CountryStackNavigation';
 import QuizStackNavigation, { QuizStackParamList } from './QuizStackNavigation';
+import StatsTabNavigation from './StatsStackNavigation';
 
 export type BottomTabParamList = {
   [COUNTRY_TAB]: CountryStackParamList;
   [QUIZ_TAB]: QuizStackParamList;
+  [STATS_TAB]: undefined;
 };
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -87,6 +90,17 @@ const BottomTabNavigation = () => {
         }
         name={COUNTRY_TAB}
         component={CountryStackNavigation}
+      />
+      <BottomTab.Screen
+        options={() =>
+          bottomTabOptions({
+            title: strings('tab_bar.stats'),
+            icon: faChartPie,
+            size: 22,
+          })
+        }
+        name={STATS_TAB}
+        component={StatsTabNavigation}
       />
       <BottomTab.Screen
         options={() =>

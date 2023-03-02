@@ -1,0 +1,8 @@
+export enum PopulationChartType {
+  Bar = 'Bar',
+  Pie = 'Pie',
+}
+export enum AreaChartType {
+  Bar = 'Bar',
+  Pie = 'Pie',
+}

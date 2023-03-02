@@ -15,6 +15,7 @@ export default {
   tab_bar: {
     search: 'Search',
     quiz: 'Quiz',
+    stats: 'Stats',
   },
   alert: {
     discard: 'Discard',
@@ -89,6 +90,18 @@ export default {
       finish: 'Finish',
       play_again: 'Play again',
       quiz_completed: 'Game Over! try again',
+    },
+  },
+  stats: {
+    charts: {
+      pie: 'Pie chart',
+      bar: 'Bar chart',
+    },
+    population_stats: {
+      title: 'Population',
+    },
+    area_stats: {
+      title: 'Population',
     },
   },
 };

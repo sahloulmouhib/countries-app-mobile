@@ -40,7 +40,7 @@ const CustomButtonOutline = ({
         <FontAwesomeIcon
           size={20}
           icon={rightIcon}
-          color={colors.WHITE}
+          color={color ?? colors.BLACK}
           style={styles.icon}
         />
       )}

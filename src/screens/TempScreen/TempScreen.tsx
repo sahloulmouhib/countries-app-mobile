@@ -1,15 +1,14 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-
-import WikiPageSkeleton from '_features/country/components/WikiPageSkeleton/WikiPageSkeleton';
+import { View, Text } from 'react-native';
 
 type Props = {};
 
 const TempScreen = (props: Props) => {
-  return <WikiPageSkeleton />;
+  return (
+    <View>
+      <Text>TempScreen</Text>
+    </View>
+  );
 };
 
 export default TempScreen;
-
-const styles = StyleSheet.create({});

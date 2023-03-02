@@ -6,3 +6,7 @@ export const COUNTRY_DETAILS_SCREEN = 'countryDetails';
 //quiz tab
 export const QUIZ_TAB = 'quizTab';
 export const QUIZ_SCREEN = 'quiz';
+
+//stats tab
+export const STATS_TAB = 'statsTab';
+export const STATS_SCREEN = 'stats';
