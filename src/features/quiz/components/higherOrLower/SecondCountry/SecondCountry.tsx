@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import Animated, { FlipInEasyX } from 'react-native-reanimated';
 
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -77,18 +78,21 @@ const SecondCountry = ({
         </>
       ) : (
         <>
-          <CustomTitle
-            color={
-              isCorrect === undefined
-                ? colors.BLACK
-                : isCorrect
-                ? colors.GREEN
-                : colors.RED
-            }
-            type={CustomTitleType.H2}
-            title={secondCountryPopulation.toLocaleString()}
-            fontSize={40}
-          />
+          <Animated.View entering={FlipInEasyX.duration(500)}>
+            <CustomTitle
+              color={
+                isCorrect === undefined
+                  ? colors.BLACK
+                  : isCorrect
+                  ? colors.GREEN
+                  : colors.RED
+              }
+              type={CustomTitleType.H2}
+              title={secondCountryPopulation.toLocaleString()}
+              fontSize={40}
+            />
+          </Animated.View>
+
           <CustomTitle
             type={CustomTitleType.H4}
             fontSize={18}

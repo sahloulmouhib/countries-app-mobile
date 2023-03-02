@@ -12,7 +12,6 @@ type Props = {
 };
 
 const FlagImage = ({ image, answerIdToGuess }: Props) => {
-  console.log('flag');
   return (
     <Animated.View
       entering={FlipInEasyX.delay(100).duration(400)}
