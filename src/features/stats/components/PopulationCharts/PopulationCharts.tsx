@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
 import { PopulationChartType } from '_features/stats/utils/types';
 
@@ -46,13 +47,23 @@ const PopulationCharts = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <CustomTitle type={CustomTitleType.H2} title="Population" />
+        <CustomTitle
+          type={CustomTitleType.H2}
+          fontSize={16}
+          title={strings('stats.population.title')}
+        />
         <SwitchButton
           title={switchButtonTitle}
           onPress={switchPopulationChartType}
         />
       </View>
-      {renderPopulationChart()}
+      <Animated.View
+        style={styles.chartContainer}
+        exiting={FadeOut.duration(500)}
+        entering={FadeIn.duration(500)}
+        key={populationChartType}>
+        {renderPopulationChart()}
+      </Animated.View>
     </View>
   );
 };

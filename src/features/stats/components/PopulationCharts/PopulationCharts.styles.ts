@@ -7,4 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 16,
   },
+  chartContainer: {
+    minHeight: 300,
+  },
 });

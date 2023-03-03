@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
 import { AreaChartType } from '_features/stats/utils/types';
 
@@ -44,10 +45,20 @@ const AreaCharts = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <CustomTitle type={CustomTitleType.H2} title="Area" />
+        <CustomTitle
+          fontSize={16}
+          type={CustomTitleType.H2}
+          title={strings('stats.area.title')}
+        />
         <SwitchButton title={switchButtonTitle} onPress={switchAreaChartType} />
       </View>
-      {renderAreaChart()}
+      <Animated.View
+        style={styles.chartContainer}
+        exiting={FadeOut.duration(500)}
+        entering={FadeIn.duration(500)}
+        key={areaChartType}>
+        {renderAreaChart()}
+      </Animated.View>
     </View>
   );
 };

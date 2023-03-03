@@ -93,15 +93,16 @@ export default {
     },
   },
   stats: {
+    title: 'Countries statistics',
     charts: {
       pie: 'Pie chart',
       bar: 'Bar chart',
     },
-    population_stats: {
-      title: 'Population',
+    population: {
+      title: 'Top countries by population',
     },
-    area_stats: {
-      title: 'Population',
+    area: {
+      title: 'Top countries by area',
     },
   },
 };

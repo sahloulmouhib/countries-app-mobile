@@ -2,6 +2,9 @@ import { ICountryResponse } from '_features/country/models/Country';
 
 import { COUNTRIES } from '_data/countries-data';
 
+import { colors } from '_utils/theme/colors';
+import { fonts } from '_utils/theme/fonts';
+
 const sortCountriesByField = (limit: number, field: keyof ICountryResponse) => {
   if (limit)
     return COUNTRIES.sort(
@@ -19,13 +22,14 @@ const getRandomColor = () => {
   return color;
 };
 
+//*********Population helpers */
 export const getPopulationDataAndLabelsForBarChart = (limit: number) => {
   let labels: string[] = [];
   let data: number[] = [];
   const countries = sortCountriesByField(limit, 'population');
   countries.forEach(country => {
-    labels.push(country.name);
-    data.push(country.population / 1000000000);
+    labels.push(country.flagEmoji);
+    data.push(country.population / 1000000);
   });
   return { labels, data };
 };
@@ -38,19 +42,21 @@ export const getPopulationDataForPieChart = (limit: number) => {
       name: country.name,
       population: country.population,
       color: getRandomColor(),
-      legendFontColor: '#7F7F7F',
-      legendFontSize: 15,
+      legendFontColor: colors.GREY_MEDIUM,
+      legendFontSize: 14,
+      legendFontFamily: fonts.MEDIUM,
     });
   });
   return data;
 };
 
+//*********Area helpers */
 export const getAreaDataAndLabelsForBarChart = (limit: number) => {
   let labels: string[] = [];
   let data: number[] = [];
   const countries = sortCountriesByField(limit, 'area');
   countries.forEach(country => {
-    labels.push(country.name);
+    labels.push(country.flagEmoji);
     data.push(country.area / 100000);
   });
   return { labels, data };
@@ -64,8 +70,9 @@ export const getAreaDataForPieChart = (limit: number) => {
       name: country.name,
       area: country.area,
       color: getRandomColor(),
-      legendFontColor: '#7F7F7F',
-      legendFontSize: 15,
+      legendFontColor: colors.GREY_MEDIUM,
+      legendFontSize: 14,
+      legendFontFamily: fonts.MEDIUM,
     });
   });
   return data;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
 import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
 
@@ -13,31 +12,20 @@ const chartConfig: AbstractChartConfig = {
   backgroundColor: colors.WHITE,
   backgroundGradientFrom: colors.WHITE,
   backgroundGradientTo: colors.WHITE,
-  decimalPlaces: 2, // optional, defaults to 2dp
   color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
   labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-  style: {
-    borderRadius: 30,
-  },
-  propsForDots: {
-    r: '6',
-    strokeWidth: '2',
-    stroke: '#ffa726',
-  },
 };
 const AreaPieChart = () => {
   return (
-    <View>
-      <PieChart
-        data={pieChartData}
-        width={SCREEN_WIDTH - 32}
-        height={220}
-        accessor={'area'}
-        chartConfig={chartConfig}
-        backgroundColor={'transparent'}
-        paddingLeft={'5'}
-      />
-    </View>
+    <PieChart
+      data={pieChartData}
+      width={SCREEN_WIDTH - 32}
+      height={220}
+      accessor={'area'}
+      chartConfig={chartConfig}
+      backgroundColor={'transparent'}
+      paddingLeft={'0'}
+    />
   );
 };
 
