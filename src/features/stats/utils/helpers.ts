@@ -12,6 +12,7 @@ const sortCountriesByField = (limit: number, field: keyof ICountryResponse) => {
     ).slice(0, limit);
   return COUNTRIES.sort((a, b) => (b[field] as number) - (a[field] as number));
 };
+
 // get random color for pie chart
 const getRandomColor = () => {
   const letters = '0123456789ABCDEF';
@@ -43,7 +44,7 @@ export const getPopulationDataForPieChart = (limit: number) => {
       population: country.population,
       color: getRandomColor(),
       legendFontColor: colors.GREY_MEDIUM,
-      legendFontSize: 14,
+      legendFontSize: 12,
       legendFontFamily: fonts.MEDIUM,
     });
   });
@@ -71,9 +72,53 @@ export const getAreaDataForPieChart = (limit: number) => {
       area: country.area,
       color: getRandomColor(),
       legendFontColor: colors.GREY_MEDIUM,
-      legendFontSize: 14,
+      legendFontSize: 12,
       legendFontFamily: fonts.MEDIUM,
     });
   });
   return data;
+};
+
+//*********Continents helpers *****/
+
+//TODO: fix countries count
+export const getContinentsCount = () => {
+  let data: {
+    continentName: string;
+    countriesCount: number;
+  }[] = [];
+  COUNTRIES.forEach(country => {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].continentName === country.continents[0]) {
+        data[i].countriesCount++;
+        return true;
+      }
+    }
+    data.push({
+      continentName: country.continents[0],
+      countriesCount: 1,
+    });
+    return true;
+  });
+  data.sort((a, b) => b.countriesCount - a.countriesCount);
+  return data;
+};
+
+export const getContinentsDataAndLabelsForBarChart = () => {
+  const data = getContinentsCount();
+  const labels = data.map(item => item.continentName);
+  const values = data.map(item => item.countriesCount);
+  return { labels, data: values };
+};
+
+export const getContinentsDataForPieChart = () => {
+  const data = getContinentsCount();
+  return data.map(item => ({
+    name: item.continentName,
+    countriesCount: item.countriesCount,
+    color: getRandomColor(),
+    legendFontColor: colors.GREY_MEDIUM,
+    legendFontSize: 12,
+    legendFontFamily: fonts.MEDIUM,
+  }));
 };

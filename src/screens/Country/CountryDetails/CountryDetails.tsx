@@ -11,6 +11,7 @@ import CountryWikiPage from '_features/country/components/CountryWikiPage/Countr
 import { openMap } from '_features/country/utils/helpers';
 
 import CustomButton from '_components/CustomButton/CustomButton';
+import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomText from '_components/CustomText/CustomText';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
@@ -30,11 +31,13 @@ type Props = NativeStackScreenProps<
 const CountryDetails = ({ route, navigation }: Props) => {
   const { country } = route.params;
   const { lat, lng } = country.latlng;
+
   const [isWikiPageVisible, setIsWikiPageVisible] = useState(false);
   const closeWikiPage = () => setIsWikiPageVisible(false);
   const openWikiPage = () => setIsWikiPageVisible(true);
 
   const goBack = () => navigation.goBack();
+
   const viewCountryInMap = () => openMap(lat, lng, country.name);
 
   return (
@@ -51,6 +54,7 @@ const CountryDetails = ({ route, navigation }: Props) => {
         />
         <View style={styles.descriptionContainer}>
           <CountryDescription country={country} />
+          <CustomDivider height={16} />
           <TouchableOpacity onPress={openWikiPage}>
             <CustomText
               text={strings('country.country_details.learn_more')}

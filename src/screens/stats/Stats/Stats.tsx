@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import AreaCharts from '_features/stats/components/AreaCharts/AreaCharts';
+import ContinentsCharts from '_features/stats/components/ContinentsCharts/ContinentsCharts';
 import PopulationCharts from '_features/stats/components/PopulationCharts/PopulationCharts';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
@@ -25,6 +26,8 @@ const Stats = (props: Props) => {
       <PopulationCharts />
       <CustomDivider height={32} />
       <AreaCharts />
+      <CustomDivider height={32} />
+      <ContinentsCharts />
     </ScrollView>
   );
 };

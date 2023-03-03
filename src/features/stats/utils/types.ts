@@ -6,3 +6,8 @@ export enum AreaChartType {
   Bar = 'Bar',
   Pie = 'Pie',
 }
+
+export enum ContinentsChartType {
+  Bar = 'Bar',
+  Pie = 'Pie',
+}

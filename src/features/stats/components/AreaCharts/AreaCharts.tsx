@@ -2,6 +2,10 @@ import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
+import {
+  getAreaDataAndLabelsForBarChart,
+  getAreaDataForPieChart,
+} from '_features/stats/utils/helpers';
 import { AreaChartType } from '_features/stats/utils/types';
 
 import CustomTitle, {
@@ -10,13 +14,16 @@ import CustomTitle, {
 
 import { strings } from '_i18n';
 
-import AreaBarChart from '../AreaBarChart/AreaBarChart';
-import AreaPieChart from '../AreaPieChart/AreaPieChart';
+import CustomBarChart from '../CustomBarChart/CustomBarChart';
+import CustomPieChart from '../CustomPieChart/CustomPieChart';
 import SwitchButton from '../SwitchButton/SwitchButton';
 
 import styles from './AreaCharts.styles';
 
 const AreaCharts = () => {
+  const pieChartData = getAreaDataForPieChart(5);
+  const barChartData = getAreaDataAndLabelsForBarChart(5);
+
   const [areaChartType, setAreaChartType] = useState(AreaChartType.Bar);
   const switchAreaChartType = () => {
     setAreaChartType(
@@ -34,9 +41,16 @@ const AreaCharts = () => {
   const renderAreaChart = useCallback(() => {
     switch (areaChartType) {
       case AreaChartType.Bar:
-        return <AreaBarChart />;
+        return (
+          <CustomBarChart
+            yLabelOffset={-8}
+            yLabelSuffix={' km²'}
+            data={barChartData.data}
+            labels={barChartData.labels}
+          />
+        );
       case AreaChartType.Pie:
-        return <AreaPieChart />;
+        return <CustomPieChart fieldName={'area'} data={pieChartData} />;
       default:
         return null;
     }
@@ -45,17 +59,19 @@ const AreaCharts = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <CustomTitle
-          fontSize={16}
-          type={CustomTitleType.H2}
-          title={strings('stats.area.title')}
-        />
+        <View style={styles.title}>
+          <CustomTitle
+            type={CustomTitleType.H2}
+            fontSize={16}
+            title={strings('stats.area.title')}
+          />
+        </View>
         <SwitchButton title={switchButtonTitle} onPress={switchAreaChartType} />
       </View>
       <Animated.View
         style={styles.chartContainer}
-        exiting={FadeOut.duration(500)}
-        entering={FadeIn.duration(500)}
+        exiting={FadeOut.duration(300)}
+        entering={FadeIn.duration(300)}
         key={areaChartType}>
         {renderAreaChart()}
       </Animated.View>

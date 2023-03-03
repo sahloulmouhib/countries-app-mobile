@@ -6,6 +6,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 16,
+    alignItems: 'center',
+  },
+  title: {
+    flex: 1,
+    marginLeft: 5,
   },
   chartContainer: {
     minHeight: 300,

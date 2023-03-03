@@ -104,5 +104,8 @@ export default {
     area: {
       title: 'Top countries by area',
     },
+    continents: {
+      title: 'Countries distribution by continent',
+    },
   },
 };

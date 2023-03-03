@@ -2,12 +2,9 @@ import React from 'react';
 import { PieChart } from 'react-native-chart-kit';
 import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
 
-import { getAreaDataForPieChart } from '_features/stats/utils/helpers';
-
 import { SCREEN_WIDTH } from '_utils/constants';
 import { colors } from '_utils/theme/colors';
 
-const pieChartData = getAreaDataForPieChart(5);
 const chartConfig: AbstractChartConfig = {
   backgroundColor: colors.WHITE,
   backgroundGradientFrom: colors.WHITE,
@@ -15,13 +12,19 @@ const chartConfig: AbstractChartConfig = {
   color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
   labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
 };
-const AreaPieChart = () => {
+
+type Props = {
+  data: any[];
+  fieldName: string;
+};
+const CustomPieChart = ({ data, fieldName }: Props) => {
   return (
     <PieChart
-      data={pieChartData}
+      center={[10, 0]}
+      data={data}
       width={SCREEN_WIDTH - 32}
       height={220}
-      accessor={'area'}
+      accessor={fieldName}
       chartConfig={chartConfig}
       backgroundColor={'transparent'}
       paddingLeft={'0'}
@@ -29,4 +32,4 @@ const AreaPieChart = () => {
   );
 };
 
-export default AreaPieChart;
+export default CustomPieChart;
