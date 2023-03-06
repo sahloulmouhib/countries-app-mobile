@@ -5,7 +5,10 @@ import { COUNTRIES } from '_data/countries-data';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
-const sortCountriesByField = (limit: number, field: keyof ICountryResponse) => {
+export const sortCountriesByField = (
+  field: keyof ICountryResponse,
+  limit?: number,
+) => {
   if (limit)
     return COUNTRIES.sort(
       (a, b) => (b[field] as number) - (a[field] as number),
@@ -27,7 +30,7 @@ const getRandomColor = () => {
 export const getPopulationDataAndLabelsForBarChart = (limit: number) => {
   let labels: string[] = [];
   let data: number[] = [];
-  const countries = sortCountriesByField(limit, 'population');
+  const countries = sortCountriesByField('population', limit);
   countries.forEach(country => {
     labels.push(country.flagEmoji);
     data.push(country.population / 1000000);
@@ -37,7 +40,7 @@ export const getPopulationDataAndLabelsForBarChart = (limit: number) => {
 
 export const getPopulationDataForPieChart = (limit: number) => {
   let data: Array<any> = [];
-  const countries = sortCountriesByField(limit, 'population');
+  const countries = sortCountriesByField('population', limit);
   countries.forEach(country => {
     data.push({
       name: country.name,
@@ -55,7 +58,7 @@ export const getPopulationDataForPieChart = (limit: number) => {
 export const getAreaDataAndLabelsForBarChart = (limit: number) => {
   let labels: string[] = [];
   let data: number[] = [];
-  const countries = sortCountriesByField(limit, 'area');
+  const countries = sortCountriesByField('area', limit);
   countries.forEach(country => {
     labels.push(country.flagEmoji);
     data.push(country.area / 100000);
@@ -65,7 +68,7 @@ export const getAreaDataAndLabelsForBarChart = (limit: number) => {
 
 export const getAreaDataForPieChart = (limit: number) => {
   let data: Array<any> = [];
-  const countries = sortCountriesByField(limit, 'area');
+  const countries = sortCountriesByField('area', limit);
   countries.forEach(country => {
     data.push({
       name: country.name,

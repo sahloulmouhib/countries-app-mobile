@@ -7,32 +7,29 @@ import CountryCard from '_features/country/components/CountryCard/CountryCard';
 import CountryCardSkeletons from '_features/country/components/CountryCardSkeletons/CountryCardSkeletons';
 import useFetchPaginatedCountryLocal from '_features/country/hooks/useFetchPaginatedCountryLocal';
 import { ICountry } from '_features/country/models/Country';
+import { sortCountriesByField } from '_features/stats/utils/helpers';
 
 import CustomFlatlist from '_components/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
 
-import { CountryStackParamList } from '_navigation/CountryStackNavigation';
+import { StatsStackParamList } from '_navigation/StatsStackNavigation';
 
 import useDebounceText from '_hooks/useDebounceText';
 
-import { DECODED_COUNTRIES } from '_data/countries-data';
-
 import { DEBOUNCE_TIME } from '_utils/constants';
-import {
-  COUNTRY_DETAILS_SCREEN,
-  SEARCH_COUNTRIES_SCREEN,
-} from '_utils/screenNames';
+import { POPULATION_STATS_SCREEN } from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
-import styles from './SearchCountries.styles';
+import styles from './PopulationStats.styles';
 
 type Props = NativeStackScreenProps<
-  CountryStackParamList,
-  typeof SEARCH_COUNTRIES_SCREEN
+  StatsStackParamList,
+  typeof POPULATION_STATS_SCREEN
 >;
 
-const SearchCountries = ({ navigation }: Props) => {
+const COUNTRIES_SORTED_BY_POPULATION = sortCountriesByField('population');
+const PopulationStats = ({ navigation }: Props) => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
   const {
@@ -48,7 +45,7 @@ const SearchCountries = ({ navigation }: Props) => {
     isRefreshing,
     hasLoadedAll,
     setData,
-  } = useFetchPaginatedCountryLocal(DECODED_COUNTRIES, {
+  } = useFetchPaginatedCountryLocal(COUNTRIES_SORTED_BY_POPULATION, {
     filter: searchText,
     filterBy: 'name',
   });
@@ -93,4 +90,4 @@ const SearchCountries = ({ navigation }: Props) => {
   );
 };
 
-export default SearchCountries;
+export default PopulationStats;

@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import { DECODED_COUNTRIES } from '_data/countries-data';
-
 import { searchAndPaginateData } from '_utils/helpers';
 
 import { ICountry } from '../models/Country';
@@ -13,6 +11,7 @@ interface UseFetchPaginatedCountryLocalType {
 }
 
 const useFetchPaginatedCountryLocal = (
+  countries: ICountry[],
   config: UseFetchPaginatedCountryLocalType,
 ) => {
   const DEFAULT_PAGE_NUMBER = 1;
@@ -35,7 +34,7 @@ const useFetchPaginatedCountryLocal = (
 
   const fetchData = (page: number) => {
     const res = searchAndPaginateData(
-      DECODED_COUNTRIES,
+      countries,
       page,
       filter,
       filterBy,

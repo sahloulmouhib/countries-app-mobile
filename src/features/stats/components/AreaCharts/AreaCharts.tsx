@@ -20,10 +20,9 @@ import SwitchButton from '../SwitchButton/SwitchButton';
 
 import styles from './AreaCharts.styles';
 
+const pieChartData = getAreaDataForPieChart(5);
+const barChartData = getAreaDataAndLabelsForBarChart(5);
 const AreaCharts = () => {
-  const pieChartData = getAreaDataForPieChart(5);
-  const barChartData = getAreaDataAndLabelsForBarChart(5);
-
   const [areaChartType, setAreaChartType] = useState(AreaChartType.Bar);
   const switchAreaChartType = () => {
     setAreaChartType(

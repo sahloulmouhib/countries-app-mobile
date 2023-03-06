@@ -42,11 +42,9 @@ const barChartConfig: AbstractChartConfig = {
   },
   barPercentage: 0.8,
 };
-
+const pieChartData = getContinentsDataForPieChart();
+const barChartData = getContinentsDataAndLabelsForBarChart();
 const ContinentsCharts = () => {
-  const pieChartData = getContinentsDataForPieChart();
-  const barChartData = getContinentsDataAndLabelsForBarChart();
-
   const [continentsChartType, setContinentsChartType] = useState(
     ContinentsChartType.Bar,
   );

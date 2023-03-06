@@ -20,10 +20,10 @@ import SwitchButton from '../SwitchButton/SwitchButton';
 
 import styles from './PopulationCharts.styles';
 
-const PopulationCharts = () => {
-  const pieChartData = getPopulationDataForPieChart(5);
-  const barChartData = getPopulationDataAndLabelsForBarChart(5);
+const pieChartData = getPopulationDataForPieChart(5);
+const barChartData = getPopulationDataAndLabelsForBarChart(5);
 
+const PopulationCharts = () => {
   const [populationChartType, setPopulationChartType] = useState(
     PopulationChartType.Bar,
   );
