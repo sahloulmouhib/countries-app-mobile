@@ -2,7 +2,7 @@ import { Platform, Linking } from 'react-native';
 
 import { strings } from '_i18n';
 
-import { ICountry } from '../models/Country';
+import { ICountry } from '../../../models/Country';
 
 export const sortCountriesAlphabetically = (countries: ICountry[]) => {
   return countries.sort((a, b) => a.name.localeCompare(b.name));

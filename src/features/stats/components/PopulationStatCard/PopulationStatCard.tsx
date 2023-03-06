@@ -9,16 +9,17 @@ import CustomTitle, {
 import { ICountry } from '_models/Country';
 
 import { icons } from '_utils/icons';
+import { colors } from '_utils/theme/colors';
 
-import styles from './CountryCard.styles';
+import styles from './PopulationStatCard.styles';
 
 type Props = {
   country: ICountry;
   onPress: () => void;
 };
 
-const CountryCard = ({ country, onPress }: Props) => {
-  const { name, capital, flagImage } = country;
+const PopulationStatCard = ({ country, onPress }: Props) => {
+  const { name, population, flagImage, ranking } = country;
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <FastImage
@@ -27,12 +28,19 @@ const CountryCard = ({ country, onPress }: Props) => {
         resizeMode="cover"
         defaultSource={icons.PLACEHOLDER_IMAGE}
       />
+      <View style={styles.rankingContainer}>
+        <CustomTitle title={`${ranking}.`} type={CustomTitleType.H2} />
+      </View>
       <View style={styles.detailsContainer}>
-        <CustomTitle title={name} type={CustomTitleType.H2} />
-        <CustomTitle title={capital} type={CustomTitleType.H4} />
+        <CustomTitle title={name} type={CustomTitleType.H3} />
+        <CustomTitle
+          title={population.toLocaleString()}
+          type={CustomTitleType.H2}
+          color={colors.PRIMARY}
+        />
       </View>
     </TouchableOpacity>
   );
 };
 
-export default CountryCard;
+export default PopulationStatCard;

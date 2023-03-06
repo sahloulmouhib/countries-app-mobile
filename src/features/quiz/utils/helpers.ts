@@ -1,4 +1,4 @@
-import { ICountry } from '_features/country/models/Country';
+import { ICountry } from '_models/Country';
 
 import { IFlagQuiz, IAnswer, IFlagQuestion } from '../models/Quiz';
 import { ICapitalQuestion, ICapitalQuiz, AnswerType } from '../models/Quiz';

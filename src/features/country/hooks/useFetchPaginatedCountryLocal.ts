@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { searchAndPaginateData } from '_utils/helpers';
 
-import { ICountry } from '../models/Country';
+import { ICountry } from '../../../models/Country';
 
 interface UseFetchPaginatedCountryLocalType {
   filter?: string;

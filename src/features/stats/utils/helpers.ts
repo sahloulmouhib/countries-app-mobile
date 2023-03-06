@@ -1,4 +1,4 @@
-import { ICountry } from '_features/country/models/Country';
+import { ICountry } from '_models/Country';
 
 import { COUNTRIES } from '_data/countries-data';
 
@@ -6,11 +6,19 @@ import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
 export const sortCountriesByField = (field: keyof ICountry, limit?: number) => {
-  if (limit)
-    return COUNTRIES.sort(
-      (a, b) => (b[field] as number) - (a[field] as number),
-    ).slice(0, limit);
-  return COUNTRIES.sort((a, b) => (b[field] as number) - (a[field] as number));
+  let countries = [];
+
+  countries = COUNTRIES.sort(
+    (a, b) => (b[field] as number) - (a[field] as number),
+  );
+
+  countries.forEach((country, index) => {
+    country.ranking = index + 1;
+  });
+  if (limit) {
+    return countries.slice(0, limit);
+  }
+  return countries;
 };
 
 // get random color for pie chart

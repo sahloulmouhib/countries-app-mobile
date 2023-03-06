@@ -6,7 +6,6 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import CountryCard from '_features/country/components/CountryCard/CountryCard';
 import CountryCardSkeletons from '_features/country/components/CountryCardSkeletons/CountryCardSkeletons';
 import useFetchPaginatedCountryLocal from '_features/country/hooks/useFetchPaginatedCountryLocal';
-import { ICountry } from '_features/country/models/Country';
 import { sortCountriesAlphabetically } from '_features/country/utils/helpers';
 
 import CustomFlatlist from '_components/CustomFlatList/CustomFlatlist';
@@ -15,6 +14,8 @@ import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
 import useDebounceText from '_hooks/useDebounceText';
+
+import { ICountry } from '_models/Country';
 
 import { COUNTRIES } from '_data/countries-data';
 

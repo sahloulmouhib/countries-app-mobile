@@ -3,18 +3,21 @@ import { View } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import CountryCard from '_features/country/components/CountryCard/CountryCard';
 import CountryCardSkeletons from '_features/country/components/CountryCardSkeletons/CountryCardSkeletons';
 import useFetchPaginatedCountryLocal from '_features/country/hooks/useFetchPaginatedCountryLocal';
-import { ICountry } from '_features/country/models/Country';
+import PopulationStatCard from '_features/stats/components/PopulationStatCard/PopulationStatCard';
 import { sortCountriesByField } from '_features/stats/utils/helpers';
 
+import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomFlatlist from '_components/CustomFlatList/CustomFlatlist';
+import CustomScreenHeader from '_components/CustomScreenHeader/CustomScreenHeader';
 import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
 
 import { StatsStackParamList } from '_navigation/StatsStackNavigation';
 
 import useDebounceText from '_hooks/useDebounceText';
+
+import { ICountry } from '_models/Country';
 
 import { DEBOUNCE_TIME } from '_utils/constants';
 import { POPULATION_STATS_SCREEN } from '_utils/screenNames';
@@ -30,6 +33,9 @@ type Props = NativeStackScreenProps<
 
 const COUNTRIES_SORTED_BY_POPULATION = sortCountriesByField('population');
 const PopulationStats = ({ navigation }: Props) => {
+  const goBack = () => {
+    navigation.goBack();
+  };
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);
   const {
@@ -54,7 +60,7 @@ const PopulationStats = ({ navigation }: Props) => {
     const onPress = () => {
       navigation.navigate(COUNTRY_DETAILS_SCREEN, { country: item });
     };
-    return <CountryCard country={item} onPress={onPress} />;
+    return <PopulationStatCard country={item} onPress={onPress} />;
   };
 
   useEffect(() => {
@@ -64,6 +70,11 @@ const PopulationStats = ({ navigation }: Props) => {
 
   return (
     <View style={styles.container}>
+      <CustomScreenHeader
+        title={strings('stats.population.title')}
+        onBackPress={goBack}
+      />
+      <CustomDivider height={32} />
       <CustomSearchBar
         text={searchText}
         onChangeText={setSearchText}

@@ -1,6 +1,4 @@
-import { sortCountriesAlphabetically } from '../utils/helpers';
-
-export interface ICountry {
+export interface ICountryResponse {
   id: string;
   name: string;
   capital: string;
@@ -20,7 +18,7 @@ export interface ICountry {
   };
 }
 
-export interface ICountryResponse {
+export interface ICountry {
   id: string;
   name: string;
   capital: string;
@@ -38,6 +36,7 @@ export interface ICountryResponse {
     lat: number;
     lng: number;
   };
+  ranking?: number;
 }
 
 export const decodeCountry = (data: ICountryResponse): ICountry => {
@@ -63,10 +62,9 @@ export const decodeCountry = (data: ICountryResponse): ICountry => {
 };
 
 export const decodeCountries = (data: ICountry[]): ICountry[] => {
-  const decodedCountries = sortCountriesAlphabetically(
-    data.map(country => {
-      return decodeCountry(country);
-    }),
-  );
+  const decodedCountries = data.map(country => {
+    return decodeCountry(country);
+  });
+
   return decodedCountries;
 };

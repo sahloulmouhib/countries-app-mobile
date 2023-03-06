@@ -1,4 +1,4 @@
-import { ICountry } from '_features/country/models/Country';
+import { ICountry } from '_models/Country';
 
 import COUNTRIES_DATA from './countriesV2.json';
 
