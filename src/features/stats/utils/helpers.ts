@@ -1,14 +1,11 @@
-import { ICountryResponse } from '_features/country/models/Country';
+import { ICountry } from '_features/country/models/Country';
 
 import { COUNTRIES } from '_data/countries-data';
 
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
-export const sortCountriesByField = (
-  field: keyof ICountryResponse,
-  limit?: number,
-) => {
+export const sortCountriesByField = (field: keyof ICountry, limit?: number) => {
   if (limit)
     return COUNTRIES.sort(
       (a, b) => (b[field] as number) - (a[field] as number),

@@ -12,6 +12,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { ICountry } from '_features/country/models/Country';
+import {
+  formatPopulation,
+  getContinents,
+  getCurrencies,
+  getLanguages,
+} from '_features/country/utils/helpers';
 
 import { strings } from '_i18n';
 
@@ -26,6 +32,12 @@ type Props = {
 const CountryDescription = ({ country }: Props) => {
   const { capital, area, continents, currencies, languages, name, population } =
     country;
+  const continentsString = getContinents(continents);
+  const currenciesString = getCurrencies(currencies);
+  const languagesString = getLanguages(languages);
+
+  const formattedPopulation = formatPopulation(population);
+  const formattedArea = formatPopulation(area);
 
   return (
     <View>
@@ -44,33 +56,33 @@ const CountryDescription = ({ country }: Props) => {
       <CountryDetail
         index={2}
         title={strings('country.country_details.details.continent')}
-        value={continents}
+        value={continentsString}
         icon={faEarthAmericas}
       />
       <View style={styles.twoDetailsContainer}>
         <CountryDetail
           index={3}
           title={strings('country.country_details.details.population')}
-          value={population}
+          value={formattedPopulation}
           icon={faPeopleGroup}
         />
         <CountryDetail
           index={3}
           title={strings('country.country_details.details.area')}
-          value={area}
+          value={formattedArea}
           icon={faUpRightAndDownLeftFromCenter}
         />
       </View>
       <CountryDetail
         index={4}
         title={strings('country.country_details.details.currency')}
-        value={currencies}
+        value={currenciesString}
         icon={faDollarSign}
       />
       <CountryDetail
         index={5}
         title={strings('country.country_details.details.language')}
-        value={languages}
+        value={languagesString}
         icon={faLanguage}
       />
     </View>
