@@ -16,7 +16,7 @@ type Props = {
 const SwitchButton = ({ onPress, title }: Props) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <FontAwesomeIcon icon={faRepeat} size={12} />
+      <FontAwesomeIcon icon={faRepeat} size={10} />
       <CustomText text={title} style={styles.title} />
     </TouchableOpacity>
   );

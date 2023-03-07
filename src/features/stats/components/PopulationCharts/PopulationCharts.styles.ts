@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {},
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -12,7 +11,9 @@ export default StyleSheet.create({
     flex: 1,
     marginLeft: 5,
   },
-  chartContainer: {
-    minHeight: 300,
+  chartContainer: {},
+  viewMoreContainer: {
+    alignItems: 'flex-end',
+    marginTop: 5,
   },
 });

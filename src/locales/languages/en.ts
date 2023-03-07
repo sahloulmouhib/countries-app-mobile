@@ -1,6 +1,7 @@
 export default {
   global: {
     title: 'My App',
+    view_more: 'View more',
     empty_list: {
       title: 'Sorry, no results found',
       description: 'Try searching for something else',

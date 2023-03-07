@@ -1,20 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 import { colors } from '_utils/theme/colors';
+import { fonts } from '_utils/theme/fonts';
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
-    padding: 8,
-    backgroundColor: colors.WHITE,
-    borderRadius: 5,
     alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 0.5,
-    borderColor: colors.BLACK,
   },
   title: {
-    fontSize: 12,
-    marginLeft: 5,
+    fontSize: 14,
+    colors: colors.BLACK,
+    fontFamily: fonts.MEDIUM,
+    marginRight: 5,
+    textDecorationLine: 'underline',
   },
 });

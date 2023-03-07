@@ -12,6 +12,7 @@ import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
+import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
 
 import { StatsStackParamList } from '_navigation/StatsStackNavigation';
 
@@ -29,12 +30,9 @@ const Stats = ({ navigation }: Props) => {
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}>
       <CustomTitle type={CustomTitleType.H2} title={strings('stats.title')} />
-      <CustomButton
-        title="Go to population stats"
-        onPress={() => navigation.navigate(POPULATION_STATS_SCREEN)}
-      />
+
       <CustomDivider height={32} />
-      <PopulationCharts />
+      <PopulationCharts navigation={navigation} />
       <CustomDivider height={32} />
       <AreaCharts />
       <CustomDivider height={32} />

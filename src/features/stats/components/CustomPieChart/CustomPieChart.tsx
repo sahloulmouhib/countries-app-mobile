@@ -5,6 +5,8 @@ import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
 import { SCREEN_WIDTH } from '_utils/constants';
 import { colors } from '_utils/theme/colors';
 
+import styles from './CustomPieChart.styles';
+
 const chartConfig: AbstractChartConfig = {
   backgroundColor: colors.WHITE,
   backgroundGradientFrom: colors.WHITE,
@@ -28,6 +30,7 @@ const CustomPieChart = ({ data, fieldName }: Props) => {
       chartConfig={chartConfig}
       backgroundColor={'transparent'}
       paddingLeft={'0'}
+      style={styles.pieChart}
     />
   );
 };

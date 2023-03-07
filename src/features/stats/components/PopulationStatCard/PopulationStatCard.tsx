@@ -1,6 +1,8 @@
-import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { Image, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image2';
+
+import { getRankingImage } from '_features/stats/utils/helpers';
 
 import CustomTitle, {
   CustomTitleType,
@@ -20,6 +22,11 @@ type Props = {
 
 const PopulationStatCard = ({ country, onPress }: Props) => {
   const { name, population, flagImage, ranking } = country;
+
+  const rankingIcon = useMemo(() => {
+    return getRankingImage(ranking);
+  }, [ranking]);
+
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <FastImage
@@ -39,6 +46,7 @@ const PopulationStatCard = ({ country, onPress }: Props) => {
           color={colors.PRIMARY}
         />
       </View>
+      {rankingIcon && <Image source={rankingIcon} style={styles.rankingIcon} />}
     </TouchableOpacity>
   );
 };

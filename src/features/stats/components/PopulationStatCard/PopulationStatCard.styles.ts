@@ -14,13 +14,18 @@ export default StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: colors.GREY_LIGHT,
   },
   detailsContainer: {
     marginLeft: 16,
+    flex: 1,
   },
   rankingContainer: {
     marginLeft: 15,
+  },
+  rankingIcon: {
+    width: 40,
+    height: 40,
   },
 });

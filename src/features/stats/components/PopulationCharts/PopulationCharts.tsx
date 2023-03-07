@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import {
   getPopulationDataForPieChart,
   getPopulationDataAndLabelsForBarChart,
@@ -11,6 +13,11 @@ import { PopulationChartType } from '_features/stats/utils/types';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
+import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
+
+import { StatsStackParamList } from '_navigation/StatsStackNavigation';
+
+import { POPULATION_STATS_SCREEN, STATS_SCREEN } from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
@@ -23,7 +30,18 @@ import styles from './PopulationCharts.styles';
 const pieChartData = getPopulationDataForPieChart(5);
 const barChartData = getPopulationDataAndLabelsForBarChart(5);
 
-const PopulationCharts = () => {
+type Props = {
+  navigation: NativeStackNavigationProp<
+    StatsStackParamList,
+    typeof STATS_SCREEN
+  >;
+};
+
+const PopulationCharts = ({ navigation }: Props) => {
+  const navigateToPopulationStats = () => {
+    navigation.navigate(POPULATION_STATS_SCREEN);
+  };
+
   const [populationChartType, setPopulationChartType] = useState(
     PopulationChartType.Bar,
   );
@@ -59,7 +77,7 @@ const PopulationCharts = () => {
   }, [populationChartType]);
 
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.titleContainer}>
         <View style={styles.title}>
           <CustomTitle
@@ -68,12 +86,12 @@ const PopulationCharts = () => {
             title={strings('stats.population.title')}
           />
         </View>
-
         <SwitchButton
           title={switchButtonTitle}
           onPress={switchPopulationChartType}
         />
       </View>
+
       <Animated.View
         style={styles.chartContainer}
         exiting={FadeOut.duration(300)}
@@ -81,6 +99,10 @@ const PopulationCharts = () => {
         key={populationChartType}>
         {renderPopulationChart()}
       </Animated.View>
+
+      <View style={styles.viewMoreContainer}>
+        <CustomViewMore onPress={navigateToPopulationStats} />
+      </View>
     </View>
   );
 };

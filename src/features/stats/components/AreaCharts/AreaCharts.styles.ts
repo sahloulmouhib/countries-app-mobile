@@ -12,7 +12,5 @@ export default StyleSheet.create({
     flex: 1,
     marginLeft: 5,
   },
-  chartContainer: {
-    minHeight: 300,
-  },
+  chartContainer: {},
 });

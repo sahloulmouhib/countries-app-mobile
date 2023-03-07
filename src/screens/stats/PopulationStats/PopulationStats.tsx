@@ -20,7 +20,10 @@ import useDebounceText from '_hooks/useDebounceText';
 import { ICountry } from '_models/Country';
 
 import { DEBOUNCE_TIME } from '_utils/constants';
-import { POPULATION_STATS_SCREEN } from '_utils/screenNames';
+import {
+  COUNTRY_DETAILS_SCREEN,
+  POPULATION_STATS_SCREEN,
+} from '_utils/screenNames';
 
 import { strings } from '_i18n';
 

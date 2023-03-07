@@ -5,6 +5,9 @@ import { COUNTRIES } from '_data/countries-data';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
+import { statsImages } from './icons';
+
+/*********Common helpers */
 export const sortCountriesByField = (field: keyof ICountry, limit?: number) => {
   let countries = [];
 
@@ -29,6 +32,22 @@ const getRandomColor = () => {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
+};
+
+export const getRankingImage = (ranking: number | undefined) => {
+  if (!ranking) {
+    return null;
+  }
+  switch (ranking) {
+    case 1:
+      return statsImages.FIRST_PRIZE;
+    case 2:
+      return statsImages.SECOND_PRIZE;
+    case 3:
+      return statsImages.THIRD_PRIZE;
+    default:
+      return null;
+  }
 };
 
 //*********Population helpers */

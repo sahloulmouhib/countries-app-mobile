@@ -53,7 +53,7 @@ const CustomBarChart = ({
       yAxisSuffix={yLabelSuffix}
       data={barChartData}
       width={SCREEN_WIDTH - 32}
-      height={300}
+      height={250}
       chartConfig={config || chartConfig}
       style={styles.container}
     />

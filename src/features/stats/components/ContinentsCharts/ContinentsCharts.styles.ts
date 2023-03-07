@@ -8,9 +8,7 @@ export default StyleSheet.create({
     marginBottom: 16,
     alignItems: 'center',
   },
-  chartContainer: {
-    minHeight: 300,
-  },
+  chartContainer: {},
   title: {
     flex: 1,
     marginLeft: 5,
