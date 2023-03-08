@@ -6,7 +6,7 @@ import {
   IAnswerToQuestion,
 } from '_features/quiz/models/Quiz';
 
-import { DECODED_COUNTRIES } from '_data/countries-data';
+import { COUNTRIES } from '_data/countries-data';
 
 import useQuizStore from '../store/quizStore';
 import {
@@ -15,7 +15,7 @@ import {
 } from '../utils/helpers';
 
 const useFlagQuiz = () => {
-  const [quiz, setQuiz] = useState(createRandomFlagQuiz(DECODED_COUNTRIES));
+  const [quiz, setQuiz] = useState(createRandomFlagQuiz(COUNTRIES));
 
   const { setFlagQuizScore } = useQuizStore();
   const numberOfQuestions = quiz.questions.length;
@@ -89,7 +89,7 @@ const useFlagQuiz = () => {
   };
 
   const initializeQuiz = () => {
-    const newQuiz = createRandomFlagQuiz(DECODED_COUNTRIES);
+    const newQuiz = createRandomFlagQuiz(COUNTRIES);
     setQuiz(newQuiz);
     setQuestionAnswers(createLocalQuizQuestionAnswers(0, newQuiz));
     setQuestionIndex(0);

@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import { searchAndPaginateData } from '_utils/helpers';
 
-import { ICountry } from '../../../models/Country';
+import { ICountry } from '../models/Country';
 
 interface UseFetchPaginatedCountryLocalType {
   filter?: string;
-  filterBy?: string;
+  filterBy?: keyof ICountry;
   rowsPerPage?: number;
 }
 

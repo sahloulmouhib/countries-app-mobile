@@ -3,6 +3,7 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image2';
 
 import { getRankingImage } from '_features/stats/utils/helpers';
+import { StatsType } from '_features/stats/utils/types';
 
 import CustomTitle, {
   CustomTitleType,
@@ -13,15 +14,23 @@ import { ICountry } from '_models/Country';
 import { icons } from '_utils/icons';
 import { colors } from '_utils/theme/colors';
 
-import styles from './PopulationStatCard.styles';
+import styles from './AreaAndPopulationStatCard.styles';
 
 type Props = {
   country: ICountry;
   onPress: () => void;
+  type: StatsType;
 };
 
-const PopulationStatCard = ({ country, onPress }: Props) => {
-  const { name, population, flagImage, ranking } = country;
+const AreaAndPopulationStatCard = ({ country, onPress, type }: Props) => {
+  const { name, population, flagImage, ranking, area } = country;
+
+  const FIELD_TYPES = {
+    [StatsType.Area]: area,
+    [StatsType.Population]: population,
+  };
+
+  const field = FIELD_TYPES[type];
 
   const rankingIcon = useMemo(() => {
     return getRankingImage(ranking);
@@ -41,7 +50,7 @@ const PopulationStatCard = ({ country, onPress }: Props) => {
       <View style={styles.detailsContainer}>
         <CustomTitle title={name} type={CustomTitleType.H3} />
         <CustomTitle
-          title={population.toLocaleString()}
+          title={field.toLocaleString()}
           type={CustomTitleType.H2}
           color={colors.PRIMARY}
         />
@@ -51,4 +60,4 @@ const PopulationStatCard = ({ country, onPress }: Props) => {
   );
 };
 
-export default PopulationStatCard;
+export default AreaAndPopulationStatCard;

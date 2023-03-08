@@ -2,15 +2,25 @@ import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import {
   getAreaDataAndLabelsForBarChart,
   getAreaDataForPieChart,
 } from '_features/stats/utils/helpers';
-import { AreaChartType } from '_features/stats/utils/types';
+import { AreaChartType, StatsType } from '_features/stats/utils/types';
 
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
+import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
+
+import { StatsStackParamList } from '_navigation/StatsStackNavigation';
+
+import {
+  STATS_SCREEN,
+  AREA_AND_POPULATION_STATS_SCREEN,
+} from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
@@ -22,7 +32,20 @@ import styles from './AreaCharts.styles';
 
 const pieChartData = getAreaDataForPieChart(5);
 const barChartData = getAreaDataAndLabelsForBarChart(5);
-const AreaCharts = () => {
+
+type Props = {
+  navigation: NativeStackNavigationProp<
+    StatsStackParamList,
+    typeof STATS_SCREEN
+  >;
+};
+
+const AreaCharts = ({ navigation }: Props) => {
+  const navigateToAreaStats = () => {
+    navigation.navigate(AREA_AND_POPULATION_STATS_SCREEN, {
+      type: StatsType.Area,
+    });
+  };
   const [areaChartType, setAreaChartType] = useState(AreaChartType.Bar);
   const switchAreaChartType = () => {
     setAreaChartType(
@@ -74,6 +97,9 @@ const AreaCharts = () => {
         key={areaChartType}>
         {renderAreaChart()}
       </Animated.View>
+      <View style={styles.viewMoreContainer}>
+        <CustomViewMore onPress={navigateToAreaStats} />
+      </View>
     </View>
   );
 };

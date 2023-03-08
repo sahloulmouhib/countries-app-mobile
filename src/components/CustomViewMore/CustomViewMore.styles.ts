@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 14,
-    colors: colors.BLACK,
+    color: colors.BLACK,
     fontFamily: fonts.MEDIUM,
     marginRight: 5,
     textDecorationLine: 'underline',

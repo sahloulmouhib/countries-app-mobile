@@ -9,19 +9,21 @@ import { statsImages } from './icons';
 
 /*********Common helpers */
 export const sortCountriesByField = (field: keyof ICountry, limit?: number) => {
-  let countries = [];
+  let countries = [...COUNTRIES];
 
-  countries = COUNTRIES.sort(
-    (a, b) => (b[field] as number) - (a[field] as number),
-  );
+  countries.sort((a, b) => (b[field] as number) - (a[field] as number));
 
-  countries.forEach((country, index) => {
-    country.ranking = index + 1;
+  const newCountries = countries.map((country, index) => {
+    return {
+      ...country,
+      ranking: index + 1,
+    };
   });
+
   if (limit) {
-    return countries.slice(0, limit);
+    return newCountries.slice(0, limit);
   }
-  return countries;
+  return newCountries;
 };
 
 // get random color for pie chart
@@ -108,7 +110,7 @@ export const getAreaDataForPieChart = (limit: number) => {
 
 //*********Continents helpers *****/
 
-//TODO: fix countries count
+//TODO: fix countries count for each continent
 export const getContinentsCount = () => {
   let data: {
     continentName: string;

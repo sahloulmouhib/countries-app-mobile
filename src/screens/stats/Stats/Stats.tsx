@@ -7,16 +7,14 @@ import AreaCharts from '_features/stats/components/AreaCharts/AreaCharts';
 import ContinentsCharts from '_features/stats/components/ContinentsCharts/ContinentsCharts';
 import PopulationCharts from '_features/stats/components/PopulationCharts/PopulationCharts';
 
-import CustomButton from '_components/CustomButton/CustomButton';
 import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
-import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
 
 import { StatsStackParamList } from '_navigation/StatsStackNavigation';
 
-import { POPULATION_STATS_SCREEN, STATS_SCREEN } from '_utils/screenNames';
+import { STATS_SCREEN } from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
@@ -30,11 +28,10 @@ const Stats = ({ navigation }: Props) => {
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}>
       <CustomTitle type={CustomTitleType.H2} title={strings('stats.title')} />
-
       <CustomDivider height={32} />
       <PopulationCharts navigation={navigation} />
       <CustomDivider height={32} />
-      <AreaCharts />
+      <AreaCharts navigation={navigation} />
       <CustomDivider height={32} />
       <ContinentsCharts />
     </ScrollView>

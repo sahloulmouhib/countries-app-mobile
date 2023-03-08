@@ -8,7 +8,7 @@ import {
   getPopulationDataForPieChart,
   getPopulationDataAndLabelsForBarChart,
 } from '_features/stats/utils/helpers';
-import { PopulationChartType } from '_features/stats/utils/types';
+import { PopulationChartType, StatsType } from '_features/stats/utils/types';
 
 import CustomTitle, {
   CustomTitleType,
@@ -17,7 +17,10 @@ import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
 
 import { StatsStackParamList } from '_navigation/StatsStackNavigation';
 
-import { POPULATION_STATS_SCREEN, STATS_SCREEN } from '_utils/screenNames';
+import {
+  AREA_AND_POPULATION_STATS_SCREEN,
+  STATS_SCREEN,
+} from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
@@ -39,7 +42,9 @@ type Props = {
 
 const PopulationCharts = ({ navigation }: Props) => {
   const navigateToPopulationStats = () => {
-    navigation.navigate(POPULATION_STATS_SCREEN);
+    navigation.navigate(AREA_AND_POPULATION_STATS_SCREEN, {
+      type: StatsType.Population,
+    });
   };
 
   const [populationChartType, setPopulationChartType] = useState(
