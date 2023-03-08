@@ -16,12 +16,17 @@ import {
   AREA_AND_POPULATION_STATS_SCREEN,
   STATS_SCREEN,
   CONTINENTS_STATS_SCREEN,
+  COUNTRIES_BY_CONTINENT_SCREEN,
 } from '_utils/screenNames';
+import { Continents } from '_utils/types';
 
 export type StatsStackParamList = {
   [STATS_SCREEN]: undefined;
   [AREA_AND_POPULATION_STATS_SCREEN]: {
     type: StatsType;
+  };
+  [COUNTRIES_BY_CONTINENT_SCREEN]: {
+    continent: Continents;
   };
   [CONTINENTS_STATS_SCREEN]: undefined;
   [COUNTRY_DETAILS_SCREEN]: { country: ICountry };

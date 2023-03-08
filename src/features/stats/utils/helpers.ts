@@ -1,4 +1,3 @@
-import { IContinent } from '_models/Continent';
 import { ICountry } from '_models/Country';
 
 import { CONTINENTS, COUNTRIES } from '_data/countries-data';

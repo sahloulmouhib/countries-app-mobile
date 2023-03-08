@@ -2,7 +2,12 @@ import { Alert, Platform } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { IContinent } from '_models/Continent';
+
 import { strings } from '_i18n';
+
+import { icons } from './icons';
+import { Continents } from './types';
 
 export const isIosDevice = () => {
   return Platform.OS === 'ios';
@@ -105,4 +110,36 @@ export const isValidHttpUrl = (url: string) => {
     /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
   );
   return res !== null;
+};
+
+const getContinentIconName = (continentName: string) => {
+  switch (continentName) {
+    case Continents.Africa:
+      return icons.AFRICA;
+    case Continents.Asia:
+      return icons.ASIA;
+    case Continents.Europe:
+      return icons.EUROPE;
+    case Continents.NorthAmerica:
+      return icons.NORTH_AMERICA;
+    case Continents.Oceania:
+      return icons.OCEANIA;
+    case Continents.SouthAmerica:
+      return icons.SOUTH_AMERICA;
+    case Continents.Antarctica:
+      return icons.ANTARCTICA;
+    default:
+      return icons.AFRICA;
+  }
+};
+//TODO: fix countries count for each continent
+export const setIconsToContinents = (continents: any) => {
+  const newContinents = continents.map((continent: { name: string }) => {
+    return {
+      ...continent,
+      image: getContinentIconName(continent.name),
+    };
+  });
+
+  return newContinents as unknown as IContinent[];
 };

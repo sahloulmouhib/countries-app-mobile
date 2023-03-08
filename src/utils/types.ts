@@ -5,3 +5,13 @@ export enum HttpMethod {
   Delete = 'DELETE',
   Patch = 'PATCH',
 }
+
+export enum Continents {
+  Africa = 'Africa',
+  Asia = 'Asia',
+  Europe = 'Europe',
+  NorthAmerica = 'North America',
+  Oceania = 'Oceania',
+  SouthAmerica = 'South America',
+  Antarctica = 'Antarctica',
+}

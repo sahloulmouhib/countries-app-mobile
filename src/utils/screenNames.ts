@@ -11,4 +11,5 @@ export const QUIZ_SCREEN = 'quiz';
 export const STATS_TAB = 'statsTab';
 export const STATS_SCREEN = 'stats';
 export const CONTINENTS_STATS_SCREEN = 'continentStats';
+export const COUNTRIES_BY_CONTINENT_SCREEN = 'countriesByContinentStats';
 export const AREA_AND_POPULATION_STATS_SCREEN = 'areaAndPopulationStats';
