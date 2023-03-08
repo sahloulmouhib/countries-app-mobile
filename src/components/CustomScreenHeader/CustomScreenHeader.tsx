@@ -24,7 +24,11 @@ const CustomScreenHeader = ({ title, onBackPress }: Props) => {
         </TouchableOpacity>
       )}
       <View style={styles.titleContainer}>
-        <CustomTitle title={title} type={CustomTitleType.H2} />
+        <CustomTitle
+          textAlign="center"
+          title={title}
+          type={CustomTitleType.H2}
+        />
       </View>
       <TouchableOpacity style={styles.emptyView}>
         <FontAwesomeIcon icon={faArrowLeft} size={20} />

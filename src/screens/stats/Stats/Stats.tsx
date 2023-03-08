@@ -33,7 +33,7 @@ const Stats = ({ navigation }: Props) => {
       <CustomDivider height={32} />
       <AreaCharts navigation={navigation} />
       <CustomDivider height={32} />
-      <ContinentsCharts />
+      <ContinentsCharts navigation={navigation} />
     </ScrollView>
   );
 };

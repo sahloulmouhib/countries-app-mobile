@@ -2,6 +2,9 @@ import React from 'react';
 import { PieChart } from 'react-native-chart-kit';
 import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
 
+import { IContinent } from '_models/Continent';
+import { ICountry } from '_models/Country';
+
 import { SCREEN_WIDTH } from '_utils/constants';
 import { colors } from '_utils/theme/colors';
 
@@ -17,7 +20,7 @@ const chartConfig: AbstractChartConfig = {
 
 type Props = {
   data: any[];
-  fieldName: string;
+  fieldName: keyof ICountry | keyof IContinent;
 };
 const CustomPieChart = ({ data, fieldName }: Props) => {
   return (

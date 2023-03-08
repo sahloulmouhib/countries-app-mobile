@@ -13,4 +13,8 @@ export default StyleSheet.create({
     flex: 1,
     marginLeft: 5,
   },
+  viewMoreContainer: {
+    alignItems: 'flex-end',
+    marginTop: 5,
+  },
 });

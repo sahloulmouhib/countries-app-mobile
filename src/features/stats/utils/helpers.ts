@@ -1,6 +1,7 @@
+import { IContinent } from '_models/Continent';
 import { ICountry } from '_models/Country';
 
-import { COUNTRIES } from '_data/countries-data';
+import { CONTINENTS, COUNTRIES } from '_data/countries-data';
 
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
@@ -110,41 +111,18 @@ export const getAreaDataForPieChart = (limit: number) => {
 
 //*********Continents helpers *****/
 
-//TODO: fix countries count for each continent
-export const getContinentsCount = () => {
-  let data: {
-    continentName: string;
-    countriesCount: number;
-  }[] = [];
-  COUNTRIES.forEach(country => {
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].continentName === country.continents[0]) {
-        data[i].countriesCount++;
-        return true;
-      }
-    }
-    data.push({
-      continentName: country.continents[0],
-      countriesCount: 1,
-    });
-    return true;
-  });
-  data.sort((a, b) => b.countriesCount - a.countriesCount);
-  return data;
-};
-
 export const getContinentsDataAndLabelsForBarChart = () => {
-  const data = getContinentsCount();
-  const labels = data.map(item => item.continentName);
-  const values = data.map(item => item.countriesCount);
+  const data = [...CONTINENTS];
+  const labels = data.map(item => item.name);
+  const values = data.map(item => item.count);
   return { labels, data: values };
 };
 
 export const getContinentsDataForPieChart = () => {
-  const data = getContinentsCount();
+  const data = [...CONTINENTS];
   return data.map(item => ({
-    name: item.continentName,
-    countriesCount: item.countriesCount,
+    name: item.name,
+    count: item.count,
     color: getRandomColor(),
     legendFontColor: colors.GREY_MEDIUM,
     legendFontSize: 12,

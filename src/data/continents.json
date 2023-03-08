@@ -1,0 +1,9 @@
+[
+  { "count": 58, "name": "Africa", "ranking": 1 },
+  { "count": 53, "name": "Europe", "ranking": 2 },
+  { "count": 52, "name": "Asia", "ranking": 3 },
+  { "count": 41, "name": "North America", "ranking": 4 },
+  { "count": 27, "name": "Oceania", "ranking": 5 },
+  { "count": 14, "name": "South America", "ranking": 6 },
+  { "count": 5, "name": "Antarctica", "ranking": 7 }
+]

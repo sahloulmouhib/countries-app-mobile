@@ -3,6 +3,8 @@ import { View } from 'react-native';
 import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import {
   getContinentsDataForPieChart,
   getContinentsDataAndLabelsForBarChart,
@@ -12,7 +14,11 @@ import { ContinentsChartType } from '_features/stats/utils/types';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
+import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
 
+import { StatsStackParamList } from '_navigation/StatsStackNavigation';
+
+import { CONTINENTS_STATS_SCREEN, STATS_SCREEN } from '_utils/screenNames';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
@@ -44,7 +50,17 @@ const barChartConfig: AbstractChartConfig = {
 };
 const pieChartData = getContinentsDataForPieChart();
 const barChartData = getContinentsDataAndLabelsForBarChart();
-const ContinentsCharts = () => {
+
+type Props = {
+  navigation: NativeStackNavigationProp<
+    StatsStackParamList,
+    typeof STATS_SCREEN
+  >;
+};
+const ContinentsCharts = ({ navigation }: Props) => {
+  const navigateToContinentsStats = () => {
+    navigation.navigate(CONTINENTS_STATS_SCREEN);
+  };
   const [continentsChartType, setContinentsChartType] = useState(
     ContinentsChartType.Bar,
   );
@@ -74,9 +90,7 @@ const ContinentsCharts = () => {
           />
         );
       case ContinentsChartType.Pie:
-        return (
-          <CustomPieChart fieldName={'countriesCount'} data={pieChartData} />
-        );
+        return <CustomPieChart fieldName={'count'} data={pieChartData} />;
       default:
         return null;
     }
@@ -104,6 +118,9 @@ const ContinentsCharts = () => {
         key={continentsChartType}>
         {renderContinentsChart()}
       </Animated.View>
+      <View style={styles.viewMoreContainer}>
+        <CustomViewMore onPress={navigateToContinentsStats} />
+      </View>
     </View>
   );
 };
