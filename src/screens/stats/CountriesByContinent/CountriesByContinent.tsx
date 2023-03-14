@@ -4,13 +4,9 @@ import { View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import CountryCardSkeletons from '_features/country/components/CountryCardSkeletons/CountryCardSkeletons';
-import AreaPopulationStatCard from '_features/stats/components/AreAndPopulationStatCard/AreaAndPopulationStatCard';
-import {
-  COUNTRIES_SORTED_BY_AREA,
-  COUNTRIES_SORTED_BY_POPULATION,
-} from '_features/stats/utils/constants';
-import { StatsType } from '_features/stats/utils/types';
+import { getCountriesByContinent } from '_features/stats/utils/helpers';
 
+import CountryCard from '_components/CountryCard/CountryCard';
 import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomFlatlist from '_components/CustomFlatList/CustomFlatlist';
 import CustomScreenHeader from '_components/CustomScreenHeader/CustomScreenHeader';
@@ -26,32 +22,23 @@ import { ICountry } from '_models/Country';
 import { DEBOUNCE_TIME } from '_utils/constants';
 import {
   COUNTRY_DETAILS_SCREEN,
-  AREA_AND_POPULATION_STATS_SCREEN,
+  COUNTRIES_BY_CONTINENT_SCREEN,
 } from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
-import styles from './AreaAndPopulationStats.styles';
+import styles from './CountriesByContinent.styles';
 
 type Props = NativeStackScreenProps<
   StatsStackParamList,
-  typeof AREA_AND_POPULATION_STATS_SCREEN
+  typeof COUNTRIES_BY_CONTINENT_SCREEN
 >;
 
-const SCREEN_DETAILS = {
-  [StatsType.Area]: {
-    countries: COUNTRIES_SORTED_BY_AREA,
-    screenTitle: strings('stats.area.title'),
-  },
-  [StatsType.Population]: {
-    countries: COUNTRIES_SORTED_BY_POPULATION,
-    screenTitle: strings('stats.population.title'),
-  },
-};
+const CountriesByContinent = ({ navigation, route }: Props) => {
+  const { continentName } = route.params;
 
-const AreaAndPopulationStats = ({ navigation, route }: Props) => {
-  const { type } = route.params;
-  const { countries, screenTitle } = SCREEN_DETAILS[type];
+  const countries = getCountriesByContinent(continentName);
+
   const goBack = () => navigation.goBack();
 
   const [searchText, setSearchText] = useState('');
@@ -78,9 +65,7 @@ const AreaAndPopulationStats = ({ navigation, route }: Props) => {
     const onPress = () => {
       navigation.navigate(COUNTRY_DETAILS_SCREEN, { country: item });
     };
-    return (
-      <AreaPopulationStatCard country={item} onPress={onPress} type={type} />
-    );
+    return <CountryCard country={item} onPress={onPress} />;
   };
 
   useEffect(() => {
@@ -90,7 +75,12 @@ const AreaAndPopulationStats = ({ navigation, route }: Props) => {
 
   return (
     <View style={styles.container}>
-      <CustomScreenHeader title={screenTitle} onBackPress={goBack} />
+      <CustomScreenHeader
+        title={strings('stats.continents.countries_by_continent', {
+          continentName,
+        })}
+        onBackPress={goBack}
+      />
       <CustomDivider height={32} />
       <CustomSearchBar
         text={searchText}
@@ -118,4 +108,4 @@ const AreaAndPopulationStats = ({ navigation, route }: Props) => {
   );
 };
 
-export default AreaAndPopulationStats;
+export default CountriesByContinent;

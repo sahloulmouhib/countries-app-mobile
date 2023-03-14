@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CountryDetails from '_screens/country/CountryDetails/CountryDetails';
 import AreaAndPopulationStats from '_screens/stats/AreaAndPopulationStats/AreaAndPopulationStats';
 import ContinentsStats from '_screens/stats/ContientsStats/ContinentsStats';
+import CountriesByContinent from '_screens/stats/CountriesByContinent/CountriesByContinent';
 import Stats from '_screens/stats/Stats/Stats';
 
 import { StatsType } from '_features/stats/utils/types';
@@ -26,7 +27,7 @@ export type StatsStackParamList = {
     type: StatsType;
   };
   [COUNTRIES_BY_CONTINENT_SCREEN]: {
-    continent: Continents;
+    continentName: Continents;
   };
   [CONTINENTS_STATS_SCREEN]: undefined;
   [COUNTRY_DETAILS_SCREEN]: { country: ICountry };
@@ -52,6 +53,10 @@ const StatsTabNavigation = () => {
       <StatsStack.Screen
         name={COUNTRY_DETAILS_SCREEN}
         component={CountryDetails}
+      />
+      <StatsStack.Screen
+        name={COUNTRIES_BY_CONTINENT_SCREEN}
+        component={CountriesByContinent}
       />
     </StatsStack.Navigator>
   );

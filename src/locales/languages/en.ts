@@ -7,6 +7,9 @@ export default {
       description: 'Try searching for something else',
     },
   },
+  labels: {
+    search_country_placeholder: 'Search country...',
+  },
   errors: {
     try_again: 'Try again',
     network: 'Check your internet connection',
@@ -107,6 +110,7 @@ export default {
     },
     continents: {
       title: 'Countries distribution by continent',
+      countries_by_continent: 'Countries in {{continentName}}',
     },
   },
 };

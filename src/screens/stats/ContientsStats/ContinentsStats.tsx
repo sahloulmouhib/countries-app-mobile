@@ -14,7 +14,10 @@ import { IContinent } from '_models/Continent';
 
 import { CONTINENTS } from '_data/countries-data';
 
-import { CONTINENTS_STATS_SCREEN } from '_utils/screenNames';
+import {
+  CONTINENTS_STATS_SCREEN,
+  COUNTRIES_BY_CONTINENT_SCREEN,
+} from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
@@ -30,12 +33,17 @@ const ContinentsStats = ({ navigation }: Props) => {
 
   const renderItem = ({ item }: { item: IContinent }) => {
     const { name, count, image } = item;
+    const onPress = () => {
+      navigation.navigate(COUNTRIES_BY_CONTINENT_SCREEN, {
+        continentName: name,
+      });
+    };
     return (
       <ContinentStatCard
         name={name}
         count={count}
         image={image}
-        onPress={() => {}}
+        onPress={onPress}
       />
     );
   };

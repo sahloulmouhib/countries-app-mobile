@@ -4,6 +4,7 @@ import { CONTINENTS, COUNTRIES } from '_data/countries-data';
 
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
+import { Continents } from '_utils/types';
 
 import { statsImages } from './icons';
 
@@ -127,4 +128,11 @@ export const getContinentsDataForPieChart = () => {
     legendFontSize: 12,
     legendFontFamily: fonts.MEDIUM,
   }));
+};
+
+//get countries by continent
+export const getCountriesByContinent = (continentName: Continents) => {
+  return COUNTRIES.filter(country =>
+    country.continents.includes(continentName),
+  );
 };

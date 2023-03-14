@@ -3,10 +3,10 @@ import { View } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import CountryCard from '_features/country/components/CountryCard/CountryCard';
 import CountryCardSkeletons from '_features/country/components/CountryCardSkeletons/CountryCardSkeletons';
 import { sortCountriesAlphabetically } from '_features/country/utils/helpers';
 
+import CountryCard from '_components/CountryCard/CountryCard';
 import CustomFlatlist from '_components/CustomFlatList/CustomFlatlist';
 import CustomSearchBar from '_components/CustomSearchBar/CustomSearchBar';
 
@@ -73,7 +73,7 @@ const SearchCountries = ({ navigation }: Props) => {
       <CustomSearchBar
         text={searchText}
         onChangeText={setSearchText}
-        placeholder={strings('country.search_countries.placeholder')}
+        placeholder={strings('labels.search_country_placeholder')}
       />
       <CustomFlatlist
         data={data}

@@ -9,6 +9,7 @@ import {
   COUNTRIES_SORTED_BY_AREA,
   COUNTRIES_SORTED_BY_POPULATION,
 } from '_features/stats/utils/constants';
+import { getCountriesByContinent } from '_features/stats/utils/helpers';
 import { StatsType } from '_features/stats/utils/types';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
@@ -26,32 +27,21 @@ import { ICountry } from '_models/Country';
 import { DEBOUNCE_TIME } from '_utils/constants';
 import {
   COUNTRY_DETAILS_SCREEN,
-  AREA_AND_POPULATION_STATS_SCREEN,
+  COUNTRIES_BY_CONTINENT_SCREEN,
 } from '_utils/screenNames';
 
 import { strings } from '_i18n';
 
-import styles from './AreaAndPopulationStats.styles';
+import styles from './CountriesByContinent.styles';
 
 type Props = NativeStackScreenProps<
   StatsStackParamList,
-  typeof AREA_AND_POPULATION_STATS_SCREEN
+  typeof COUNTRIES_BY_CONTINENT_SCREEN
 >;
 
-const SCREEN_DETAILS = {
-  [StatsType.Area]: {
-    countries: COUNTRIES_SORTED_BY_AREA,
-    screenTitle: strings('stats.area.title'),
-  },
-  [StatsType.Population]: {
-    countries: COUNTRIES_SORTED_BY_POPULATION,
-    screenTitle: strings('stats.population.title'),
-  },
-};
-
-const AreaAndPopulationStats = ({ navigation, route }: Props) => {
-  const { type } = route.params;
-  const { countries, screenTitle } = SCREEN_DETAILS[type];
+const CountriesByContinent = ({ navigation, route }: Props) => {
+  const { continent } = route.params;
+  const countries = getCountriesByContinent(continent);
   const goBack = () => navigation.goBack();
 
   const [searchText, setSearchText] = useState('');
@@ -95,7 +85,7 @@ const AreaAndPopulationStats = ({ navigation, route }: Props) => {
       <CustomSearchBar
         text={searchText}
         onChangeText={setSearchText}
-        placeholder={strings('labels.search_country_placeholder')}
+        placeholder={strings('country.search_countries.placeholder')}
       />
       <CustomFlatlist
         data={data}
@@ -118,4 +108,4 @@ const AreaAndPopulationStats = ({ navigation, route }: Props) => {
   );
 };
 
-export default AreaAndPopulationStats;
+export default CountriesByContinent;
