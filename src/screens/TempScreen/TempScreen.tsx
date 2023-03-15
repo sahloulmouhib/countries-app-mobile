@@ -1,9 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-type Props = {};
-
-const TempScreen = (props: Props) => {
+const TempScreen = () => {
   return (
     <View>
       <Text>TempScreen</Text>
