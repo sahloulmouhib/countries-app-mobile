@@ -15,6 +15,7 @@ import {
 
 import CustomText from '_components/CustomText/CustomText';
 
+import { isIosDevice } from '_utils/helpers';
 import { COUNTRY_TAB, QUIZ_TAB, STATS_TAB } from '_utils/screenNames';
 import { colors } from '_utils/theme/colors';
 
@@ -79,6 +80,7 @@ const BottomTabNavigation = () => {
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
+        tabBarStyle: styles.tabBar,
       }}>
       <BottomTab.Screen
         options={() =>
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     backgroundColor: colors.WHITE,
-    flex: 1,
+    height: isIosDevice() ? 80 : 70,
   },
 });
 export default BottomTabNavigation;

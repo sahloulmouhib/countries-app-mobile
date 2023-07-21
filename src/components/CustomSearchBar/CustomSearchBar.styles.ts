@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
 
+import { isAndroidDevice } from '_utils/helpers';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: colors.GREY_LIGHT,
-    padding: 16,
+    paddingVertical: isAndroidDevice() ? 8 : 16,
+    paddingHorizontal: 16,
     borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
