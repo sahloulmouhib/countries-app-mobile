@@ -1,8 +1,8 @@
 import React from 'react';
+import { useWindowDimensions } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
 import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
 
-import { SCREEN_WIDTH } from '_utils/constants';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
@@ -38,6 +38,8 @@ const CustomBarChart = ({
   yLabelSuffix,
   yLabelOffset,
 }: Props) => {
+  const screenWidth = useWindowDimensions().width;
+
   const barChartData = {
     labels,
     datasets: [
@@ -52,7 +54,7 @@ const CustomBarChart = ({
       yAxisLabel=""
       yAxisSuffix={yLabelSuffix}
       data={barChartData}
-      width={SCREEN_WIDTH - 32}
+      width={screenWidth - 32}
       height={250}
       chartConfig={config || chartConfig}
       style={styles.container}

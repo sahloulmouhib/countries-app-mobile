@@ -14,6 +14,7 @@ import { IContinent } from '_models/Continent';
 
 import { CONTINENTS } from '_data/countries-data';
 
+import { DEFAULT_SPACING_BIG } from '_utils/constants';
 import {
   CONTINENTS_STATS_SCREEN,
   COUNTRIES_BY_CONTINENT_SCREEN,
@@ -54,7 +55,7 @@ const ContinentsStats = ({ navigation }: Props) => {
         title={strings('stats.continents.title')}
         onBackPress={goBack}
       />
-      <CustomDivider height={32} />
+      <CustomDivider height={DEFAULT_SPACING_BIG} />
       <FlatList data={CONTINENTS} renderItem={renderItem} />
     </View>
   );

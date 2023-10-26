@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageSourcePropType, View, Modal } from 'react-native';
+import { ImageSourcePropType, View, Modal, ScrollView } from 'react-native';
 
 import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
 import RenderQuiz from '_features/quiz/components/RenderQuiz/RenderQuiz';
@@ -11,6 +11,12 @@ import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
+
+import {
+  FLAG_QUIZ_NBR_OF_QUESTIONS,
+  CAPITAL_QUIZ_NBR_OF_QUESTIONS,
+  DEFAULT_SPACING,
+} from '_utils/constants';
 
 import { strings } from '_i18n';
 
@@ -29,13 +35,13 @@ const quizzes_cards: Record<string, IQuizCard> = {
     title: strings('quiz.flag_quiz.title'),
     description: strings('quiz.flag_quiz.description'),
     icon: quizIcons.FLAG_QUIZ,
-    numberOfQuestions: 3,
+    numberOfQuestions: FLAG_QUIZ_NBR_OF_QUESTIONS,
   },
   CAPITAL: {
     title: strings('quiz.capital_quiz.title'),
     description: strings('quiz.capital_quiz.description'),
     icon: quizIcons.CAPITAL_QUIZ,
-    numberOfQuestions: 3,
+    numberOfQuestions: CAPITAL_QUIZ_NBR_OF_QUESTIONS,
   },
   POPULATION: {
     title: strings('quiz.population_quiz.title'),
@@ -61,33 +67,34 @@ const Quiz = () => {
   return (
     <View style={styles.container}>
       <CustomTitle title={strings('quiz.title')} type={CustomTitleType.H2} />
-      <CustomDivider height={16} />
+      <CustomDivider height={DEFAULT_SPACING} />
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <QuizCard
+          score={flagQuizScore}
+          onPress={openQuizModal(QuizType.Flag)}
+          {...quizzes_cards.FLAG}
+        />
+        <CustomDivider height={DEFAULT_SPACING} />
 
-      <QuizCard
-        score={flagQuizScore}
-        onPress={openQuizModal(QuizType.Flag)}
-        {...quizzes_cards.FLAG}
-      />
-      <CustomDivider height={16} />
-
-      <QuizCard
-        score={populationQuizScore}
-        onPress={openQuizModal(QuizType.HigherOrLowerPopulation)}
-        {...quizzes_cards.POPULATION}
-      />
-      <CustomDivider height={16} />
-      <QuizCard
-        score={capitalQuizScore}
-        onPress={openQuizModal(QuizType.Capital)}
-        {...quizzes_cards.CAPITAL}
-      />
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={isQuizVisible}
-        presentationStyle="pageSheet">
-        {<RenderQuiz closeQuizModal={closeQuizModal} quizType={quizType} />}
-      </Modal>
+        <QuizCard
+          score={populationQuizScore}
+          onPress={openQuizModal(QuizType.HigherOrLowerPopulation)}
+          {...quizzes_cards.POPULATION}
+        />
+        <CustomDivider height={DEFAULT_SPACING} />
+        <QuizCard
+          score={capitalQuizScore}
+          onPress={openQuizModal(QuizType.Capital)}
+          {...quizzes_cards.CAPITAL}
+        />
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={isQuizVisible}
+          presentationStyle="pageSheet">
+          {<RenderQuiz closeQuizModal={closeQuizModal} quizType={quizType} />}
+        </Modal>
+      </ScrollView>
     </View>
   );
 };

@@ -10,7 +10,6 @@ export default StyleSheet.create({
   },
   detailContainer: {
     marginLeft: 15,
-    flexWrap: 'wrap',
     flex: 1,
   },
 });

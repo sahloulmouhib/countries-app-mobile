@@ -8,6 +8,8 @@ import {
 
 import { COUNTRIES } from '_data/countries-data';
 
+import { CAPITAL_QUIZ_NBR_OF_QUESTIONS } from '_utils/constants';
+
 import useQuizStore from '../store/quizStore';
 import {
   createLocalQuizQuestionAnswers,
@@ -15,7 +17,9 @@ import {
 } from '../utils/helpers';
 
 const useCapitalQuiz = () => {
-  const [quiz, setQuiz] = useState(createRandomCapitalQuiz(COUNTRIES));
+  const [quiz, setQuiz] = useState(
+    createRandomCapitalQuiz(COUNTRIES, CAPITAL_QUIZ_NBR_OF_QUESTIONS),
+  );
   const { setCapitalQuizScore } = useQuizStore();
   const numberOfQuestions = quiz.questions.length;
   const [questionIndex, setQuestionIndex] = useState<number>(0);

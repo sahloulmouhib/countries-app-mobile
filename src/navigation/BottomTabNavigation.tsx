@@ -1,21 +1,19 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faChartPie,
   faGamepad,
   faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   BottomTabNavigationOptions,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import CustomText from '_components/CustomText/CustomText';
+import TabBarItem, { TabBarItemProps } from '_components/TabBarItem/TabBarItem';
 
-import { isIosDevice } from '_utils/helpers';
+import { TAB_BAR_HEIGHT } from '_utils/constants';
 import { COUNTRY_TAB, QUIZ_TAB, STATS_TAB } from '_utils/screenNames';
 import { colors } from '_utils/theme/colors';
 
@@ -34,30 +32,6 @@ export type BottomTabParamList = {
 };
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-type TabBarItemProps = {
-  title: string;
-  icon: IconProp;
-  focused: boolean;
-  size: number;
-};
-const TabBarItem = ({ focused, title, icon, size }: TabBarItemProps) => {
-  return (
-    <View style={styles.container}>
-      <FontAwesomeIcon
-        size={size}
-        icon={icon}
-        color={focused ? colors.PRIMARY : colors.GREY_MEDIUM}
-      />
-      <CustomText
-        text={title}
-        style={{
-          ...styles.title,
-          color: (focused && colors.PRIMARY) || colors.GREY_MEDIUM,
-        }}
-      />
-    </View>
-  );
-};
 const bottomTabOptions = (
   params: Omit<TabBarItemProps, 'focused'>,
 ): BottomTabNavigationOptions => ({
@@ -120,17 +94,10 @@ const BottomTabNavigation = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  title: {
-    fontSize: 14,
-  },
   tabBar: {
+    width: '100%',
     backgroundColor: colors.WHITE,
-    height: isIosDevice() ? 80 : 70,
+    height: TAB_BAR_HEIGHT,
   },
 });
 export default BottomTabNavigation;

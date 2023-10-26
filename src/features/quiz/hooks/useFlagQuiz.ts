@@ -8,6 +8,8 @@ import {
 
 import { COUNTRIES } from '_data/countries-data';
 
+import { FLAG_QUIZ_NBR_OF_QUESTIONS } from '_utils/constants';
+
 import useQuizStore from '../store/quizStore';
 import {
   createRandomFlagQuiz,
@@ -15,7 +17,9 @@ import {
 } from '../utils/helpers';
 
 const useFlagQuiz = () => {
-  const [quiz, setQuiz] = useState(createRandomFlagQuiz(COUNTRIES));
+  const [quiz, setQuiz] = useState(
+    createRandomFlagQuiz(COUNTRIES, FLAG_QUIZ_NBR_OF_QUESTIONS),
+  );
 
   const { setFlagQuizScore } = useQuizStore();
   const numberOfQuestions = quiz.questions.length;

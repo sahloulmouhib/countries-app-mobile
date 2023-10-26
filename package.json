@@ -12,7 +12,13 @@
     "ts": "tsc --noemit --skipLibCheck",
     "pods": "cd ios && pod install && cd ..",
     "gradle": "cd android &&./gradlew clean && cd ..",
-    "link-asset": "npx react-native-asset"
+    "link-asset": "npx react-native-asset",
+    "i": "react-native run-ios --simulator=\"iPhone 14\"",
+    "id": "react-native run-ios --device",
+    "a": "react-native run-android",
+    "pi": "yarn && yarn pods && yarn i",
+    "pa": "yarn && yarn a",
+    "apk": "cd android &&./gradlew assembleRelease"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -33,6 +39,7 @@
     "react": "18.2.0",
     "react-i18next": "^12.1.4",
     "react-native": "0.71.1",
+    "react-native-bootsplash": "^4.7.5",
     "react-native-chart-kit": "^6.12.0",
     "react-native-fast-image2": "^8.3.11",
     "react-native-gesture-handler": "^2.9.0",

@@ -1,11 +1,11 @@
 import React from 'react';
+import { useWindowDimensions } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
 import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
 
 import { IContinent } from '_models/Continent';
 import { ICountry } from '_models/Country';
 
-import { SCREEN_WIDTH } from '_utils/constants';
 import { colors } from '_utils/theme/colors';
 
 import styles from './CustomPieChart.styles';
@@ -23,11 +23,12 @@ type Props = {
   fieldName: keyof ICountry | keyof IContinent;
 };
 const CustomPieChart = ({ data, fieldName }: Props) => {
+  const screenWidth = useWindowDimensions().width;
   return (
     <PieChart
       center={[10, 0]}
       data={data}
-      width={SCREEN_WIDTH - 32}
+      width={screenWidth - 32}
       height={220}
       accessor={fieldName}
       chartConfig={chartConfig}

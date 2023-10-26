@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import FirstCountry from '_features/quiz/components/higherOrLower/FirstCountry/FirstCountry';
 import HigherOrLowerFinished from '_features/quiz/components/higherOrLower/HigherOrLowerFinished/HigherOrLowerFinished';
@@ -52,7 +52,8 @@ const PopulationQuiz = ({ closeModal }: Props) => {
           flagEmoji={firstCountry.flagEmoji}
           population={firstCountry.population}
         />
-        <Text>{'pop' + secondCountry.population}</Text>
+        {/* //TODO: remove this */}
+        {/* <Text>{'pop' + secondCountry.population}</Text> */}
         <VersusDivider isCorrect={isCorrect} />
         <SecondCountry
           isCorrect={isCorrect}
