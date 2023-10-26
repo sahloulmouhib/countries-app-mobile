@@ -12,6 +12,11 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
+import {
+  FLAG_QUIZ_NBR_OF_QUESTIONS,
+  CAPITAL_QUIZ_NBR_OF_QUESTIONS,
+} from '_utils/constants';
+
 import { strings } from '_i18n';
 
 import styles from './Quiz.styles';
@@ -29,13 +34,13 @@ const quizzes_cards: Record<string, IQuizCard> = {
     title: strings('quiz.flag_quiz.title'),
     description: strings('quiz.flag_quiz.description'),
     icon: quizIcons.FLAG_QUIZ,
-    numberOfQuestions: 3,
+    numberOfQuestions: FLAG_QUIZ_NBR_OF_QUESTIONS,
   },
   CAPITAL: {
     title: strings('quiz.capital_quiz.title'),
     description: strings('quiz.capital_quiz.description'),
     icon: quizIcons.CAPITAL_QUIZ,
-    numberOfQuestions: 3,
+    numberOfQuestions: CAPITAL_QUIZ_NBR_OF_QUESTIONS,
   },
   POPULATION: {
     title: strings('quiz.population_quiz.title'),

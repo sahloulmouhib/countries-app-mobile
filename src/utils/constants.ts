@@ -8,3 +8,6 @@ export const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 export const ASPECT_RATIO = 16 / 9;
 export const EMPTY_URL = 'https://';
+
+export const FLAG_QUIZ_NBR_OF_QUESTIONS = 10;
+export const CAPITAL_QUIZ_NBR_OF_QUESTIONS = 10;
