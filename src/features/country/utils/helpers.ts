@@ -13,11 +13,11 @@ export const getLanguages = (data: string[]) => {
 };
 
 export const getCurrencies = (data: string[]) => {
-  return data.join(',');
+  return data.join(', ');
 };
 
 export const getContinents = (data: string[]) => {
-  return data.join(',');
+  return data.join(', ');
 };
 
 export const formatPopulation = (population: number): string => {

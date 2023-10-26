@@ -23,7 +23,7 @@ const Layout = () => {
   return (
     <GestureHandlerRootView style={styles.container}>
       <SafeAreaProvider>
-        <SafeAreaView style={styles.container} edges={['top']}>
+        <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
           <NavigationContainer />
         </SafeAreaView>
       </SafeAreaProvider>

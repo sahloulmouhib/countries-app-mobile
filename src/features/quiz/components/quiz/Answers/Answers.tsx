@@ -5,6 +5,8 @@ import { ILocalAnswer } from '_features/quiz/models/Quiz';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
 
+import { DEFAULT_SPACING } from '_utils/constants';
+
 import Answer from '../Answer/Answer';
 
 type Props = {
@@ -21,7 +23,7 @@ const Answers = ({
   const answers = questionAnswers.map((answer, index) => {
     return (
       <View key={answer.id}>
-        {index === 0 && <CustomDivider height={16} />}
+        {index === 0 && <CustomDivider height={DEFAULT_SPACING} />}
         <Answer
           index={index}
           isDisabled={isQuestionAnswered}
@@ -31,7 +33,7 @@ const Answers = ({
           label={answer.text}
           type={answer.type}
         />
-        <CustomDivider height={16} />
+        <CustomDivider height={DEFAULT_SPACING} />
       </View>
     );
   });

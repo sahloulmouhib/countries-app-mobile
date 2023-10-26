@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
@@ -14,6 +14,7 @@ import CustomTitle, {
 
 import { StatsStackParamList } from '_navigation/StatsStackNavigation';
 
+import { DEFAULT_SPACING_BIG } from '_utils/constants';
 import { STATS_SCREEN } from '_utils/screenNames';
 
 import { strings } from '_i18n';
@@ -24,17 +25,19 @@ type Props = NativeStackScreenProps<StatsStackParamList, typeof STATS_SCREEN>;
 
 const Stats = ({ navigation }: Props) => {
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
       <CustomTitle type={CustomTitleType.H2} title={strings('stats.title')} />
-      <CustomDivider height={32} />
-      <PopulationCharts navigation={navigation} />
-      <CustomDivider height={32} />
-      <AreaCharts navigation={navigation} />
-      <CustomDivider height={32} />
-      <ContinentsCharts navigation={navigation} />
-    </ScrollView>
+      <CustomDivider height={DEFAULT_SPACING_BIG} />
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        showsVerticalScrollIndicator={false}>
+        <PopulationCharts navigation={navigation} />
+        <CustomDivider height={DEFAULT_SPACING_BIG} />
+        <AreaCharts navigation={navigation} />
+        <CustomDivider height={DEFAULT_SPACING_BIG} />
+        <ContinentsCharts navigation={navigation} />
+      </ScrollView>
+    </View>
   );
 };
 

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { SCREEN_WIDTH, ASPECT_RATIO } from '_utils/constants';
+import { ASPECT_RATIO } from '_utils/constants';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
@@ -30,7 +30,7 @@ export default StyleSheet.create({
     borderColor: colors.GREY_MEDIUM,
   },
   flag: {
-    width: SCREEN_WIDTH,
+    width: '100%',
     aspectRatio: ASPECT_RATIO,
   },
   button: {

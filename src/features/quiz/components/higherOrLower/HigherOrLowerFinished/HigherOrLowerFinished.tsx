@@ -10,6 +10,8 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
+import { DEFAULT_SPACING } from '_utils/constants';
+
 import { strings } from '_i18n';
 
 import FinishOrRestartButtons from '../../FinishOrRestartButtons/FinishOrRestartButtons';
@@ -38,7 +40,7 @@ const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
             style={styles.image}
           />
         </View>
-        <CustomDivider height={16} />
+        <CustomDivider height={DEFAULT_SPACING} />
         <CustomTitle
           fontSize={16}
           type={CustomTitleType.H3}

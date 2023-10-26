@@ -16,6 +16,7 @@ import CustomText from '_components/CustomText/CustomText';
 
 import { CountryStackParamList } from '_navigation/CountryStackNavigation';
 
+import { DEFAULT_SPACING } from '_utils/constants';
 import { icons } from '_utils/icons';
 import { COUNTRY_DETAILS_SCREEN } from '_utils/screenNames';
 
@@ -54,7 +55,7 @@ const CountryDetails = ({ route, navigation }: Props) => {
         />
         <View style={styles.descriptionContainer}>
           <CountryDescription country={country} />
-          <CustomDivider height={16} />
+          <CustomDivider height={DEFAULT_SPACING} />
           <TouchableOpacity onPress={openWikiPage}>
             <CustomText
               text={strings('country.country_details.learn_more')}

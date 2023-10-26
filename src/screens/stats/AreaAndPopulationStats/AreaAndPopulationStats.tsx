@@ -23,7 +23,7 @@ import useFetchPaginatedCountryLocal from '_hooks/useFetchPaginatedCountryLocal'
 
 import { ICountry } from '_models/Country';
 
-import { DEBOUNCE_TIME } from '_utils/constants';
+import { DEBOUNCE_TIME, DEFAULT_SPACING_BIG } from '_utils/constants';
 import {
   COUNTRY_DETAILS_SCREEN,
   AREA_AND_POPULATION_STATS_SCREEN,
@@ -91,7 +91,7 @@ const AreaAndPopulationStats = ({ navigation, route }: Props) => {
   return (
     <View style={styles.container}>
       <CustomScreenHeader title={screenTitle} onBackPress={goBack} />
-      <CustomDivider height={32} />
+      <CustomDivider height={DEFAULT_SPACING_BIG} />
       <CustomSearchBar
         text={searchText}
         onChangeText={setSearchText}
