@@ -1,12 +1,11 @@
+import { ICountry } from '_models/Country';
+
+import { AnswerType } from '../utils/enums';
+
 export interface ILocalAnswer extends IAnswer {
   type: AnswerType;
 }
 
-export enum AnswerType {
-  Correct = 'correct',
-  Incorrect = 'incorrect',
-  Default = 'default',
-}
 export interface IAnswerToQuestion {
   questionId: string;
   answerId: string;
@@ -39,8 +38,11 @@ export interface ICapitalQuiz {
   questions: ICapitalQuestion[];
 }
 
-export enum QuizType {
-  Flag = 'flag',
-  Capital = 'capital',
-  HigherOrLowerPopulation = 'higherOrLowerPopulation',
+// Memory quiz
+export interface IMemoryQuizCard extends ICountry {
+  isMatched: boolean;
+  cardId: string;
+}
+export interface IMemoryQuiz {
+  cards: IMemoryQuizCard[];
 }

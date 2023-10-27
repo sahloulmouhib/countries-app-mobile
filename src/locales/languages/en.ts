@@ -95,6 +95,15 @@ export default {
       play_again: 'Play again',
       quiz_completed: 'Game Over! try again',
     },
+    memory_quiz: {
+      title: 'Memory game',
+      description: 'Find matching pairs of cards',
+      score: 'Score :',
+      your_score: 'Your score is',
+      finish: 'Finish',
+      play_again: 'Play again',
+      quiz_completed: 'Game Over! try again',
+    },
   },
   stats: {
     title: 'Countries statistics',

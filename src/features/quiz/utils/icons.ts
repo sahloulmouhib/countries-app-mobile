@@ -3,4 +3,5 @@ export const quizIcons = {
   CAPITAL_QUIZ: require('../assets/images/capital-quiz/capital-quiz.png'),
   POPULATION_QUIZ: require('../assets/images/population-quiz/population-quiz.png'),
   WORLD_MAP: require('../assets/images/world-map/world-map.png'),
+  MEMORY_QUIZ: require('../assets/images/memory/memory.png'),
 };

@@ -46,7 +46,7 @@ const QuizCard = ({
           />
         </View>
       </View>
-      {score && (
+      {!!score && (
         <View style={styles.scoreContainer}>
           <CustomTitle
             title={

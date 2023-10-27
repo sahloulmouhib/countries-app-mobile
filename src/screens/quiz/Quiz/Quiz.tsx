@@ -3,8 +3,8 @@ import { ImageSourcePropType, View, Modal, ScrollView } from 'react-native';
 
 import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
 import RenderQuiz from '_features/quiz/components/RenderQuiz/RenderQuiz';
-import { QuizType } from '_features/quiz/models/Quiz';
 import useQuizStore from '_features/quiz/store/quizStore';
+import { QuizType } from '_features/quiz/utils/enums';
 import { quizIcons } from '_features/quiz/utils/icons';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
@@ -48,6 +48,11 @@ const quizzes_cards: Record<string, IQuizCard> = {
     description: strings('quiz.population_quiz.description'),
     icon: quizIcons.POPULATION_QUIZ,
   },
+  MEMORY: {
+    title: strings('quiz.memory_quiz.title'),
+    description: strings('quiz.memory_quiz.description'),
+    icon: quizIcons.MEMORY_QUIZ,
+  },
 };
 
 const Quiz = () => {
@@ -87,12 +92,18 @@ const Quiz = () => {
           onPress={openQuizModal(QuizType.Capital)}
           {...quizzes_cards.CAPITAL}
         />
+        <CustomDivider height={DEFAULT_SPACING} />
+        <QuizCard
+          score={0}
+          onPress={openQuizModal(QuizType.Memory)}
+          {...quizzes_cards.MEMORY}
+        />
         <Modal
           animationType="slide"
           transparent={false}
           visible={isQuizVisible}
           presentationStyle="pageSheet">
-          {<RenderQuiz closeQuizModal={closeQuizModal} quizType={quizType} />}
+          <RenderQuiz closeQuizModal={closeQuizModal} quizType={quizType} />
         </Modal>
       </ScrollView>
     </View>
