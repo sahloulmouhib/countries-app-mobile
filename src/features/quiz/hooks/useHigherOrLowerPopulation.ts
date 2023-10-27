@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { COUNTRIES } from '_data/countries-data';
 
@@ -8,18 +8,16 @@ import { getAndAddRandomIndexToSet } from '../utils/helpers';
 const NEXT_TIMEOUT = 2000;
 const LOST_TIMEOUT = 1500;
 
+const usedIndices = new Set<number>();
+
+let firstRandomIndex = getAndAddRandomIndexToSet(COUNTRIES.length, usedIndices);
+let secondRandomIndex = getAndAddRandomIndexToSet(
+  COUNTRIES.length,
+  usedIndices,
+);
+
 const useHigherOrLowerPopulation = () => {
   const { setPopulationQuizScore } = useQuizStore();
-  const usedIndices = new Set<number>();
-
-  let firstRandomIndex = getAndAddRandomIndexToSet(
-    COUNTRIES.length,
-    usedIndices,
-  );
-  let secondRandomIndex = getAndAddRandomIndexToSet(
-    COUNTRIES.length,
-    usedIndices,
-  );
 
   const [firstCountry, setFirstCountry] = useState(COUNTRIES[firstRandomIndex]);
   const [secondCountry, setSecondCountry] = useState(
@@ -57,7 +55,7 @@ const useHigherOrLowerPopulation = () => {
   };
 
   const onNext = () => {
-    if (usedIndices.size === COUNTRIES.length - 1) {
+    if (usedIndices.size === COUNTRIES.length) {
       setIsGameOver(true);
     } else {
       setIsCorrect(undefined);
@@ -92,6 +90,13 @@ const useHigherOrLowerPopulation = () => {
     setIsCorrect(undefined);
     setScore(0);
   };
+
+  useEffect(() => {
+    return () => {
+      initializeQuiz();
+    };
+  }, []);
+
   return {
     firstCountry,
     secondCountry,
@@ -106,3 +111,9 @@ const useHigherOrLowerPopulation = () => {
 };
 
 export default useHigherOrLowerPopulation;
+
+const initializeQuiz = () => {
+  usedIndices.clear();
+  firstRandomIndex = getAndAddRandomIndexToSet(COUNTRIES.length, usedIndices);
+  secondRandomIndex = getAndAddRandomIndexToSet(COUNTRIES.length, usedIndices);
+};

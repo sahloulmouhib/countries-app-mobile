@@ -95,6 +95,7 @@ const BottomTabNavigation = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
+    paddingTop: 16,
     width: '100%',
     backgroundColor: colors.WHITE,
     height: TAB_BAR_HEIGHT,

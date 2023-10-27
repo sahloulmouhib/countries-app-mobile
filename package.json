@@ -8,7 +8,6 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "iphone": "npx react-native run-ios --simulator=\"iPhone 14 Pro\"",
     "ts": "tsc --noemit --skipLibCheck",
     "pods": "cd ios && pod install && cd ..",
     "gradle": "cd android &&./gradlew clean && cd ..",

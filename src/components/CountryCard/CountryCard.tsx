@@ -28,8 +28,12 @@ const CountryCard = ({ country, onPress }: Props) => {
         defaultSource={icons.PLACEHOLDER_IMAGE}
       />
       <View style={styles.detailsContainer}>
-        <CustomTitle title={name} type={CustomTitleType.H2} />
-        <CustomTitle title={capital} type={CustomTitleType.H4} />
+        <CustomTitle numberOfLines={1} title={name} type={CustomTitleType.H2} />
+        <CustomTitle
+          numberOfLines={1}
+          title={capital}
+          type={CustomTitleType.H4}
+        />
       </View>
     </TouchableOpacity>
   );

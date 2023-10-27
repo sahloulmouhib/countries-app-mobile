@@ -21,12 +21,21 @@ type Props = {
   color?: ColorValue;
   textAlign?: 'center' | 'left' | 'right';
   fontSize?: number;
+  numberOfLines?: number;
 };
 
-const CustomTitle = ({ type, color, title, textAlign, fontSize }: Props) => {
+const CustomTitle = ({
+  type,
+  color,
+  title,
+  textAlign,
+  fontSize,
+  numberOfLines,
+}: Props) => {
   return (
     <CustomText
       text={title}
+      numberOfLines={numberOfLines}
       style={[
         [
           styles[type],

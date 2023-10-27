@@ -24,17 +24,18 @@ export function createRandomFlagQuiz(
   nbOfAnswers: number = DEFAULT_QUIZ_NB_ANSWERS,
 ): IFlagQuiz {
   const quiz: IFlagQuiz = { questions: [] };
-
+  const usedGlobalIndices = new Set<number>();
   for (let i = 0; i < nbOfQuestions; i++) {
-    let correctCountryIndex = null;
     const usedIndices = new Set<number>();
+
+    let correctCountryIndex = null;
     for (let j = 0; j < nbOfAnswers; j++) {
       let randomIndex = Math.floor(Math.random() * countries.length);
-      if (usedIndices.size > 0) {
-        while (usedIndices.has(randomIndex)) {
-          randomIndex = Math.floor(Math.random() * countries.length);
-        }
+
+      while (usedGlobalIndices.has(randomIndex)) {
+        randomIndex = Math.floor(Math.random() * countries.length);
       }
+      usedGlobalIndices.add(randomIndex);
       usedIndices.add(randomIndex);
     }
     //get randomly the correct answer
@@ -61,17 +62,17 @@ export function createRandomCapitalQuiz(
   nbOfAnswers: number = DEFAULT_QUIZ_NB_ANSWERS,
 ): ICapitalQuiz {
   const quiz: ICapitalQuiz = { questions: [] };
-
+  const usedGlobalIndices = new Set<number>();
   for (let i = 0; i < nbOfQuestions; i++) {
     let correctCountryIndex = null;
     const usedIndices = new Set<number>();
     for (let j = 0; j < nbOfAnswers; j++) {
       let randomIndex = Math.floor(Math.random() * countries.length);
-      if (usedIndices.size > 0) {
-        while (usedIndices.has(randomIndex)) {
-          randomIndex = Math.floor(Math.random() * countries.length);
-        }
+
+      while (usedGlobalIndices.has(randomIndex)) {
+        randomIndex = Math.floor(Math.random() * countries.length);
       }
+      usedGlobalIndices.add(randomIndex);
       usedIndices.add(randomIndex);
     }
     //get randomly the correct answer
