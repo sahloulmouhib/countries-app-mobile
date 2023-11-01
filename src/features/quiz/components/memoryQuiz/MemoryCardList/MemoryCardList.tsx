@@ -20,9 +20,11 @@ const MemoryCardList: React.FC<MemoryCardListProps> = ({
 }) => {
   const renderMemoryCard = ({
     item: card,
+    index,
   }: ListRenderItemInfo<IMemoryQuizCard>) => {
     return (
       <MemoryCard
+        index={index}
         onCardPress={() => onCardPress(card)}
         image={card.flagImage}
         isMatched={card.isMatched}
@@ -34,13 +36,14 @@ const MemoryCardList: React.FC<MemoryCardListProps> = ({
 
   return (
     <FlatList
+      contentContainerStyle={styles.container}
+      scrollEnabled={false}
       data={cards}
       numColumns={3}
       renderItem={renderMemoryCard}
       columnWrapperStyle={styles.columnWrapper}
       ItemSeparatorComponent={renderSeparator}
       keyExtractor={item => item.cardId}
-      contentContainerStyle={styles.container}
     />
   );
 };

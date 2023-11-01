@@ -10,3 +10,9 @@ export enum AnswerType {
   Incorrect = 'incorrect',
   Default = 'default',
 }
+
+export enum GameStatus {
+  InProgress,
+  Won,
+  Lost,
+}

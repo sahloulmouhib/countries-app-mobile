@@ -652,14 +652,7 @@
     "population": 38005238,
     "languages": ["English", "French"],
     "currencies": ["Canadian dollar"],
-    "timezones": [
-      "UTC-08:00",
-      "UTC-07:00",
-      "UTC-06:00",
-      "UTC-05:00",
-      "UTC-04:00",
-      "UTC-03:30"
-    ],
+    "timezones": ["UTC-08:00", "UTC-07:00", "UTC-06:00", "UTC-05:00", "UTC-04:00", "UTC-03:30"],
     "latlng": { "lat": 60, "lng": -95 }
   },
   {
@@ -1748,6 +1741,22 @@
     "latlng": { "lat": 54.25, "lng": -4.5 }
   },
   {
+    "id": "ISR",
+    "name": "Israel",
+    "capital": "Jerusalem",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flagEmoji": "🇮🇱",
+    "flagImage": "https://flagcdn.com/w320/il.png",
+    "continents": ["Asia"],
+    "area": 20770,
+    "population": 9216900,
+    "languages": ["Arabic", "Hebrew"],
+    "currencies": ["Israeli new shekel"],
+    "timezones": ["UTC+02:00"],
+    "latlng": { "lat": 31.47, "lng": 35.13 }
+  },
+  {
     "id": "ITA",
     "name": "Italy",
     "capital": "Rome",
@@ -2446,17 +2455,7 @@
     "continents": ["Africa"],
     "area": 825615,
     "population": 2540916,
-    "languages": [
-      "Afrikaans",
-      "German",
-      "English",
-      "Herero",
-      "Khoekhoe",
-      "Kwangali",
-      "Lozi",
-      "Ndonga",
-      "Tswana"
-    ],
+    "languages": ["Afrikaans", "German", "English", "Herero", "Khoekhoe", "Kwangali", "Lozi", "Ndonga", "Tswana"],
     "currencies": ["Namibian dollar", "South African rand"],
     "timezones": ["UTC+01:00"],
     "latlng": { "lat": -22, "lng": 17 }
@@ -2538,13 +2537,7 @@
     "population": 5084300,
     "languages": ["English", "Māori", "New Zealand Sign Language"],
     "currencies": ["New Zealand dollar"],
-    "timezones": [
-      "UTC-11:00",
-      "UTC-10:00",
-      "UTC+12:00",
-      "UTC+12:45",
-      "UTC+13:00"
-    ],
+    "timezones": ["UTC-11:00", "UTC-10:00", "UTC+12:00", "UTC+12:45", "UTC+13:00"],
     "latlng": { "lat": -41, "lng": 174 }
   },
   {
