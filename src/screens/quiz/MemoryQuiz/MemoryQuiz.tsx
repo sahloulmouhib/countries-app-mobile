@@ -12,6 +12,8 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
+import { alertOnClose } from '_utils/helpers';
+
 import { strings } from '_i18n';
 
 import styles from './MemoryQuiz.styles';
@@ -29,10 +31,15 @@ const MemoryQuiz: React.FC<MemoryQuizProps> = ({ closeModal }) => {
     gameStatus,
     onRestartGame,
   } = useMemoryQuiz();
+
+  const onClosePress = () => {
+    alertOnClose(closeModal);
+  };
+
   if (gameStatus === GameStatus.InProgress) {
     return (
       <View style={styles.container}>
-        <MemoryQuizHeader onClose={closeModal} score={score} />
+        <MemoryQuizHeader onClose={onClosePress} score={score} />
         <ScrollView
           contentContainerStyle={styles.scrollViewContainer}
           showsVerticalScrollIndicator={false}>

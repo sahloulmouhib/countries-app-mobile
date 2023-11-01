@@ -26,7 +26,6 @@ const useMemoryQuiz = () => {
     undefined,
   );
 
-  console.log('firstCard', firstCard);
   const [gameStatus, setGameStatus] = useState<GameStatus>(
     GameStatus.InProgress,
   );
@@ -65,7 +64,7 @@ const useMemoryQuiz = () => {
     if (isGameWon) {
       setGameStatus(GameStatus.Won);
     } else if (timer === 0) {
-      // setGameStatus(GameStatus.Lost);
+      setGameStatus(GameStatus.Lost);
     }
   }, [isGameWon, timer]);
 

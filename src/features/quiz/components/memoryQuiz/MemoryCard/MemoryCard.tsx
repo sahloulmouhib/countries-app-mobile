@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { Image, useWindowDimensions, TouchableOpacity } from 'react-native';
+import {
+  Image,
+  useWindowDimensions,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import FastImage from 'react-native-fast-image2';
 import Animated, {
   useSharedValue,
@@ -78,14 +83,16 @@ const MemoryCard: React.FC<MemoryCardProps> = ({
             }}
             resizeMode={'cover'}
             defaultSource={icons.PLACEHOLDER_IMAGE}
-            style={styles.cardImage}
+            style={styles.flagImage}
           />
         ) : (
-          <Image
-            source={icons.AFRICA}
-            resizeMode={'cover'}
-            style={styles.cardImage}
-          />
+          <View style={styles.cardImageContainer}>
+            <Image
+              source={icons.QUESTION_MARK}
+              resizeMode={'contain'}
+              style={styles.cardImage}
+            />
+          </View>
         )}
       </TouchableOpacity>
     </Animated.View>

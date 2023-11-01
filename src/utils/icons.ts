@@ -9,4 +9,6 @@ export const icons = {
   SOUTH_AMERICA: require('../assets/images/south-america/south-america.png'),
   ANTARCTICA: require('../assets/images/antarctica/antarctica.png'),
   NO_RESULTS: require('../assets/images/no_results/no_results.png'),
+  RANDOM_FLAG: require('../assets/icons/random_flag/random_flag.png'),
+  QUESTION_MARK: require('../assets/icons/question_mark/question_mark.png'),
 };
