@@ -3,19 +3,19 @@ import { useEffect, useState } from 'react';
 export const useCountdownTimer = (defaultTimeInSeconds: number) => {
   const [timer, setTimer] = useState<number>(defaultTimeInSeconds);
 
-  const isTimerFinished = (): boolean => {
+  const isTimerFinished = () => {
     return timer === 0;
   };
 
-  const resetTimer = (): void => {
+  const resetTimer = () => {
     setTimer(0);
   };
 
-  const getTimerMinutes = (): number => {
+  const getTimerMinutes = () => {
     return Math.floor(timer / 60);
   };
 
-  const getTimerSeconds = (): number => {
+  const getTimerSeconds = () => {
     return Math.floor(timer % 60);
   };
 

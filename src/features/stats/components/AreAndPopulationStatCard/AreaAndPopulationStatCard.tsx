@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image2';
 
+import { StatsType } from '_features/stats/utils/enums';
 import { getRankingImage } from '_features/stats/utils/helpers';
-import { StatsType } from '_features/stats/utils/types';
 
 import CustomTitle, {
   CustomTitleType,

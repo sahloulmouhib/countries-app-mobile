@@ -8,7 +8,7 @@ import {
 import Toast from 'react-native-toast-message';
 
 import { TOAST_DURATION } from '_utils/constants';
-import { isIosDevice } from '_utils/helpers';
+import { IS_IOS_DEVICE } from '_utils/helpers';
 import { colors } from '_utils/theme/colors';
 import { toastConfig, ToastType } from '_utils/toastConfig/toastConfig';
 
@@ -96,7 +96,7 @@ const CustomFlatlist = <T,>({
         { backgroundColor: backgroundColor },
         hasPadding && styles.padding,
       ]}
-      behavior={isIosDevice() ? 'padding' : 'height'}>
+      behavior={IS_IOS_DEVICE ? 'padding' : 'height'}>
       {failedError && data.length === 0 ? (
         <ReloaderFlatlist
           errorMessage={failedError}

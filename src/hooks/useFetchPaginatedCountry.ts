@@ -4,7 +4,7 @@ import { NOT_FOUND } from '_api/constants';
 import { sendAsyncRequest, handleError } from '_api/helpers';
 import { UseFetchPaginatedType } from '_api/types';
 
-import { HttpMethod } from '_utils/types';
+import { HttpMethod } from '_utils/enums';
 
 const useFetchPaginatedCountry = <D = any, T = any>(
   config: UseFetchPaginatedType<D, T>,

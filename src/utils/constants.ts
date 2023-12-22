@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 
-import { isIosDevice } from './helpers';
+import { IS_IOS_DEVICE } from './helpers';
 
 export const TOAST_DURATION = 3000;
 export const DEBOUNCE_TIME = 500;
@@ -14,4 +14,4 @@ export const EMPTY_URL = 'https://';
 export const DEFAULT_SPACING = 16;
 export const DEFAULT_SPACING_BIG = 32;
 
-export const TAB_BAR_HEIGHT = isIosDevice() ? 80 : 70;
+export const TAB_BAR_HEIGHT = IS_IOS_DEVICE ? 80 : 70;

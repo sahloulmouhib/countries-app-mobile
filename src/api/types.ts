@@ -1,6 +1,6 @@
 import { AxiosRequestTransformer, AxiosResponse, ResponseType } from 'axios';
 
-import { HttpMethod } from '_utils/types';
+import { HttpMethod } from '_utils/enums';
 
 /**
  *  AxiosConfig interface

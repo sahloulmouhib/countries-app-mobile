@@ -2,9 +2,9 @@ import React from 'react';
 import { ImageBackground } from 'react-native';
 import Animated, { StretchInY } from 'react-native-reanimated';
 
-import { quizIcons } from '_features/quiz/utils/icons';
-
 import CustomText from '_components/CustomText/CustomText';
+
+import { icons } from '_utils/icons';
 
 import styles from './Capital.styles';
 
@@ -18,7 +18,7 @@ const Capital = ({ capital, answerIdToGuess }: Props) => {
     <>
       <ImageBackground
         resizeMode="contain"
-        source={quizIcons.WORLD_MAP}
+        source={icons.WORLD_MAP}
         style={styles.image}
       />
       <Animated.View

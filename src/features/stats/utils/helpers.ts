@@ -2,11 +2,10 @@ import { ICountry } from '_models/Country';
 
 import { CONTINENTS, COUNTRIES } from '_data/countries-data';
 
+import { Continents } from '_utils/enums';
+import { icons } from '_utils/icons';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
-import { Continents } from '_utils/types';
-
-import { statsImages } from './icons';
 
 /*********Common helpers */
 export const sortCountriesByField = (field: keyof ICountry, limit?: number) => {
@@ -43,11 +42,11 @@ export const getRankingImage = (ranking: number | undefined) => {
   }
   switch (ranking) {
     case 1:
-      return statsImages.FIRST_PRIZE;
+      return icons.FIRST_PRIZE;
     case 2:
-      return statsImages.SECOND_PRIZE;
+      return icons.SECOND_PRIZE;
     case 3:
-      return statsImages.THIRD_PRIZE;
+      return icons.THIRD_PRIZE;
     default:
       return null;
   }

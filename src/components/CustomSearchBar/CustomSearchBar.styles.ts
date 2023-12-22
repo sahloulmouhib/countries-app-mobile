@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-import { isAndroidDevice } from '_utils/helpers';
+import { IS_ANDROID_DEVICE } from '_utils/helpers';
 import { colors } from '_utils/theme/colors';
 import { fonts } from '_utils/theme/fonts';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: colors.GREY_LIGHT,
-    paddingVertical: isAndroidDevice() ? 8 : 16,
+    paddingVertical: IS_ANDROID_DEVICE ? 8 : 16,
     paddingHorizontal: 16,
     borderRadius: 8,
     flexDirection: 'row',

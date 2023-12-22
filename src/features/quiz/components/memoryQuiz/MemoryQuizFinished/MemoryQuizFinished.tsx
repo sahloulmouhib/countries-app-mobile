@@ -3,7 +3,6 @@ import { View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
 
-import { animations } from '_features/quiz/utils/animations';
 import { GameStatus } from '_features/quiz/utils/enums';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
@@ -11,6 +10,7 @@ import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
+import { animations } from '_utils/animations';
 import { DEFAULT_SPACING } from '_utils/constants';
 
 import { strings } from '_i18n';
