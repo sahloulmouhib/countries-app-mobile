@@ -8,6 +8,7 @@ import CustomTitle, {
 
 import { ICountry } from '_models/Country';
 
+import { countryFlagsImages } from '_utils/countryFlagsImages';
 import { icons } from '_utils/icons';
 
 import styles from './CountryCard.styles';
@@ -23,7 +24,7 @@ const CountryCard = ({ country, onPress }: Props) => {
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <FastImage
         style={styles.flagImage}
-        source={{ uri: flagImage }}
+        source={countryFlagsImages.AFG}
         resizeMode="cover"
         defaultSource={icons.PLACEHOLDER_IMAGE}
       />
