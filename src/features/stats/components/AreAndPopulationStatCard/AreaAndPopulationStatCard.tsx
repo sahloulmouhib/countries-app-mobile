@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
-import FastImage from 'react-native-fast-image2';
 
 import { StatsType } from '_features/stats/utils/enums';
 import { getRankingImage } from '_features/stats/utils/helpers';
@@ -38,9 +37,9 @@ const AreaAndPopulationStatCard = ({ country, onPress, type }: Props) => {
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <FastImage
+      <Image
         style={styles.flagImage}
-        source={{ uri: flagImage }}
+        source={flagImage}
         resizeMode="cover"
         defaultSource={icons.PLACEHOLDER_IMAGE}
       />

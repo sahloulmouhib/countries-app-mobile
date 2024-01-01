@@ -35,6 +35,7 @@ type Props = NativeStackScreenProps<
 >;
 
 const COUNTRIES_SORTED_ALPHABETICALLY = sortCountriesAlphabetically(COUNTRIES);
+
 const SearchCountries = ({ navigation }: Props) => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchTerm = useDebounceText(searchText, DEBOUNCE_TIME);

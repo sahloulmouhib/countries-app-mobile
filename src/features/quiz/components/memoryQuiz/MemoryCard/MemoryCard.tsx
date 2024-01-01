@@ -4,8 +4,8 @@ import {
   useWindowDimensions,
   TouchableOpacity,
   View,
+  ImageSourcePropType,
 } from 'react-native';
-import FastImage from 'react-native-fast-image2';
 import Animated, {
   useSharedValue,
   withSpring,
@@ -25,7 +25,7 @@ import { icons } from '_utils/icons';
 import styles from './MemoryCard.styles';
 
 interface MemoryCardProps {
-  image: string;
+  image: ImageSourcePropType;
   isMatched: boolean;
   onCardPress: () => void;
   index: number;
@@ -77,10 +77,8 @@ const MemoryCard: React.FC<MemoryCardProps> = ({
         disabled={isMatched}
         onPress={onPress}>
         {isShown ? (
-          <FastImage
-            source={{
-              uri: image,
-            }}
+          <Image
+            source={image}
             resizeMode={'cover'}
             defaultSource={icons.PLACEHOLDER_IMAGE}
             style={styles.flagImage}

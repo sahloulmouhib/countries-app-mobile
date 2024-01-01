@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
-import FastImage from 'react-native-fast-image2';
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { faArrowLeft, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -47,9 +46,9 @@ const CountryDetails = ({ route, navigation }: Props) => {
         <FontAwesomeIcon size={15} icon={faArrowLeft} />
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.innerContainer}>
-        <FastImage
+        <Image
           defaultSource={icons.PLACEHOLDER_IMAGE}
-          source={{ uri: country.flagImage }}
+          source={country.flagImage}
           resizeMode="cover"
           style={styles.flag}
         />
