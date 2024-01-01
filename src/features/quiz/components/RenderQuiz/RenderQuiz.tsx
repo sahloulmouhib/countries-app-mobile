@@ -2,9 +2,10 @@ import React from 'react';
 
 import CapitalQuiz from '_screens/quiz/CapitalQuiz/CapitalQuiz';
 import FlagQuiz from '_screens/quiz/FlagQuiz/FlagQuiz';
+import MemoryQuiz from '_screens/quiz/MemoryQuiz/MemoryQuiz';
 import HigherOrLowerPopulation from '_screens/quiz/PopulationQuiz/PopulationQuiz';
 
-import { QuizType } from '_features/quiz/models/Quiz';
+import { QuizType } from '_features/quiz/utils/enums';
 
 type Props = {
   closeQuizModal: () => void;
@@ -19,6 +20,8 @@ const RenderQuiz = ({ closeQuizModal, quizType }: Props) => {
       return <CapitalQuiz closeModal={closeQuizModal} />;
     case QuizType.HigherOrLowerPopulation:
       return <HigherOrLowerPopulation closeModal={closeQuizModal} />;
+    case QuizType.Memory:
+      return <MemoryQuiz closeModal={closeQuizModal} />;
     default:
       return null;
   }

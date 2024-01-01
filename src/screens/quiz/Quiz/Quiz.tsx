@@ -3,20 +3,20 @@ import { ImageSourcePropType, View, Modal, ScrollView } from 'react-native';
 
 import QuizCard from '_features/quiz/components/QuizCard/QuizCard';
 import RenderQuiz from '_features/quiz/components/RenderQuiz/RenderQuiz';
-import { QuizType } from '_features/quiz/models/Quiz';
 import useQuizStore from '_features/quiz/store/quizStore';
-import { quizIcons } from '_features/quiz/utils/icons';
+import {
+  CAPITAL_QUIZ_NBR_OF_QUESTIONS,
+  FLAG_QUIZ_NBR_OF_QUESTIONS,
+} from '_features/quiz/utils/constants';
+import { QuizType } from '_features/quiz/utils/enums';
 
 import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 
-import {
-  FLAG_QUIZ_NBR_OF_QUESTIONS,
-  CAPITAL_QUIZ_NBR_OF_QUESTIONS,
-  DEFAULT_SPACING,
-} from '_utils/constants';
+import { DEFAULT_SPACING } from '_utils/constants';
+import { icons } from '_utils/icons';
 
 import { strings } from '_i18n';
 
@@ -34,19 +34,24 @@ const quizzes_cards: Record<string, IQuizCard> = {
   FLAG: {
     title: strings('quiz.flag_quiz.title'),
     description: strings('quiz.flag_quiz.description'),
-    icon: quizIcons.FLAG_QUIZ,
+    icon: icons.FLAG_QUIZ,
     numberOfQuestions: FLAG_QUIZ_NBR_OF_QUESTIONS,
   },
   CAPITAL: {
     title: strings('quiz.capital_quiz.title'),
     description: strings('quiz.capital_quiz.description'),
-    icon: quizIcons.CAPITAL_QUIZ,
+    icon: icons.CAPITAL_QUIZ,
     numberOfQuestions: CAPITAL_QUIZ_NBR_OF_QUESTIONS,
   },
   POPULATION: {
     title: strings('quiz.population_quiz.title'),
     description: strings('quiz.population_quiz.description'),
-    icon: quizIcons.POPULATION_QUIZ,
+    icon: icons.POPULATION_QUIZ,
+  },
+  MEMORY: {
+    title: strings('quiz.memory_quiz.title'),
+    description: strings('quiz.memory_quiz.description'),
+    icon: icons.MEMORY_QUIZ,
   },
 };
 
@@ -87,12 +92,18 @@ const Quiz = () => {
           onPress={openQuizModal(QuizType.Capital)}
           {...quizzes_cards.CAPITAL}
         />
+        <CustomDivider height={DEFAULT_SPACING} />
+        <QuizCard
+          score={0}
+          onPress={openQuizModal(QuizType.Memory)}
+          {...quizzes_cards.MEMORY}
+        />
         <Modal
           animationType="slide"
           transparent={false}
           visible={isQuizVisible}
           presentationStyle="pageSheet">
-          {<RenderQuiz closeQuizModal={closeQuizModal} quizType={quizType} />}
+          <RenderQuiz closeQuizModal={closeQuizModal} quizType={quizType} />
         </Modal>
       </ScrollView>
     </View>

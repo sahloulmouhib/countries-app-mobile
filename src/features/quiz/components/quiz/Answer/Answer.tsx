@@ -5,7 +5,7 @@ import Animated, {
   LightSpeedInRight,
 } from 'react-native-reanimated';
 
-import { AnswerType } from '_features/quiz/models/Quiz';
+import { AnswerType } from '_features/quiz/utils/enums';
 
 import CustomTitle, {
   CustomTitleType,

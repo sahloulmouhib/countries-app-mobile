@@ -5,18 +5,18 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+import { ContinentsChartType } from '_features/stats/utils/enums';
 import {
   getContinentsDataForPieChart,
   getContinentsDataAndLabelsForBarChart,
 } from '_features/stats/utils/helpers';
-import { ContinentsChartType } from '_features/stats/utils/types';
 
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
 
-import { StatsStackParamList } from '_navigation/StatsStackNavigation';
+import { StatsStackParamList } from '_navigation/BottomTabNavigation/StatsStackNavigation/StatsStackNavigation';
 
 import { CONTINENTS_STATS_SCREEN, STATS_SCREEN } from '_utils/screenNames';
 import { colors } from '_utils/theme/colors';

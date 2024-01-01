@@ -19,7 +19,7 @@ import styles from './QuizCard.styles';
 type Props = {
   title: string;
   description: string;
-  score: number | undefined;
+  score: number;
   icon: ImageSourcePropType;
   numberOfQuestions?: number;
   onPress: () => void;
@@ -46,7 +46,7 @@ const QuizCard = ({
           />
         </View>
       </View>
-      {score != null && (
+      {!!score && (
         <View style={styles.scoreContainer}>
           <CustomTitle
             title={

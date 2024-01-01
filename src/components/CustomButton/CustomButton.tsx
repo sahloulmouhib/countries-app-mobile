@@ -31,10 +31,14 @@ const CustomButton = ({
       onPress={onPress}
       style={[
         styles.container,
-        { backgroundColor: backgroundColor ?? colors.BLACK },
+        {
+          backgroundColor:
+            (disabled && colors.GREY_MEDIUM) ||
+            (backgroundColor ?? colors.BLACK),
+        },
         { borderRadius: (rightIcon && 30) || 10 },
         { paddingVertical: (rightIcon && 8) || 16 },
-        { opacity: (disabled && 0.1) || 1 },
+        { opacity: (disabled && 0.4) || 1 },
       ]}>
       {rightIcon && (
         <FontAwesomeIcon

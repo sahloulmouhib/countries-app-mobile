@@ -8,7 +8,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    margin: 16,
+    paddingVertical: 16,
+    gap: 16,
   },
   flagImage: {
     width: 50,
@@ -18,6 +19,6 @@ export default StyleSheet.create({
     borderColor: colors.GREY_LIGHT,
   },
   detailsContainer: {
-    marginLeft: 16,
+    flex: 1,
   },
 });

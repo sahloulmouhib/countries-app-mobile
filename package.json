@@ -8,7 +8,6 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "iphone": "npx react-native run-ios --simulator=\"iPhone 14 Pro\"",
     "ts": "tsc --noemit --skipLibCheck",
     "pods": "cd ios && pod install && cd ..",
     "gradle": "cd android &&./gradlew clean && cd ..",
@@ -18,7 +17,8 @@
     "a": "react-native run-android",
     "pi": "yarn && yarn pods && yarn i",
     "pa": "yarn && yarn a",
-    "apk": "cd android &&./gradlew assembleRelease"
+    "apk": "cd android &&./gradlew assembleRelease",
+    "f": "bash ./src/scripts/add-country-flag-image.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",

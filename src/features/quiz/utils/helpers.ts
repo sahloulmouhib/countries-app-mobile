@@ -1,12 +1,13 @@
 import { ICountry } from '_models/Country';
 
-import { IFlagQuiz, IAnswer, IFlagQuestion } from '../models/Quiz';
-import { ICapitalQuestion, ICapitalQuiz, AnswerType } from '../models/Quiz';
+import { IFlagQuiz, IAnswer, IFlagQuestion, IMemoryQuiz } from '../models/Quiz';
+import { ICapitalQuestion, ICapitalQuiz } from '../models/Quiz';
 
 import {
   DEFAULT_QUIZ_NB_QUESTIONS,
   DEFAULT_QUIZ_NB_ANSWERS,
 } from './constants';
+import { AnswerType } from './enums';
 
 export const createLocalQuizQuestionAnswers = (
   index: number,
@@ -24,17 +25,18 @@ export function createRandomFlagQuiz(
   nbOfAnswers: number = DEFAULT_QUIZ_NB_ANSWERS,
 ): IFlagQuiz {
   const quiz: IFlagQuiz = { questions: [] };
-
+  const usedGlobalIndices = new Set<number>();
   for (let i = 0; i < nbOfQuestions; i++) {
-    let correctCountryIndex = null;
     const usedIndices = new Set<number>();
+
+    let correctCountryIndex = null;
     for (let j = 0; j < nbOfAnswers; j++) {
       let randomIndex = Math.floor(Math.random() * countries.length);
-      if (usedIndices.size > 0) {
-        while (usedIndices.has(randomIndex)) {
-          randomIndex = Math.floor(Math.random() * countries.length);
-        }
+
+      while (usedGlobalIndices.has(randomIndex)) {
+        randomIndex = Math.floor(Math.random() * countries.length);
       }
+      usedGlobalIndices.add(randomIndex);
       usedIndices.add(randomIndex);
     }
     //get randomly the correct answer
@@ -61,17 +63,17 @@ export function createRandomCapitalQuiz(
   nbOfAnswers: number = DEFAULT_QUIZ_NB_ANSWERS,
 ): ICapitalQuiz {
   const quiz: ICapitalQuiz = { questions: [] };
-
+  const usedGlobalIndices = new Set<number>();
   for (let i = 0; i < nbOfQuestions; i++) {
     let correctCountryIndex = null;
     const usedIndices = new Set<number>();
     for (let j = 0; j < nbOfAnswers; j++) {
       let randomIndex = Math.floor(Math.random() * countries.length);
-      if (usedIndices.size > 0) {
-        while (usedIndices.has(randomIndex)) {
-          randomIndex = Math.floor(Math.random() * countries.length);
-        }
+
+      while (usedGlobalIndices.has(randomIndex)) {
+        randomIndex = Math.floor(Math.random() * countries.length);
       }
+      usedGlobalIndices.add(randomIndex);
       usedIndices.add(randomIndex);
     }
     //get randomly the correct answer
@@ -107,4 +109,35 @@ export const getAndAddRandomIndexToSet = (
   }
   usedIndices.add(secondRandomIndex);
   return secondRandomIndex;
+};
+
+export const createMemoryQuiz = (
+  countries: ICountry[],
+  nbrOfCards: number,
+): IMemoryQuiz => {
+  if (nbrOfCards < 2 && nbrOfCards % 2 !== 0) {
+    return { cards: [] };
+  }
+  const usedGlobalIndices = new Set<number>();
+  for (let i = 0; i < nbrOfCards / 2; i++) {
+    let randomIndex = Math.floor(Math.random() * countries.length);
+
+    while (usedGlobalIndices.has(randomIndex)) {
+      randomIndex = Math.floor(Math.random() * countries.length);
+    }
+    usedGlobalIndices.add(randomIndex);
+  }
+  const countriesToGuess = [
+    ...Array.from(usedGlobalIndices),
+    ...Array.from(usedGlobalIndices),
+  ];
+  const shuffledCountries = countriesToGuess.sort(() => Math.random() - 0.5);
+
+  const cards = shuffledCountries.map(index => ({
+    ...countries[index],
+    // TODO: find a better way to generate unique ids
+    cardId: countries[index].id + Math.random().toString(),
+    isMatched: false,
+  }));
+  return { cards };
 };

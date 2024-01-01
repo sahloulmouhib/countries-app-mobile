@@ -6,15 +6,12 @@ import { IContinent } from '_models/Continent';
 
 import { strings } from '_i18n';
 
+import { Continents } from './enums';
 import { icons } from './icons';
-import { Continents } from './types';
 
-export const isIosDevice = () => {
-  return Platform.OS === 'ios';
-};
-export const isAndroidDevice = () => {
-  return Platform.OS === 'android';
-};
+export const IS_IOS_DEVICE = Platform.OS === 'ios';
+
+export const IS_ANDROID_DEVICE = Platform.OS === 'android';
 
 //paginate data
 export const paginateData = <T = any>(

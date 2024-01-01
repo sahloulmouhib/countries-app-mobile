@@ -1,6 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import FastImage from 'react-native-fast-image2';
+import { Image, TouchableOpacity, View } from 'react-native';
 
 import CustomTitle, {
   CustomTitleType,
@@ -21,15 +20,19 @@ const CountryCard = ({ country, onPress }: Props) => {
   const { name, capital, flagImage } = country;
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <FastImage
+      <Image
         style={styles.flagImage}
-        source={{ uri: flagImage }}
+        source={flagImage}
         resizeMode="cover"
         defaultSource={icons.PLACEHOLDER_IMAGE}
       />
       <View style={styles.detailsContainer}>
-        <CustomTitle title={name} type={CustomTitleType.H2} />
-        <CustomTitle title={capital} type={CustomTitleType.H4} />
+        <CustomTitle numberOfLines={1} title={name} type={CustomTitleType.H2} />
+        <CustomTitle
+          numberOfLines={1}
+          title={capital}
+          type={CustomTitleType.H4}
+        />
       </View>
     </TouchableOpacity>
   );

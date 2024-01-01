@@ -1,3 +1,7 @@
+import { ImageSourcePropType } from 'react-native';
+
+import { countryFlagsImages } from '_utils/countryFlagsImages';
+
 export interface ICountryResponse {
   id: string;
   name: string;
@@ -23,8 +27,9 @@ export interface ICountry {
   name: string;
   capital: string;
   region: string;
-  subregion: string;
-  flagImage: string;
+  subregion?: string;
+  flagImage: ImageSourcePropType;
+  flagImageUrl: string;
   flagEmoji: string;
   continents: string[];
   area: number;
@@ -46,7 +51,9 @@ export const decodeCountry = (data: ICountryResponse): ICountry => {
     capital: data.capital,
     region: data.region,
     subregion: data.subregion,
-    flagImage: data.flagImage,
+    flagImage:
+      countryFlagsImages[`${data.id}` as keyof typeof countryFlagsImages],
+    flagImageUrl: data.flagImage,
     flagEmoji: data.flagEmoji,
     continents: data.continents,
     area: data.area,
@@ -61,10 +68,9 @@ export const decodeCountry = (data: ICountryResponse): ICountry => {
   };
 };
 
-export const decodeCountries = (data: ICountry[]): ICountry[] => {
+export const decodeCountries = (data: ICountryResponse[]): ICountry[] => {
   const decodedCountries = data.map(country => {
     return decodeCountry(country);
   });
-
   return decodedCountries;
 };

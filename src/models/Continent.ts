@@ -1,6 +1,6 @@
 import { ImageSourcePropType } from 'react-native';
 
-import { Continents } from '_utils/types';
+import { Continents } from '_utils/enums';
 
 export interface IContinent {
   name: Continents;

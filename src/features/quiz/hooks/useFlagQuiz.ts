@@ -1,16 +1,12 @@
 import { useRef, useState } from 'react';
 
-import {
-  AnswerType,
-  ILocalAnswer,
-  IAnswerToQuestion,
-} from '_features/quiz/models/Quiz';
+import { ILocalAnswer, IAnswerToQuestion } from '_features/quiz/models/Quiz';
 
 import { COUNTRIES } from '_data/countries-data';
 
-import { FLAG_QUIZ_NBR_OF_QUESTIONS } from '_utils/constants';
-
 import useQuizStore from '../store/quizStore';
+import { FLAG_QUIZ_NBR_OF_QUESTIONS } from '../utils/constants';
+import { AnswerType } from '../utils/enums';
 import {
   createRandomFlagQuiz,
   createLocalQuizQuestionAnswers,

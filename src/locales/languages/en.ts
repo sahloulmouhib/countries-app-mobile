@@ -1,4 +1,4 @@
-export default {
+export const en = {
   global: {
     title: 'My App',
     view_more: 'View more',
@@ -18,7 +18,7 @@ export default {
   },
   tab_bar: {
     search: 'Search',
-    quiz: 'Quiz',
+    quiz: 'Games',
     stats: 'Stats',
   },
   alert: {
@@ -57,7 +57,7 @@ export default {
     },
   },
   quiz: {
-    title: 'Choose a quiz',
+    title: 'Play a game',
     best_score: 'Best Score',
     flag_quiz: {
       title: 'Guess the flag',
@@ -95,6 +95,18 @@ export default {
       play_again: 'Play again',
       quiz_completed: 'Game Over! try again',
     },
+    memory_quiz: {
+      title: 'Memory game',
+      description: 'Find matching pairs of cards',
+      score: 'Score :',
+      your_score: 'Your score is',
+      finish: 'Finish',
+      play_again: 'Play again',
+      quiz_completed: 'Game Over! try again',
+      game_won: 'Congratulations! You won!',
+      memory_game: 'Memory game',
+      match_the_pairs: 'Match the flag pairs!',
+    },
   },
   stats: {
     title: 'Countries statistics',
@@ -114,3 +126,6 @@ export default {
     },
   },
 };
+
+export default en;
+export type TranslationsType = typeof en;

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { navigationRef } from '_navigation/RootNavigation';
 
-import BottomTabNavigation from './BottomTabNavigation';
+import BottomTabNavigation from './BottomTabNavigation/BottomTabNavigation';
 
 function Navigation() {
   return (

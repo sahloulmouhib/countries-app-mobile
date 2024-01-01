@@ -4,18 +4,18 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+import { AreaChartType, StatsType } from '_features/stats/utils/enums';
 import {
   getAreaDataAndLabelsForBarChart,
   getAreaDataForPieChart,
 } from '_features/stats/utils/helpers';
-import { AreaChartType, StatsType } from '_features/stats/utils/types';
 
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
 import CustomViewMore from '_components/CustomViewMore/CustomViewMore';
 
-import { StatsStackParamList } from '_navigation/StatsStackNavigation';
+import { StatsStackParamList } from '_navigation/BottomTabNavigation/StatsStackNavigation/StatsStackNavigation';
 
 import {
   STATS_SCREEN,
