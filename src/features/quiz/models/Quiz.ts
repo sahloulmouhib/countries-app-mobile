@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from 'react-native';
+
 import { ICountry } from '_models/Country';
 
 import { AnswerType } from '../utils/enums';
@@ -22,7 +24,7 @@ export interface IQuestion {
 
 //Flag quiz
 export interface IFlagQuestion extends IQuestion {
-  flag: string;
+  flag: ImageSourcePropType;
 }
 
 export interface IFlagQuiz {

@@ -1,6 +1,8 @@
+import { ICountry } from '_models/Country';
+
 import { countryFlagsImages } from '_utils/countryFlagsImages';
 
-export default [
+export const COUNTRIES: ICountry[] = [
   {
     id: 'AFG',
     name: 'Afghanistan',
@@ -5094,3 +5096,5 @@ export default [
     },
   },
 ];
+
+export default COUNTRIES;

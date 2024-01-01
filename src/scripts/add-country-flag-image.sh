@@ -1,5 +1,5 @@
-#create a script that accepts country name and compies the images from this path  /Users/anypli/Downloads create a folder 
-# and file inside of it  here /Users/anypli/Documents/dev/to-be-named/src/assets/countryFlagsImages 
+#create a script that accepts country name and copies the downlaoded image from this path /Users/anypli/Downloads to this folder 
+# here /Users/anypli/Documents/dev/to-be-named/src/assets/countryFlagsImages/$country_name
 
 
 #!/bin/bash

@@ -46,12 +46,15 @@ const CountryDetails = ({ route, navigation }: Props) => {
         <FontAwesomeIcon size={15} icon={faArrowLeft} />
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.innerContainer}>
-        <Image
-          defaultSource={icons.PLACEHOLDER_IMAGE}
-          source={country.flagImage}
-          resizeMode="cover"
-          style={styles.flag}
-        />
+        <View style={styles.flagImageContainer}>
+          <Image
+            defaultSource={icons.PLACEHOLDER_IMAGE}
+            source={country.flagImage}
+            resizeMode="cover"
+            style={styles.flagImage}
+          />
+        </View>
+
         <View style={styles.descriptionContainer}>
           <CountryDescription country={country} />
           <CustomDivider height={DEFAULT_SPACING} />

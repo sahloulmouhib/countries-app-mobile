@@ -7,7 +7,7 @@ import { fonts } from '_utils/theme/fonts';
 export default StyleSheet.create({
   container: {
     backgroundColor: colors.GREY_LIGHT,
-    paddingVertical: IS_ANDROID_DEVICE ? 8 : 16,
+    paddingVertical: IS_ANDROID_DEVICE ? 2 : 12,
     paddingHorizontal: 16,
     borderRadius: 8,
     flexDirection: 'row',

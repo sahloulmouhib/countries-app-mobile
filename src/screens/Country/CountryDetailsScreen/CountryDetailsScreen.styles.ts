@@ -29,10 +29,11 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     borderColor: colors.GREY_MEDIUM,
   },
-  flag: {
+  flagImage: {
     width: '100%',
-    aspectRatio: ASPECT_RATIO,
+    height: '100%',
   },
+  flagImageContainer: { width: '100%', aspectRatio: ASPECT_RATIO },
   button: {
     position: 'absolute',
     bottom: 32,

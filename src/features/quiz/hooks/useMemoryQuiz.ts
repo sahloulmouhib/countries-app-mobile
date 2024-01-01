@@ -13,9 +13,12 @@ import { GameStatus } from '../utils/enums';
 import { createMemoryQuiz } from '../utils/helpers';
 
 const useMemoryQuiz = () => {
+  const [gameStatus, setGameStatus] = useState<GameStatus>(
+    GameStatus.InProgress,
+  );
   const memoryQuiz = useMemo(
     () => createMemoryQuiz(COUNTRIES, MEMORY_GAME_NBR_OF_CARDS),
-    [GameStatus],
+    [gameStatus],
   );
 
   const { timerTimeString, timer, setTimer } = useCountdownTimer(
@@ -24,10 +27,6 @@ const useMemoryQuiz = () => {
   const [cards, setCards] = useState(memoryQuiz.cards);
   const [firstCard, setFirstCard] = useState<IMemoryQuizCard | undefined>(
     undefined,
-  );
-
-  const [gameStatus, setGameStatus] = useState<GameStatus>(
-    GameStatus.InProgress,
   );
 
   const nbrOfMatchedCards = cards.filter(card => card.isMatched).length;

@@ -14,6 +14,7 @@ import {
 import TabBarItem, { TabBarItemProps } from '_components/TabBarItem/TabBarItem';
 
 import { TAB_BAR_HEIGHT } from '_utils/constants';
+import { IS_ANDROID_DEVICE } from '_utils/helpers';
 import { COUNTRY_TAB, QUIZ_TAB, STATS_TAB } from '_utils/screenNames';
 import { colors } from '_utils/theme/colors';
 
@@ -97,7 +98,7 @@ const BottomTabNavigation = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    paddingTop: 16,
+    paddingTop: IS_ANDROID_DEVICE ? 0 : 16,
     width: '100%',
     backgroundColor: colors.WHITE,
     height: TAB_BAR_HEIGHT,

@@ -9,5 +9,5 @@ export const MEMORY_CARD_FLIP_DURATION = 500;
 export const MEMORY_CARD_LIST_ROWS = 3;
 export const MEMORY_CARD_ASPECT_RATIO = 16 / 11;
 
-export const FLAG_QUIZ_NBR_OF_QUESTIONS = 3;
-export const CAPITAL_QUIZ_NBR_OF_QUESTIONS = 3;
+export const FLAG_QUIZ_NBR_OF_QUESTIONS = 10;
+export const CAPITAL_QUIZ_NBR_OF_QUESTIONS = 10;

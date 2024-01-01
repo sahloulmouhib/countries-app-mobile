@@ -38,6 +38,7 @@ const CustomSearchBar = ({
         style={styles.textInput}
         value={text}
         onChangeText={onChangeText}
+        placeholderTextColor={colors.GREY_MEDIUM}
         placeholder={placeholder}
         defaultValue={defaultValue}
         cursorColor={colors.PRIMARY}

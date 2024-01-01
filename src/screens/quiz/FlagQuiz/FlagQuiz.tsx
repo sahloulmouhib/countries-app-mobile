@@ -60,7 +60,6 @@ const FlagQuiz = ({ closeModal }: Props) => {
               answerIdToGuess={answerIdToGuess}
             />
           </View>
-
           <Answers
             isQuestionAnswered={isQuestionAnswered}
             questionAnswers={questionAnswers}

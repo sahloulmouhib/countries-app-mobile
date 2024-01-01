@@ -14,13 +14,14 @@ type Props = {
 const FlagImage = ({ image, answerIdToGuess }: Props) => {
   return (
     <Animated.View
+      style={styles.imageContainer}
       entering={FlipInEasyX.delay(100).duration(400)}
       key={answerIdToGuess}>
       <Image
         source={image}
-        resizeMode={'cover'}
-        defaultSource={icons.PLACEHOLDER_IMAGE}
         style={styles.image}
+        resizeMode="cover"
+        defaultSource={icons.PLACEHOLDER_IMAGE}
       />
     </Animated.View>
   );

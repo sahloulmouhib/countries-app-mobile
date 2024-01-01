@@ -27,7 +27,7 @@ export interface ICountry {
   name: string;
   capital: string;
   region: string;
-  subregion: string;
+  subregion?: string;
   flagImage: ImageSourcePropType;
   flagImageUrl: string;
   flagEmoji: string;

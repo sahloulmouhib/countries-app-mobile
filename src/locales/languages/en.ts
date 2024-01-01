@@ -1,4 +1,4 @@
-export default {
+export const en = {
   global: {
     title: 'My App',
     view_more: 'View more',
@@ -18,7 +18,7 @@ export default {
   },
   tab_bar: {
     search: 'Search',
-    quiz: 'Quiz',
+    quiz: 'Games',
     stats: 'Stats',
   },
   alert: {
@@ -57,7 +57,7 @@ export default {
     },
   },
   quiz: {
-    title: 'Choose a quiz',
+    title: 'Play a game',
     best_score: 'Best Score',
     flag_quiz: {
       title: 'Guess the flag',
@@ -126,3 +126,6 @@ export default {
     },
   },
 };
+
+export default en;
+export type TranslationsType = typeof en;
