@@ -64,6 +64,7 @@ const Answer = ({
           color={textColor}
           type={CustomTitleType.H3}
           textAlign="center"
+          numberOfLines={3}
         />
       </TouchableOpacity>
     </Animated.View>

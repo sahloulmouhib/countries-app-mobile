@@ -89,7 +89,7 @@ const useFlagQuiz = () => {
   };
 
   const initializeQuiz = () => {
-    const newQuiz = createRandomFlagQuiz(COUNTRIES);
+    const newQuiz = createRandomFlagQuiz(COUNTRIES, FLAG_QUIZ_NBR_OF_QUESTIONS);
     setQuiz(newQuiz);
     setQuestionAnswers(createLocalQuizQuestionAnswers(0, newQuiz));
     setQuestionIndex(0);

@@ -81,7 +81,10 @@ export function createRandomCapitalQuiz(
       Array.from(usedIndices)[Math.floor(Math.random() * usedIndices.size)];
     const answers: IAnswer[] = [];
     usedIndices.forEach(index => {
-      answers.push({ id: countries[index].id, text: countries[index].name });
+      answers.push({
+        id: countries[index].id,
+        text: `${countries[index].name}  ${countries[index].flagEmoji}`,
+      });
     });
     const question: ICapitalQuestion = {
       id: i.toString(),
