@@ -94,7 +94,7 @@ export const en = {
       your_score: 'Your score is',
       finish: 'Finish',
       play_again: 'Play again',
-      quiz_completed: 'Game Over! try again',
+      quiz_completed: 'Game Over!\nTry again',
     },
     memory_quiz: {
       title: 'Memory game',

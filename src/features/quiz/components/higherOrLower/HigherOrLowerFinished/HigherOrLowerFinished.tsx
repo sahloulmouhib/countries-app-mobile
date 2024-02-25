@@ -30,6 +30,7 @@ const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
         <CustomTitle
           type={CustomTitleType.H1}
           fontSize={24}
+          textAlign="center"
           title={strings('quiz.population_quiz.quiz_completed')}
         />
         <View style={styles.imageContainer}>
@@ -41,7 +42,7 @@ const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
         </View>
         <CustomDivider height={DEFAULT_SPACING} />
         <CustomTitle
-          fontSize={16}
+          fontSize={18}
           type={CustomTitleType.H3}
           title={strings('quiz.population_quiz.your_score')}
         />
