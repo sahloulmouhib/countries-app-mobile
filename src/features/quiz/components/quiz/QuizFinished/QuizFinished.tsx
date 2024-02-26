@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
 
@@ -9,7 +9,7 @@ import CustomTitle, {
 } from '_components/CustomTitle/CustomTitle';
 
 import { animations } from '_utils/animations';
-import { DEFAULT_SPACING } from '_utils/constants';
+import { DEFAULT_SPACING_BIG } from '_utils/constants';
 
 import { strings } from '_i18n';
 
@@ -32,17 +32,22 @@ const QuizFinished = ({
 }: Props) => {
   return (
     <View style={styles.container}>
-      <View style={styles.details}>
+      <ScrollView contentContainerStyle={styles.details}>
         <CustomTitle
-          type={CustomTitleType.H3}
+          type={CustomTitleType.H1}
           fontSize={24}
           textAlign="center"
           title={strings('quiz.flag_quiz.quiz_completed')}
         />
         <View style={styles.imageContainer}>
-          <Lottie source={animations.TROPHY} autoPlay style={styles.image} />
+          <Lottie
+            source={animations.TROPHY}
+            loop
+            autoPlay
+            style={styles.image}
+          />
         </View>
-        <CustomDivider height={DEFAULT_SPACING} />
+        <CustomDivider height={DEFAULT_SPACING_BIG} />
         <CustomTitle
           type={CustomTitleType.H3}
           title={strings('quiz.flag_quiz.score')}
@@ -54,7 +59,7 @@ const QuizFinished = ({
             'quiz.flag_quiz.total_questions',
           )}${totalQuestionsNumber}`}
         />
-      </View>
+      </ScrollView>
 
       <FinishOrRestartButtons onRestart={onRestart} onClose={onClose} />
     </View>

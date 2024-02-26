@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
     paddingBottom: 32,
-    justifyContent: 'space-between',
     flex: 1,
     backgroundColor: colors.WHITE,
   },
@@ -16,7 +15,8 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
   },
   capital: {
-    marginTop: 16,
+    justifyContent: 'center',
+    marginVertical: 16,
     flexGrow: 1,
   },
 });

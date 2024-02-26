@@ -22,6 +22,7 @@ type Props = {
   textAlign?: 'center' | 'left' | 'right';
   fontSize?: number;
   numberOfLines?: number;
+  flex?: number;
 };
 
 const CustomTitle = ({
@@ -31,6 +32,7 @@ const CustomTitle = ({
   textAlign,
   fontSize,
   numberOfLines,
+  flex,
 }: Props) => {
   return (
     <CustomText
@@ -43,6 +45,7 @@ const CustomTitle = ({
             color: color ?? colors.BLACK,
             textAlign: textAlign ?? 'left',
             fontSize: fontSize ?? styles[type].fontSize,
+            flex: flex ?? undefined,
           },
         ],
       ]}

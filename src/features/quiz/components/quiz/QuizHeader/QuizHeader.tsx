@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import CustomDivider from '_components/CustomDivider/CustomDivider';
 import CustomTitle, {
   CustomTitleType,
 } from '_components/CustomTitle/CustomTitle';
@@ -22,7 +21,6 @@ const QuizHeader = ({ questionTitle, quizTitle }: Props) => {
         title={capitalizeFirstLetter(quizTitle)}
         type={CustomTitleType.H2}
       />
-      <CustomDivider height={8} />
       <CustomTitle
         title={capitalizeFirstLetter(questionTitle)}
         type={CustomTitleType.H3}

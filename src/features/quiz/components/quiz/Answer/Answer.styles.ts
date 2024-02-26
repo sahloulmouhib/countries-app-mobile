@@ -4,7 +4,7 @@ import { colors } from '_utils/theme/colors';
 
 export default StyleSheet.create({
   container: {
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: colors.GREY_MEDIUM,
     padding: 16,
     borderRadius: 10,

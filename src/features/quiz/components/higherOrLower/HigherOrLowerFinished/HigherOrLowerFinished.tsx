@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
 
@@ -26,7 +26,9 @@ type Props = {
 const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
   return (
     <View style={styles.container}>
-      <View style={styles.details}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.details}>
         <CustomTitle
           type={CustomTitleType.H1}
           fontSize={24}
@@ -47,7 +49,7 @@ const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
           title={strings('quiz.population_quiz.your_score')}
         />
         <CustomTitle fontSize={50} type={CustomTitleType.H2} title={score} />
-      </View>
+      </ScrollView>
       <FinishOrRestartButtons onRestart={onRestart} onClose={onClose} />
     </View>
   );

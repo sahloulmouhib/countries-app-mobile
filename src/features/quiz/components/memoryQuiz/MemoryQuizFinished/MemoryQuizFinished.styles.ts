@@ -6,14 +6,18 @@ export default StyleSheet.create({
   container: {
     padding: 16,
     paddingBottom: 32,
-    backgroundColor: colors.WHITE,
     flex: 1,
+    backgroundColor: colors.WHITE,
     justifyContent: 'space-between',
+  },
+  scrollViewContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexGrow: 1,
   },
   details: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
   },
   image: {
     width: 200,
@@ -21,7 +25,7 @@ export default StyleSheet.create({
   },
   imageContainer: {
     justifyContent: 'center',
-    marginTop: 32,
+    marginVertical: 16,
   },
   buttonsContainer: {
     flexDirection: 'row',

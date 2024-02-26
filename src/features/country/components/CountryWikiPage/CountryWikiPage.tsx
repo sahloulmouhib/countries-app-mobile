@@ -33,14 +33,18 @@ const CountryWikiPage = ({
       visible={isVisible}
       presentationStyle="pageSheet">
       <View style={styles.container}>
-        <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+        <View style={styles.headerContainer}>
           <CustomTitle
-            fontSize={28}
+            fontSize={24}
             type={CustomTitleType.H2}
             title={`${countryName}  ${flagEmoji}`}
+            flex={1}
           />
-          <FontAwesomeIcon icon={faX} size={18} />
-        </TouchableOpacity>
+          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+            <FontAwesomeIcon icon={faX} size={18} />
+          </TouchableOpacity>
+        </View>
+
         <CustomWebView uri={`${WIKI_BASE_URL}${countryName}`} />
       </View>
     </Modal>

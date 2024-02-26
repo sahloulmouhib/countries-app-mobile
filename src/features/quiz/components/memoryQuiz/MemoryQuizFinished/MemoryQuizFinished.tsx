@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
 
@@ -34,41 +34,53 @@ const MemoryQuizFinished = ({
 }: MemoryQuizProps) => {
   return (
     <View style={styles.container}>
-      {gameStatus === GameStatus.Lost ? (
-        <View style={styles.details}>
-          <CustomTitle
-            type={CustomTitleType.H1}
-            fontSize={24}
-            textAlign="center"
-            title={strings('quiz.population_quiz.quiz_completed')}
-          />
-          <View style={styles.imageContainer}>
-            <Lottie
-              source={animations.DEAD_EMOJI}
-              autoPlay
-              style={styles.image}
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        {gameStatus === GameStatus.Lost ? (
+          <View style={styles.details}>
+            <CustomTitle
+              type={CustomTitleType.H1}
+              fontSize={24}
+              textAlign="center"
+              title={strings('quiz.population_quiz.quiz_completed')}
+            />
+            <View style={styles.imageContainer}>
+              <Lottie
+                source={animations.DEAD_EMOJI}
+                autoPlay
+                style={styles.image}
+              />
+            </View>
+            <CustomDivider height={DEFAULT_SPACING} />
+            <CustomTitle
+              fontSize={18}
+              type={CustomTitleType.H3}
+              title={strings('quiz.population_quiz.your_score')}
+            />
+            <CustomTitle
+              fontSize={50}
+              type={CustomTitleType.H2}
+              title={score}
             />
           </View>
-          <CustomDivider height={DEFAULT_SPACING} />
-          <CustomTitle
-            fontSize={18}
-            type={CustomTitleType.H3}
-            title={strings('quiz.population_quiz.your_score')}
-          />
-          <CustomTitle fontSize={50} type={CustomTitleType.H2} title={score} />
-        </View>
-      ) : (
-        <View style={styles.details}>
-          <CustomTitle
-            type={CustomTitleType.H1}
-            fontSize={24}
-            title={strings('quiz.memory_quiz.game_won')}
-          />
-          <View style={styles.imageContainer}>
-            <Lottie source={animations.TROPHY} autoPlay style={styles.image} />
+        ) : (
+          <View style={styles.details}>
+            <CustomTitle
+              type={CustomTitleType.H1}
+              fontSize={24}
+              textAlign="center"
+              title={strings('quiz.memory_quiz.game_won')}
+            />
+            <View style={styles.imageContainer}>
+              <Lottie
+                source={animations.TROPHY}
+                autoPlay
+                style={styles.image}
+              />
+            </View>
           </View>
-        </View>
-      )}
+        )}
+      </ScrollView>
+
       <FinishOrRestartButtons onRestart={onRestart} onClose={onClose} />
     </View>
   );

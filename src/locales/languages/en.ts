@@ -104,7 +104,7 @@ export const en = {
       finish: 'Finish',
       play_again: 'Play again',
       quiz_completed: 'Game Over! try again',
-      game_won: 'Congratulations! You won!',
+      game_won: 'Congratulations!\nYou won!',
       memory_game: 'Memory game',
       match_the_pairs: 'Match the flag pairs!',
     },

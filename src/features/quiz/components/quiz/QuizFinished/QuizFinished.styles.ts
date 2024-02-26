@@ -11,9 +11,10 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   details: {
+    paddingVertical: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
+    flexGrow: 1,
   },
   image: {
     width: 250,
