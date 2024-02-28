@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
@@ -30,6 +30,10 @@ const QuizFinished = ({
   score,
   totalQuestionsNumber,
 }: Props) => {
+  const animationRef = useRef<Lottie>(null);
+  useEffect(() => {
+    setTimeout(() => animationRef.current?.play(), 200);
+  }, []);
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.details}>
@@ -41,6 +45,7 @@ const QuizFinished = ({
         />
         <View style={styles.imageContainer}>
           <Lottie
+            ref={animationRef}
             source={animations.TROPHY}
             loop
             autoPlay

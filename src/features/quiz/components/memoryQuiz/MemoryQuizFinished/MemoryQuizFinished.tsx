@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
@@ -32,6 +32,10 @@ const MemoryQuizFinished = ({
   onRestart,
   gameStatus,
 }: MemoryQuizProps) => {
+  const animationRef = useRef<Lottie>(null);
+  useEffect(() => {
+    setTimeout(() => animationRef.current?.play(), 200);
+  }, []);
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
@@ -45,6 +49,7 @@ const MemoryQuizFinished = ({
             />
             <View style={styles.imageContainer}>
               <Lottie
+                ref={animationRef}
                 source={animations.DEAD_EMOJI}
                 autoPlay
                 style={styles.image}
@@ -72,6 +77,7 @@ const MemoryQuizFinished = ({
             />
             <View style={styles.imageContainer}>
               <Lottie
+                ref={animationRef}
                 source={animations.TROPHY}
                 autoPlay
                 style={styles.image}

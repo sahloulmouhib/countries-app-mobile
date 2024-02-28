@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
@@ -24,6 +24,10 @@ type Props = {
 };
 
 const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
+  const animationRef = useRef<Lottie>(null);
+  useEffect(() => {
+    setTimeout(() => animationRef.current?.play(), 200);
+  }, []);
   return (
     <View style={styles.container}>
       <ScrollView
@@ -37,6 +41,7 @@ const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
         />
         <View style={styles.imageContainer}>
           <Lottie
+            ref={animationRef}
             source={animations.DEAD_EMOJI}
             autoPlay
             style={styles.image}
