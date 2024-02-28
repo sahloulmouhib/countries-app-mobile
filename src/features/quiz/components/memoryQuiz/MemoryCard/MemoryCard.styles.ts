@@ -16,6 +16,8 @@ export default StyleSheet.create({
     tintColor: colors.WHITE,
   },
   flagImage: {
+    borderWidth: 2,
+    borderColor: colors.GREY_LIGHT,
     width: '100%',
     height: '100%',
     borderRadius: 7,

@@ -4,9 +4,16 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
-  closeButton: {
+  headerContainer: {
     padding: 16,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 16,
+  },
+  closeButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
 });

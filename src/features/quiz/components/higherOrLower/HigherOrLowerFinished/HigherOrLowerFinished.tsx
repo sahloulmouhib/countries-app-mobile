@@ -1,5 +1,5 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { ScrollView, View } from 'react-native';
 
 import Lottie from 'lottie-react-native';
 
@@ -24,16 +24,24 @@ type Props = {
 };
 
 const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
+  const animationRef = useRef<Lottie>(null);
+  useEffect(() => {
+    setTimeout(() => animationRef.current?.play(), 200);
+  }, []);
   return (
     <View style={styles.container}>
-      <View style={styles.details}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.details}>
         <CustomTitle
           type={CustomTitleType.H1}
           fontSize={24}
+          textAlign="center"
           title={strings('quiz.population_quiz.quiz_completed')}
         />
         <View style={styles.imageContainer}>
           <Lottie
+            ref={animationRef}
             source={animations.DEAD_EMOJI}
             autoPlay
             style={styles.image}
@@ -41,12 +49,12 @@ const HigherOrLowerFinished = ({ score, onClose, onRestart }: Props) => {
         </View>
         <CustomDivider height={DEFAULT_SPACING} />
         <CustomTitle
-          fontSize={16}
+          fontSize={18}
           type={CustomTitleType.H3}
           title={strings('quiz.population_quiz.your_score')}
         />
         <CustomTitle fontSize={50} type={CustomTitleType.H2} title={score} />
-      </View>
+      </ScrollView>
       <FinishOrRestartButtons onRestart={onRestart} onClose={onClose} />
     </View>
   );

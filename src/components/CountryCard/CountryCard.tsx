@@ -27,7 +27,7 @@ const CountryCard = ({ country, onPress }: Props) => {
         defaultSource={icons.PLACEHOLDER_IMAGE}
       />
       <View style={styles.detailsContainer}>
-        <CustomTitle numberOfLines={1} title={name} type={CustomTitleType.H2} />
+        <CustomTitle numberOfLines={2} title={name} type={CustomTitleType.H2} />
         <CustomTitle
           numberOfLines={1}
           title={capital}

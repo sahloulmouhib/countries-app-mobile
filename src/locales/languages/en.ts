@@ -2,6 +2,7 @@ export const en = {
   global: {
     title: 'My App',
     view_more: 'View more',
+    web_view_error: 'An error occurred while loading the page',
     empty_list: {
       title: 'Sorry, no results found',
       description: 'Try searching for something else',
@@ -93,7 +94,7 @@ export const en = {
       your_score: 'Your score is',
       finish: 'Finish',
       play_again: 'Play again',
-      quiz_completed: 'Game Over! try again',
+      quiz_completed: 'Game Over!\nTry again',
     },
     memory_quiz: {
       title: 'Memory game',
@@ -103,7 +104,7 @@ export const en = {
       finish: 'Finish',
       play_again: 'Play again',
       quiz_completed: 'Game Over! try again',
-      game_won: 'Congratulations! You won!',
+      game_won: 'Congratulations!\nYou won!',
       memory_game: 'Memory game',
       match_the_pairs: 'Match the flag pairs!',
     },

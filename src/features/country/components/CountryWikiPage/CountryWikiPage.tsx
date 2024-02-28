@@ -11,8 +11,6 @@ import CustomTitle, {
 } from '_components/CustomTitle/CustomTitle';
 import CustomWebView from '_components/CustomWebView/CustomWebView';
 
-import WikiPageSkeleton from '../WikiPageSkeleton/WikiPageSkeleton';
-
 import styles from './CountryWikiPage.styles';
 
 type Props = {
@@ -35,18 +33,19 @@ const CountryWikiPage = ({
       visible={isVisible}
       presentationStyle="pageSheet">
       <View style={styles.container}>
-        <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+        <View style={styles.headerContainer}>
           <CustomTitle
-            fontSize={28}
+            fontSize={24}
             type={CustomTitleType.H2}
             title={`${countryName}  ${flagEmoji}`}
+            flex={1}
           />
-          <FontAwesomeIcon icon={faX} size={18} />
-        </TouchableOpacity>
-        <CustomWebView
-          uri={`${WIKI_BASE_URL}${countryName}`}
-          WebviewCustomLoader={WikiPageSkeleton}
-        />
+          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+            <FontAwesomeIcon icon={faX} size={18} />
+          </TouchableOpacity>
+        </View>
+
+        <CustomWebView uri={`${WIKI_BASE_URL}${countryName}`} />
       </View>
     </Modal>
   );

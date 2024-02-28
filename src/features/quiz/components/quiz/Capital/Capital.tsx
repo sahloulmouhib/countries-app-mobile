@@ -19,15 +19,16 @@ const Capital = ({ capital, answerIdToGuess }: Props) => {
       <ImageBackground
         resizeMode="contain"
         source={icons.WORLD_MAP}
-        style={styles.image}
-      />
-      <Animated.View
-        key={answerIdToGuess}
-        entering={StretchInY.duration(500).delay(100)}
-        style={styles.capitalContainer}>
-        <CustomText text={capital} style={styles.title} />
-        <CustomText text={' is the capital of ?'} style={styles.question} />
-      </Animated.View>
+        imageStyle={styles.imageStyle}
+        style={styles.image}>
+        <Animated.View
+          key={answerIdToGuess}
+          entering={StretchInY.duration(500).delay(100)}
+          style={styles.capitalContainer}>
+          <CustomText text={capital} style={styles.title} />
+          <CustomText text={' is the capital of ?'} style={styles.question} />
+        </Animated.View>
+      </ImageBackground>
     </>
   );
 };

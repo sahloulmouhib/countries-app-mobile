@@ -32,7 +32,6 @@ const CapitalQuiz = ({ closeModal }: Props) => {
     numberOfQuestions,
     answerIdToGuess,
     countryCapitalToGuess,
-
     initializeQuiz,
   } = useCapitalQuiz();
 

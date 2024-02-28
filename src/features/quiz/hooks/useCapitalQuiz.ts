@@ -88,7 +88,10 @@ const useCapitalQuiz = () => {
   };
 
   const initializeQuiz = () => {
-    const newQuiz = createRandomCapitalQuiz(COUNTRIES);
+    const newQuiz = createRandomCapitalQuiz(
+      COUNTRIES,
+      CAPITAL_QUIZ_NBR_OF_QUESTIONS,
+    );
     setQuiz(newQuiz);
     setQuestionIndex(0);
     setQuestionAnswers(createLocalQuizQuestionAnswers(0, newQuiz));

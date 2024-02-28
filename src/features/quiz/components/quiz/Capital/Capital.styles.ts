@@ -5,7 +5,12 @@ import { fonts } from '_utils/theme/fonts';
 
 export default StyleSheet.create({
   image: {
-    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: 150,
+  },
+  imageStyle: {
     opacity: 0.4,
   },
   title: {
@@ -23,7 +28,5 @@ export default StyleSheet.create({
   capitalContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'relative',
-    bottom: '50%',
   },
 });
