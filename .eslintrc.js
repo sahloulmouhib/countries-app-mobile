@@ -10,7 +10,6 @@ module.exports = {
       'always',
       { exceptAfterSingleLine: true },
     ],
-
     'prettier/prettier': [
       'error',
       {
